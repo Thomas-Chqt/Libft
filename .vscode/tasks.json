@@ -1,0 +1,29 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build Libft Debug",
+			"type": "shell",
+			"command": "export PERSONAL_LIB_INCLUDE_DIR=${config:C_libraries.include.personal} && export PERSONAL_LIB_LIB_DIR=${config:C_libraries.lib.personal} && make alldebug",
+			"dependsOn": "Save all"
+		},
+		{
+			"label": "Build Libft Release",
+			"type": "shell",
+			"command": "export PERSONAL_LIB_INCLUDE_DIR=${config:C_libraries.include.personal} && export PERSONAL_LIB_LIB_DIR=${config:C_libraries.lib.personal} && make all",
+			"dependsOn": "Save all"
+		},
+		{
+			"label": "Clean Debug",
+			"type": "shell",
+			"command": "make cleandebug"
+		},
+		{
+			"label": "Clean Release",
+			"type": "shell",
+			"command": "make cleanrelease"
+		}
+	]
+}
