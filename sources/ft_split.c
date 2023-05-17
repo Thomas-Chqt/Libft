@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_for_test.c                                    :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/17 18:32:03 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/05/17 17:48:37 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/05/17 17:53:54 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int main(int argc, char const *argv[])
+char **ft_split(char const *s, char c)
 {
-	size_t len = ft_strlen("qwerty");
 
-	char* str = ft_strjoin("abcd", "efghi");
-
-	// ft_substr
-
-	// str = ft_strtrim(".;[abcd./]", ".;[]/");
-
-	ft_itoa(42);
-
-	return 0;
 }

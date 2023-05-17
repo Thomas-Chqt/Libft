@@ -6,7 +6,7 @@
 #    By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 16:24:59 by tchoquet          #+#    #+#              #
-#    Updated: 2023/05/17 10:39:28 by tchoquet         ###   ########.fr        #
+#    Updated: 2023/05/17 14:41:32 by tchoquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,9 @@ DEBUG_SRC 	= ${ROOT}/main_for_test.c
 RELEASE_OBJ = ${patsubst ${SRCS_DIR}%, ${BUILD_DIR}%, ${RELEASE_SRC:.c=.o}}
 DEBUG_OBJ	= ${RELEASE_OBJ:.o=_debug.o} ${patsubst ${ROOT}%, ${BUILD_DIR}%, ${DEBUG_SRC:.c=.o}}
 
-CC				= gcc
-CFLAGS			= 
-alldebug: CFLAGS += -g
+CC					= gcc
+CFLAGS				= -Wall -Wextra -Werror
+alldebug: CFLAGS	= -g
 
 NAME			= ${EXPORT_LIB_DIR}/libft.a
 EXPORT_INCLUDE	= ${EXPORT_INCLUDE_DIR}/libft.h
