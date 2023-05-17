@@ -3,6 +3,7 @@
 		"includes"
 	],
 	"files.exclude": {
+		"build/": true,
 		"Makefile": true,
 		"product/": true
 	},
