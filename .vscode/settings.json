@@ -1,5 +1,9 @@
 {
 	"C_Cpp.default.includePath": [
 		"includes"
-	]
+	],
+	"files.exclude": {
+		"Makefile": true,
+		"product/": true
+	},
 }

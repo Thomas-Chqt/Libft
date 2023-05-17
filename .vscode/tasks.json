@@ -6,13 +6,13 @@
 		{
 			"label": "Build Libft Debug",
 			"type": "shell",
-			"command": "export PERSONAL_LIB_INCLUDE_DIR=${config:C_libraries.include.personal} && export PERSONAL_LIB_LIB_DIR=${config:C_libraries.lib.personal} && make alldebug",
+			"command": "make alldebug",
 			"dependsOn": "Save all"
 		},
 		{
 			"label": "Build Libft Release",
 			"type": "shell",
-			"command": "export PERSONAL_LIB_INCLUDE_DIR=${config:C_libraries.include.personal} && export PERSONAL_LIB_LIB_DIR=${config:C_libraries.lib.personal} && make all",
+			"command": "make all",
 			"dependsOn": "Save all"
 		},
 		{
