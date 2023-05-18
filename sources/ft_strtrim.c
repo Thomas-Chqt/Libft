@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:35:47 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/17 18:32:50 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/18 10:52:57 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	unsigned int	start;
 	size_t			len;
 
+	if (s1 == NULL || set == NULL)
+		return (NULL);
 	strtrim_analize(s1, set, &start, &len);
-	// return (ft_substr(s1, start, len));
+	return (ft_substr(s1, start, len));
 }

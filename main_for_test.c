@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/18 09:36:29 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/18 16:00:03 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int main(int argc, char const *argv[])
 {
 	size_t len = ft_strlen("qwerty");
 
-	char* str = ft_strjoin("abcd", "efghi");
+	char* str = ft_substr("abcdef", 1, 3);
 
-	// ft_substr
+	str = ft_strjoin("abcd", "efghi");
 
-	// str = ft_strtrim(".;[abcd./]", ".;[]/");
+	str = ft_strtrim(".;[abcd./]", ".;[]/");
 
-	ft_itoa(42);
+	char** split_array = ft_split("  a  b  c  ", ' ');
 
 	return 0;
 }
