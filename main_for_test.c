@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/18 16:00:03 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/18 16:04:31 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ int main(int argc, char const *argv[])
 
 	char** split_array = ft_split("  a  b  c  ", ' ');
 
-	return 0;
+	return 0; 
 }
