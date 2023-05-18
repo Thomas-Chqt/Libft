@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/18 17:35:56 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/18 18:16:01 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 char f1(unsigned int index, char c)
 {
-	return 'x';
+	return 'a';
+}
+
+void f2(unsigned int index, char *c)
+{
+	(*c) += (index % 10);
 }
 
 int main(int argc, char const *argv[])
@@ -32,6 +37,8 @@ int main(int argc, char const *argv[])
 	str = ft_itoa(INT32_MIN);
 
 	str = ft_strmapi("abcdefgh", &f1);
+
+	ft_striteri(str, &f2);
 
 	return 0; 
 }

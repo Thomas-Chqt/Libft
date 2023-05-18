@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/18 18:04:11 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/18 18:07:59 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,13 @@ char	*ft_itoa(int n);
 // @return of ’f’. 
 // @return Returns NULL if the allocation fails.
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+
+// @brief Applies the function ’f’ on each character of
+// @brief the string passed as argument, passing its index
+// @brief as first argument.  Each character is passed by
+// @brief address to ’f’ to be modified if necessary.
+// @param s The string on which to iterate.
+// @param f The function to apply to each character.
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
 #endif
