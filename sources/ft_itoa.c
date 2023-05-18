@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:08:50 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/18 16:36:49 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:25:01 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_itoa(int n)
 {
 	char			*str;	
 
-	str = malloc(intlen(n) * sizeof(char));
+	str = malloc((intlen(n) + 1) * sizeof(char));
 	itoa(n, str);
 	return (str);
 }
@@ -65,6 +65,7 @@ static void	itoa(int n, char *buffer)
 		l_n *= -1;
 	}
 	abs_itoa(l_n, &i, buffer);
+	buffer[i] = 0;
 }
 
 static void	abs_itoa(long n, unsigned short *i, char *buffer)
