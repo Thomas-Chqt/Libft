@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/18 09:37:54 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/18 16:54:10 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 // @brief of strings obtained by splitting ’s’ using the \
 // @brief character ’c’ as a delimiter.  The array must end \
 // @brief with a NULL pointer.
-// @param s The string to be split. \
+// @param s The string to be split.
 // @param c The delimiter character.
 // @return The array of new strings resulting from the split. \
 // @return NULL if the allocation fails.
@@ -63,5 +63,16 @@ char	**ft_split(char const *s, char c);
 // @return The string representing the integer.\
 // @return NULL if the allocation fails.
 char	*ft_itoa(int n);
+
+// @brief Applies the function ’f’ to each character of the \
+// @brief string ’s’, and passing its index as first argument \
+// @brief to create a new string (with malloc(3)) resulting \
+// @brief from successive applications of ’f’.
+// @param s The string on which to iterate. 
+// @param f The function to apply to each character.
+// @return The string created from the successive applications \
+// @return of ’f’. \
+// @return Returns NULL if the allocation fails.
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 #endif
