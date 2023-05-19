@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/19 15:22:55 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/19 16:39:01 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int main(int argc, char const *argv[])
 
 	ft_putnbr_fd(INT32_MIN, fd);
 	
+	int n = ft_isalpha('a');
+
 	return 0; 
 }
 
