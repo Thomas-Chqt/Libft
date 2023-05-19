@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/19 12:37:36 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/19 12:43:21 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <stdlib.h>
+# include <unistd.h>
 
 // computes the length of the string s
 // @param s input string
@@ -88,5 +89,11 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 // @param c The character to output.
 // @param fd The file descriptor on which to write.
 void ft_putchar_fd(char c, int fd);
+
+// @brief Outputs the string ’s’ to the given file
+// @brief descriptor.
+// @param s The string to output.
+// @param fd The file descriptor on which to write.
+void ft_putstr_fd(char *s, int fd);
 
 #endif
