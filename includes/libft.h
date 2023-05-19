@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/19 21:46:14 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/19 22:09:39 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,14 @@ int		ft_isprint(int c);
 // @param s input string
 // @return number of characters that precede the terminating NULL character
 size_t	ft_strlen(const char *s);
+
+// @brief writes len bytes of value c (converted to an unsigned char) 
+// @brief to the string b.
+// @param b destination
+// @param c byte
+// @param len lenght
+// @return first argument (b)
+void	*ft_memset(void *b, int c, size_t len);
 
 // @brief Allocates with malloc and returns a substring from the string ’s’. 
 // @brief The substring begins at index ’start’ and is of maximum size ’len’.

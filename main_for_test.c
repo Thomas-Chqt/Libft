@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/19 21:48:39 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/19 22:11:42 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int main(int argc, char const *argv[])
 	n = ft_isascii('a');
 
 	n = ft_isprint('a');
+
+	str = ft_memset(str, 0xff, 3);
 
 	return 0; 
 }
