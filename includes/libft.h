@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/18 18:07:59 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/19 12:37:36 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,11 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 // @param s The string on which to iterate.
 // @param f The function to apply to each character.
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+
+// @brief Outputs the character ’c’ to the given file
+// @brief descriptor.
+// @param c The character to output.
+// @param fd The file descriptor on which to write.
+void ft_putchar_fd(char c, int fd);
 
 #endif
