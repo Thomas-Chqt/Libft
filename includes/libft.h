@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/19 12:43:21 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/19 14:39:19 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,11 @@ void ft_putchar_fd(char c, int fd);
 // @param s The string to output.
 // @param fd The file descriptor on which to write.
 void ft_putstr_fd(char *s, int fd);
+
+// @brief Outputs the string ’s’ to the given file descriptor
+// @brief followed by a newline.
+// @param s The string to output.
+// @param fd The file descriptor on which to write.
+void ft_putendl_fd(char *s, int fd);
 
 #endif
