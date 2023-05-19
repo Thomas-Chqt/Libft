@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/19 14:42:39 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/19 15:22:55 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,16 @@ int main(int argc, char const *argv[])
 
 	ft_striteri(str, &f2);
 
-	ft_putchar_fd('a', 1);
+	int fd = 1; //open("test.txt", O_RDWR);
 
-	ft_putstr_fd("\nazerty\n", 1);
+	ft_putchar_fd('a', fd);
 
-	ft_putendl_fd("azerty", 1);
-	ft_putendl_fd("azerty", 1);
+	ft_putstr_fd("\nazerty\n", fd);
+
+	ft_putendl_fd("azerty", fd);
+
+	ft_putnbr_fd(INT32_MIN, fd);
 	
 	return 0; 
 }
+
