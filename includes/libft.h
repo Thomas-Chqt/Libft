@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/19 21:31:01 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/19 21:46:14 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ int		ft_isalnum(int c);
 // @param c character to test
 // @return zero if the tests false and non-zero if the tests true.
 int		ft_isascii(int c);
+
+// @brief tests for any printing character, including space (‘ ’).
+// @param c character to test as an unsigned char
+// @return zero if the tests false and non-zero if the tests true.
+int		ft_isprint(int c);
 
 // computes the length of the string s
 // @param s input string
