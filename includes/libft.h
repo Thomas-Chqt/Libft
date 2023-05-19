@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/19 16:30:57 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/19 16:49:38 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@
 // @param c character to test as an unsigned char
 // @return zero if the tests false and non-zero if the tests true.
 int		ft_isalpha(int c);
+
+// @brief Test if `c` is a number (0-9)
+// @param c character to test as an unsigned char
+// @return zero if the tests false and non-zero if the tests true.
+int		ft_isdigit(int c);
 
 // computes the length of the string s
 // @param s input string
