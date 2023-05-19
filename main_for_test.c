@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/19 16:51:27 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/19 17:39:18 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int main(int argc, char const *argv[])
 	int n = ft_isalpha('a');
 
 	n = ft_isdigit('0');
+
+	n = ft_isalnum('a');
 
 	return 0; 
 }
