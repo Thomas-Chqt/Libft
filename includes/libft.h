@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/19 22:09:39 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/21 12:29:21 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ size_t	ft_strlen(const char *s);
 // @param len lenght
 // @return first argument (b)
 void	*ft_memset(void *b, int c, size_t len);
+
+// @brief writes n zeroed bytes to the string s.
+// @param s destination
+// @param n lenght
+void	ft_bzero(void *s, size_t n);
 
 // @brief Allocates with malloc and returns a substring from the string ’s’. 
 // @brief The substring begins at index ’start’ and is of maximum size ’len’.
