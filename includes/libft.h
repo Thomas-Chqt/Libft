@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/21 17:09:35 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/21 18:04:34 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,15 @@ char	*ft_strrchr(const char *s, int c);
 // @param n limit
 // @return integer greater than, equal to, or less than 0
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+
+// @brief locates the first occurrence of 
+// @brief c (converted to an unsigned char) in string s.
+// @param s the string to search in.
+// @param c byte to locate.
+// @param n lenght
+// @return a pointer to the byte located, 
+// @return or NULL if no such byte exists within n bytes.
+void	*ft_memchr(const void *s, int c, size_t n);
 
 // @brief Allocates with malloc and returns a substring from the string ’s’. 
 // @brief The substring begins at index ’start’ and is of maximum size ’len’.
