@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/21 15:14:35 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/21 15:48:49 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,19 @@ void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 
 // @brief copies dstsize bytes from memory area src to memory area dst
-// @brief without overflow and guarantee NUL-termination if there is room.
+// @brief without overflow and guarantee NUL-termination.
 // @param dst destination
 // @param src source
 // @param dstsize destination available size
 // @return length of src
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+
+// @brief concatenate strings without overflow and guarantee NUL-termination.
+// @param dst destination
+// @param src source
+// @param dstsize destination available size
+// @return initial length of dst plus the length of src.
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 
 // @brief Allocates with malloc and returns a substring from the string ’s’. 
 // @brief The substring begins at index ’start’ and is of maximum size ’len’.
