@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/21 16:24:56 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/21 16:51:31 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,14 @@ int		ft_tolower(int c);
 // @return a pointer to the located character, or
 // @return NULL if the character does not appear in the string.
 char	*ft_strchr(const char *s, int c);
+
+// @brief locates the las occurrence of c (converted to a char) in
+// @brief the string pointed to by s
+// @param s the string to search in.
+// @param c charactere to locate.
+// @return a pointer to the located character, or
+// @return NULL if the character does not appear in the string.
+char	*ft_strrchr(const char *s, int c);
 
 // @brief Allocates with malloc and returns a substring from the string ’s’. 
 // @brief The substring begins at index ’start’ and is of maximum size ’len’.
