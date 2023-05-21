@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/21 13:35:29 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/21 14:46:42 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,16 @@ int main()
 
 	ft_bzero(str, 0);
 
-	unsigned char buffer1[5] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+	unsigned char buffer1[5] = {0xAA, 0xBB, 0xCC, 0xDD, 0xEE};
 	unsigned char buffer2[5];
-
 	ft_memcpy(buffer2 , buffer1, 5);
+
+	unsigned char buffer3[15];
+	ft_memset(buffer3, 0x00, 5);
+	ft_memcpy(buffer3 + 5, buffer1, 5);
+	ft_memset(buffer3 + 10, 0x00, 5);
+	// ft_memmove(buffer3 + 3, buffer3 + 5, 5);
+	ft_memmove(buffer3 + 7, buffer3 + 5, 5);
 
 	return 0; 
 }
