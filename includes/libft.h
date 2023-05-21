@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/21 15:48:49 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/21 16:04:41 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,11 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 // @param dstsize destination available size
 // @return initial length of dst plus the length of src.
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+
+// @brief converts a lower-case letter to the corresponding upper-case letter.
+// @param c charactere to convert.
+// @return the corresponding upper-case letter if there is one; otherwise 'c'
+int		ft_toupper(int c);
 
 // @brief Allocates with malloc and returns a substring from the string ’s’. 
 // @brief The substring begins at index ’start’ and is of maximum size ’len’.
