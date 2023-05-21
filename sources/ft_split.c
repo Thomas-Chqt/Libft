@@ -6,14 +6,13 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:48:37 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/18 15:39:53 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/21 15:33:11 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static uint32_t	count_split(char const *s, char c);
-static char		**free_str_array(char **array, uint32_t len);
 char			*substr(char const *s, unsigned int start, uint32_t *len);
 
 char	**ft_split(char const *s, char c)
@@ -70,24 +69,10 @@ static uint32_t	count_split(char const *s, char c)
 	return (split_count);
 }
 
-static char	**free_str_array(char **array, uint32_t len)
-{
-	uint32_t	i;
-
-	i = 0;
-	while (i < len)
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-	return (NULL);
-}
-
 char	*substr(char const *s, unsigned int start, uint32_t *len)
 {
-	char	*output_str;
-	int		i;
+	char		*output_str;
+	uint32_t	i;
 
 	if (s == NULL)
 		return (NULL);
