@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/21 14:46:42 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/21 15:24:13 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,10 @@ int main()
 	ft_memset(buffer3 + 10, 0x00, 5);
 	// ft_memmove(buffer3 + 3, buffer3 + 5, 5);
 	ft_memmove(buffer3 + 7, buffer3 + 5, 5);
+
+	char *str1= "abcd";
+	char str2[6] = "     ";
+	ft_strlcpy(str2, str1, 6);
 
 	return 0; 
 }
