@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/21 16:51:31 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/21 17:09:35 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,14 @@ char	*ft_strchr(const char *s, int c);
 // @return a pointer to the located character, or
 // @return NULL if the character does not appear in the string.
 char	*ft_strrchr(const char *s, int c);
+
+// @brief lexicographically compare the null-terminated strings s1 and s2.
+// @brief compares not more than n characters
+// @param s1 first string to compare
+// @param s2 second string to compare
+// @param n limit
+// @return integer greater than, equal to, or less than 0
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 // @brief Allocates with malloc and returns a substring from the string ’s’. 
 // @brief The substring begins at index ’start’ and is of maximum size ’len’.
