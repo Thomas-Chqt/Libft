@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/21 12:29:21 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/21 13:14:49 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,14 @@ void	*ft_memset(void *b, int c, size_t len);
 // @param s destination
 // @param n lenght
 void	ft_bzero(void *s, size_t n);
+
+// @brief copies n bytes from memory area src to memory area dst.
+// @brief If dst and src overlap, behavior is undefined.
+// @param dst destination
+// @param src source
+// @param n length
+// @return original value of dst.
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 
 // @brief Allocates with malloc and returns a substring from the string ’s’. 
 // @brief The substring begins at index ’start’ and is of maximum size ’len’.

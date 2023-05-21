@@ -6,11 +6,12 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/21 12:30:09 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/21 13:35:29 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
+#include <string.h>
 
 #include "libft.h"
 
@@ -24,7 +25,7 @@ void f2(unsigned int index, char *c)
 	(*c) += (index % 10);
 }
 
-int main(int argc, char const *argv[])
+int main()
 {
 	size_t len = ft_strlen("qwerty");
 
@@ -65,6 +66,11 @@ int main(int argc, char const *argv[])
 	str = ft_memset(str, 0xff, 3);
 
 	ft_bzero(str, 0);
+
+	unsigned char buffer1[5] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+	unsigned char buffer2[5];
+
+	ft_memcpy(buffer2 , buffer1, 5);
 
 	return 0; 
 }
