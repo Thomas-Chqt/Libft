@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 13:40:09 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/22 13:44:43 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/22 15:12:42 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	j;
 
 	if (needle[0] == '\0')
-		return (haystack);
+		return ((char *)haystack);
 	i = 0;
 	while (haystack[i] != '\0' && i < len)
 	{
