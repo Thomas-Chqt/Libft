@@ -4,3 +4,4 @@ build/*
 product/*
 *.a
 libft.h
+.libft-tester-tokyo

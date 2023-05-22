@@ -6,14 +6,14 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:48:37 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/21 15:33:11 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/22 18:34:33 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static uint32_t	count_split(char const *s, char c);
-char			*substr(char const *s, unsigned int start, uint32_t *len);
+static char		*substr(char const *s, unsigned int start, uint32_t *len);
 
 char	**ft_split(char const *s, char c)
 {
@@ -69,7 +69,7 @@ static uint32_t	count_split(char const *s, char c)
 	return (split_count);
 }
 
-char	*substr(char const *s, unsigned int start, uint32_t *len)
+static char	*substr(char const *s, unsigned int start, uint32_t *len)
 {
 	char		*output_str;
 	uint32_t	i;

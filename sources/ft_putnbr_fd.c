@@ -6,13 +6,13 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 14:48:46 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/19 16:23:22 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/22 18:33:18 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putabnbr_fd(long nb, int fd);
+static void	ft_putabnbr_fd(long nb, int fd);
 
 void	ft_putnbr_fd(int n, int fd)
 {
@@ -27,7 +27,7 @@ void	ft_putnbr_fd(int n, int fd)
 	ft_putabnbr_fd(l_n, fd);
 }
 
-void	ft_putabnbr_fd(long nb, int fd)
+static void	ft_putabnbr_fd(long nb, int fd)
 {
 	if ((nb / 10) > 0)
 		ft_putabnbr_fd(nb / 10, fd);
