@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/22 13:18:58 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/22 13:44:49 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,19 @@ void	*ft_memchr(const void *s, int c, size_t n);
 // @return otherwise returns the difference between the 
 // @return first two differing bytes
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
+
+// @brief locates the first occurrence of the 
+// @brief null-termi-nated string needle in the string 
+// @brief haystack, where not more than len char-acters are searched. 
+// @brief Characters that appear after a `\0' character are not searched.
+// @param haystack str to search in
+// @param needle str to search
+// @param len len of haystack to search in
+// @return If needle is an empty string, haystack is returned.
+// @return if needle occurs nowhere in haystack, NULL is returned
+// @return otherwise a pointer to the first character of the first 
+// @return occurrence of needle is returned.
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
 // @brief Allocates with malloc and returns a substring from the string ’s’. 
 // @brief The substring begins at index ’start’ and is of maximum size ’len’.

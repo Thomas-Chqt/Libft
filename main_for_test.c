@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/22 13:26:22 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/22 13:44:13 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,12 @@ int main()
 	unsigned char buffer5[5] = {0xAA, 0xBB, 0xCC, 0xDD, 0xEE};
 	unsigned char buffer6[5] = {0xAA, 0xBB, 0xCC, 0xDD, 0x00};
 	int diff = ft_memcmp(buffer5, buffer6, 5);
+
+	const char *largestring = "Foo Bar Baz";
+	const char *smallstring = "Bar";
+	char *ptr;
+
+	ptr = strnstr(largestring, smallstring, 40);
 
 	return 0; 
 }
