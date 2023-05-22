@@ -6,7 +6,7 @@
 #    By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 16:24:59 by tchoquet          #+#    #+#              #
-#    Updated: 2023/05/22 15:51:53 by tchoquet         ###   ########.fr        #
+#    Updated: 2023/05/22 18:42:26 by tchoquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,10 +48,10 @@ SRC	= 	ft_isalpha.c	\
 
 OBJ = ${SRC:.c=.o}
 
-CC					= cc
-CFLAGS				= -Wall -Wextra -Werror
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 
-NAME			= libft.a
+NAME = libft.a
 
 
 .PHONY: all clean fclean re
