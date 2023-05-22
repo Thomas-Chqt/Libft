@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/22 15:11:17 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/22 15:26:26 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ int main()
 	ptr = strnstr(largestring, smallstring, 40);
 
 	int nbr = ft_atoi("56");
+
+	void *ptr2 = ft_calloc(5, sizeof(char));
 
 	return 0; 
 }

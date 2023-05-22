@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/22 15:11:00 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/22 15:27:53 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,15 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 // @param str string to convert
 // @return int representation
 int		ft_atoi(const char *str);
+
+// @brief contiguously allocates enough space for count objects 
+// @brief that are size bytes of memory each and returns a pointer 
+// @brief to the allocated memory. The allocated memory is filled 
+// @brief with bytes of value zero.
+// @param count number of object to allocate
+// @param size size of each object
+// @return pointer to the allocated memory
+void	*ft_calloc(size_t count, size_t size);
 
 // @brief Allocates with malloc and returns a substring from the string ’s’. 
 // @brief The substring begins at index ’start’ and is of maximum size ’len’.
