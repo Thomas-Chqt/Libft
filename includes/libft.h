@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/21 18:04:34 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/22 13:18:58 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,16 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 // @return a pointer to the byte located, 
 // @return or NULL if no such byte exists within n bytes.
 void	*ft_memchr(const void *s, int c, size_t n);
+
+// @brief compares byte string s1 against byte string s2.
+// @brief Both strings are assumed to be n bytes long.
+// @param s1 first string to compare
+// @param s2 second string to compare
+// @param n strings lenght
+// @return returns zero if the two strings are identical, 
+// @return otherwise returns the difference between the 
+// @return first two differing bytes
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
 
 // @brief Allocates with malloc and returns a substring from the string ’s’. 
 // @brief The substring begins at index ’start’ and is of maximum size ’len’.
