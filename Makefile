@@ -6,82 +6,71 @@
 #    By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 16:24:59 by tchoquet          #+#    #+#              #
-#    Updated: 2023/05/21 15:39:39 by tchoquet         ###   ########.fr        #
+#    Updated: 2023/05/22 15:51:53 by tchoquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-ROOT			= .
-SRCS_DIR		= ${ROOT}/sources
-INCLUDES_DIR 	= ${ROOT}/includes
-BUILD_DIR		= ${ROOT}/build
 
-EXPORT_INCLUDE_DIR	= ${ROOT}/product/include
-EXPORT_LIB_DIR		= ${ROOT}/product/lib
+SRC	= 	ft_isalpha.c	\
+		ft_isdigit.c	\
+		ft_isalnum.c	\
+		ft_isascii.c	\
+		ft_isprint.c	\
+		ft_strlen.c		\
+		ft_memset.c		\
+		ft_bzero.c		\
+		ft_memcpy.c		\
+		ft_memmove.c	\
+		ft_strlcpy.c	\
+		ft_strlcat.c	\
+		ft_toupper.c	\
+		ft_tolower.c	\
+		ft_strchr.c		\
+		ft_strrchr.c	\
+		ft_strncmp.c	\
+		ft_memchr.c		\
+		ft_memcmp.c		\
+		ft_strnstr.c	\
+		ft_atoi.c		\
+		ft_calloc.c		\
+		ft_strdup.c		\
+		ft_substr.c		\
+		ft_strjoin.c	\
+		ft_strtrim.c	\
+		ft_split.c		\
+		ft_itoa.c		\
+		ft_strmapi.c	\
+		ft_striteri.c	\
+		ft_putchar_fd.c	\
+		ft_putstr_fd.c	\
+		ft_putendl_fd.c	\
+		ft_putnbr_fd.c	\
 
-RELEASE_SRC	= ${wildcard ${SRCS_DIR}/*.c}
-DEBUG_SRC 	= ${ROOT}/main_for_test.c
+OBJ = ${SRC:.c=.o}
 
-RELEASE_OBJ = ${patsubst ${SRCS_DIR}%, ${BUILD_DIR}%, ${RELEASE_SRC:.c=.o}}
-DEBUG_OBJ	= ${RELEASE_OBJ:.o=_debug.o} ${patsubst ${ROOT}%, ${BUILD_DIR}%, ${DEBUG_SRC:.c=.o}}
-
-CC					= gcc
+CC					= cc
 CFLAGS				= -Wall -Wextra -Werror
-alldebug: CFLAGS	= -g
 
-NAME			= ${EXPORT_LIB_DIR}/libft.a
-EXPORT_INCLUDE	= ${EXPORT_INCLUDE_DIR}/libft.h
-
-DEBUG_EXE 		= ${ROOT}/Debug.out
-
-vpath %.c ${ROOT} ${SRCS_DIR}
-
-.PHONY: all clean fclean re alldebug cleandebug fcleandebug redebug
+NAME			= libft.a
 
 
+.PHONY: all clean fclean re
 
-all: ${NAME} ${EXPORT_INCLUDE}
 
-${NAME}: ${RELEASE_OBJ} | ${EXPORT_LIB_DIR}
+all: ${NAME}
+
+${NAME}: ${OBJ}
 	ar rc "$@" $^
 
-${EXPORT_INCLUDE_DIR}/%.h: ${INCLUDES_DIR}/%.h | ${EXPORT_INCLUDE_DIR}
-	cp $< "$@"
-
 clean:
-	rm -rf ${RELEASE_OBJ}
+	rm -rf ${OBJ}
 
 fclean: clean
-	rm -rf ${NAME} ${EXPORT_INCLUDE}
+	rm -rf ${NAME}
 
 re: fclean all
 
 
-
-alldebug: ${DEBUG_EXE}
-
-${DEBUG_EXE}: ${DEBUG_OBJ}
-	${CC} -o $@ $^
-
-cleandebug:
-	rm -rf ${DEBUG_OBJ}
-
-fcleandebug: cleandebug
-	rm -rf ${DEBUG_EXE}
-
-redebug: fcleandebug alldebug
-
-
-
-#All targets
-${BUILD_DIR}/%_debug.o: %.c | ${BUILD_DIR}
-	${CC} ${CFLAGS} -o $@ -c $< -I${INCLUDES_DIR}
-
-${BUILD_DIR}/%.o: %.c | ${BUILD_DIR}
-	${CC} ${CFLAGS} -o $@ -c $< -I${INCLUDES_DIR}
-
-
-
-#folders
-${EXPORT_INCLUDE_DIR} ${EXPORT_LIB_DIR} ${BUILD_DIR}:
-	mkdir -p "$@"
+%.o: %.c
+	${CC} ${CFLAGS} -o $@ -c $<
 

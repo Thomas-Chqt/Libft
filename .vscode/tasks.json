@@ -4,26 +4,15 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "Build Libft Debug",
-			"type": "shell",
-			"command": "make alldebug",
-			"dependsOn": "Save all"
-		},
-		{
-			"label": "Build Libft Release",
+			"label": "Build Libft",
 			"type": "shell",
 			"command": "make all",
 			"dependsOn": "Save all"
 		},
 		{
-			"label": "Clean Debug",
+			"label": "Clean Libft",
 			"type": "shell",
-			"command": "make cleandebug"
-		},
-		{
-			"label": "Clean Release",
-			"type": "shell",
-			"command": "make cleanrelease"
+			"command": "make clean"
 		}
 	]
 }

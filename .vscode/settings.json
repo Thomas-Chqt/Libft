@@ -2,11 +2,6 @@
 	"C_Cpp.default.includePath": [
 		"includes"
 	],
-	"files.exclude": {
-		"build/": true,
-		"Makefile": true,
-		"product/": true
-	},
 	"files.associations": {
 		"libft.h": "c"
 	},
