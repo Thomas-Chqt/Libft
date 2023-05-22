@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/22 13:44:49 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/22 15:11:00 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 // @brief Test if `c` is uppercase or lowercase
 // @param c character to test as an unsigned char
@@ -155,6 +156,12 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 // @return otherwise a pointer to the first character of the first 
 // @return occurrence of needle is returned.
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+
+// @brief converts the initial portion of the string pointed to by str to 
+// @brief int representation.
+// @param str string to convert
+// @return int representation
+int		ft_atoi(const char *str);
 
 // @brief Allocates with malloc and returns a substring from the string ’s’. 
 // @brief The substring begins at index ’start’ and is of maximum size ’len’.
