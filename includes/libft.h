@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/22 15:27:53 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/22 15:31:02 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,12 @@ int		ft_atoi(const char *str);
 // @param size size of each object
 // @return pointer to the allocated memory
 void	*ft_calloc(size_t count, size_t size);
+
+// @brief allocates sufficient memory for a copy of the 
+// @brief string s1, does the copy, and returns a pointer to it.
+// @param s1 string to copy
+// @return pointer to the copied string
+char	*ft_strdup(const char *s1);
 
 // @brief Allocates with malloc and returns a substring from the string ’s’. 
 // @brief The substring begins at index ’start’ and is of maximum size ’len’.
