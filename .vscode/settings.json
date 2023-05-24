@@ -3,7 +3,9 @@
 		"includes"
 	],
 	"files.exclude": {
+		"*.a": true,
 		"build/": true,
+		"libft.h": true,
 		"Makefile": true,
 		"product/": true
 	},

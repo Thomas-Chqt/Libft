@@ -6,7 +6,7 @@
 #    By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 16:24:59 by tchoquet          #+#    #+#              #
-#    Updated: 2023/05/22 17:55:09 by tchoquet         ###   ########.fr        #
+#    Updated: 2023/05/24 16:20:35 by tchoquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ SRCS_DIR		= ${ROOT}/sources
 INCLUDES_DIR 	= ${ROOT}/includes
 BUILD_DIR		= ${ROOT}/build
 
-EXPORT_INCLUDE_DIR	= ${ROOT}/product/include
-EXPORT_LIB_DIR		= ${ROOT}/product/lib
+EXPORT_INCLUDE_DIR	= ${ROOT}#/product/include
+EXPORT_LIB_DIR		= ${ROOT}#/product/lib
 
 RELEASE_SRC	= ${wildcard ${SRCS_DIR}/*.c}
 DEBUG_SRC 	= ${ROOT}/main_for_test.c
