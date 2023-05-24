@@ -5,3 +5,5 @@ product/*
 *.a
 libft.h
 .libft-tester-tokyo
+.libftTester
+.libft-unit-test
