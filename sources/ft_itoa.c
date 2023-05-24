@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:08:50 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/18 17:25:01 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:27:27 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ char	*ft_itoa(int n)
 	char			*str;	
 
 	str = malloc((intlen(n) + 1) * sizeof(char));
+	if (str == NULL)
+		return (NULL);
 	itoa(n, str);
 	return (str);
 }
