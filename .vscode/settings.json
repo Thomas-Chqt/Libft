@@ -5,4 +5,7 @@
 	"files.associations": {
 		"libft.h": "c"
 	},
+	"files.exclude": {
+		"product": true
+	},
 }
