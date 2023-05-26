@@ -6,50 +6,38 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:48:37 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/22 18:34:33 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:15:40 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static uint32_t	count_split(char const *s, char c);
-static char		*substr(char const *s, unsigned int start, uint32_t *len);
+static size_t	count_split(const char *s, char c);
+static void		fill_split_array(const char *s, char c, char ***split_array,
+					size_t array_len);
+static void		free_split_array(char ***split_array);
 
 char	**ft_split(char const *s, char c)
 {
-	char		**split_array;
-	uint32_t	split_count;
-	uint32_t	split_len;
-	uint32_t	i;
+	size_t	split_count;
+	char	**split_array;
 
-	if (s == NULL)
-		return (NULL);
-	split_array = malloc((count_split(s, c) + 1) * sizeof(char *));
+	split_count = count_split(s, c);
+	split_array = ft_calloc(split_count + 1, sizeof(char *));
 	if (split_array == NULL)
 		return (NULL);
-	split_count = 0;
-	split_len = 0;
-	i = -1;
-	while (s[++i])
-	{
-		if (s[i] != c)
-			split_len++;
-		else if (split_len > 0)
-			split_array[split_count++]
-				= substr(s, i - split_len, &split_len);
-	}
-	if (split_len > 0)
-		split_array[split_count++] = ft_substr(s, i - split_len, split_len);
-	split_array[split_count] = NULL;
+	fill_split_array(s, c, &split_array, split_count);
 	return (split_array);
 }
 
-static uint32_t	count_split(char const *s, char c)
+static size_t	count_split(const char *s, char c)
 {
-	uint32_t	split_count;
-	uint32_t	split_len;
-	uint32_t	i;
+	size_t	split_count;
+	size_t	split_len;
+	size_t	i;
 
+	if (s == NULL)
+		return (0);
 	split_count = 0;
 	split_len = 0;
 	i = 0;
@@ -69,23 +57,46 @@ static uint32_t	count_split(char const *s, char c)
 	return (split_count);
 }
 
-static char	*substr(char const *s, unsigned int start, uint32_t *len)
+static void	fill_split_array(const char *s, char c, char ***split_array,
+					size_t array_len)
 {
-	char		*output_str;
-	uint32_t	i;
+	size_t	i;
+	size_t	split_len;	
+	size_t	split_count;
 
-	if (s == NULL)
-		return (NULL);
-	output_str = malloc(sizeof(char) * (*len + 1));
-	if (output_str == NULL)
-		return (NULL);
-	i = 0;
-	while ((s + start)[i] && i < *len)
+	i = -1;
+	split_len = 0;
+	split_count = 0;
+	while (split_count < array_len)
 	{
-		output_str[i] = (s + start)[i];
-		i++;
+		if (s[++i] == c || s[i] == '\0')
+		{
+			if (split_len == 0)
+				continue ;
+			(*split_array)[split_count]
+				= ft_substr(s, (unsigned int)(i - split_len), split_len);
+			if ((*split_array)[split_count++] == NULL)
+			{
+				free_split_array(split_array);
+				return ;
+			}
+			split_len = 0;
+		}
+		else
+			split_len++;
 	}
-	output_str[i] = 0;
-	*len = 0;
-	return (output_str);
+}
+
+static void	free_split_array(char ***split_array)
+{
+	size_t	i;
+
+	i = 0;
+	while ((*split_array)[i])
+	{
+		free((*split_array)[i]);
+		(*split_array)[i++] = NULL;
+	}
+	free((*split_array));
+	(*split_array) = NULL;
 }

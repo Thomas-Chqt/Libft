@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:48:37 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/22 17:36:41 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/26 12:48:37 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,16 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*output_str;
 	size_t	i;
 	size_t	s_len;
+	size_t	malloc_len;
 
 	if (s == NULL)
 		return (NULL);
 	s_len = ft_strlen(s);
-	output_str = malloc(sizeof(char) * (len + 1));
+	if (s_len < len)
+		malloc_len = s_len;
+	else
+		malloc_len = len;
+	output_str = ft_calloc((malloc_len + 1), sizeof(char));
 	if (output_str == NULL)
 		return (NULL);
 	i = 0;
