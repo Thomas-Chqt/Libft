@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:51:46 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/25 22:38:47 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/05/27 14:45:28 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,16 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
 	output_str_len = ft_strlen(s1) + ft_strlen(s2);
 	output_str = malloc(sizeof(char) * (output_str_len + 1));
 	if (!output_str)
 		return (NULL);
-	while (s1[i])
+	while (s1 != NULL && s1[i])
 	{
 		output_str[i] = s1[i];
 		i++;
 	}
-	while (s2[j])
+	while (s2 != NULL && s2[j])
 	{
 		output_str[i + j] = s2[j];
 		j++;
