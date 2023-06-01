@@ -16,14 +16,9 @@
 			"dependsOn": "Save all"
 		},
 		{
-			"label": "Clean Debug",
+			"label": "Clean",
 			"type": "shell",
-			"command": "make cleandebug"
-		},
-		{
-			"label": "Clean Release",
-			"type": "shell",
-			"command": "make cleanrelease"
+			"command": "make fclean fcleandebug && rm -rf build product"
 		}
 	]
 }
