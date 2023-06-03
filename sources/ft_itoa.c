@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:08:50 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/01 20:37:45 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/06/03 13:28:14 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ static unsigned short	intlen(int n)
 	unsigned int	nbr;
 	unsigned short	len;
 
-	
 	len = 1;
 	if (n < 0)
 	{
