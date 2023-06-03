@@ -1,9 +1,9 @@
 .DS_Store
 *.out
-*.o
 build/*
 product/*
-*.a
 .libft-tester-tokyo
 .libftTester
 .libft-unit-test
+*.o
+*.a
