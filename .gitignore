@@ -5,3 +5,5 @@ product/*
 .libft-tester-tokyo
 .libftTester
 .libft-unit-test
+*.o
+*.a
