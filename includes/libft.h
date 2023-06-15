@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/22 15:31:02 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/06/15 21:15:13 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -264,5 +264,19 @@ void	ft_putendl_fd(char *s, int fd);
 // @param n The integer to output.
 // @param fd The file descriptor on which to write.
 void	ft_putnbr_fd(int n, int fd);
+
+typedef struct s_list
+{
+	void			*data;
+	struct s_list	*next;
+}					t_list;
+
+t_list	*ft_lstnew(void *content);
+
+void	ft_lstadd_front(t_list **lst, t_list *new);
+
+void	ft_lstclear(t_list **lst, void (*del)(void*));
+
+void	lstiter_data(t_list *lst, void (*f)(void*, void*), void *data);
 
 #endif
