@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/26 14:00:55 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/06/16 21:25:23 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 int main()
 {
-	char *str = "  abc abc abc  ";
+	char *str = "-12314.56";
 
-	char **splits = ft_split(str, ' ');
+	float nbr = ft_atof(str);
 
 	return 0; 
 }

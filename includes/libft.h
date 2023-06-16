@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/16 19:22:28 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/06/16 21:19:09 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,5 +280,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	lstiter_data(t_list *lst, void (*f)(void*, void*), void *data);
 
 char	*get_next_line(int fd);
+
+float	ft_atof(const char *str);
 
 #endif
