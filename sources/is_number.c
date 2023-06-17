@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   is_number.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 15:23:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/17 15:53:09 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/06/17 15:38:35 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/06/17 15:41:44 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+t_bool	is_number(const char *str)
 {
-	void	*ptr;
-
-	if (count == 0)
-		return (NULL);
-	if ((size > 0) && (count > (SIZE_MAX / size)))
-		return (NULL);
-	ptr = malloc(count * size);
-	if (ptr == NULL)
-		return (NULL);
-	ft_bzero(ptr, count * size);
-	return (ptr);
+	if (str == NULL)
+		return (false);
+	if (!ft_isdigit(str[0]) && ft_atoi(str) == 0)
+		return (false);
+	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/17 11:50:42 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/06/17 15:38:21 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <types_and_def.h>
 
 // @brief Test if `c` is uppercase or lowercase
 // @param c character to test as an unsigned char
@@ -284,5 +285,7 @@ char	*get_next_line(int fd);
 float	ft_atof(const char *str);
 
 double	atodouble(const char *str);
+
+t_bool	is_number(const char *str);
 
 #endif
