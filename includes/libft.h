@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/18 13:05:30 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/06/18 17:27:26 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,6 +261,7 @@ char			*ft_strtrim(char const *s1, char const *set);
 // @return The array of new strings resulting from the split.
 // @return NULL if the allocation fails.
 char			**ft_split(char const *s, char c);
+void			free_splited_str(char **splited_str);
 
 // @brief Allocates (with malloc(3)) and returns a string
 // @brief representing the integer received as an argument. 
@@ -338,5 +339,9 @@ t_vect_3d		vector_div(t_vect_3d v1, float k);
 t_mat4x4		mat_x_mat(t_mat4x4 m1, t_mat4x4 m2);
 t_vect_3d		cross_product(t_vect_3d p0, t_vect_3d p1, t_vect_3d p2);
 t_mat4x4		identity_matrix(void);
+float			vector_length(t_vect_3d vector);
+t_vect_3d		vector_normalise(t_vect_3d vector);
+t_vect_3d		vector_sub(t_vect_3d vector1, t_vect_3d vector2);
+float			vector_dot_product(t_vect_3d vector1, t_vect_3d vector2);
 
 #endif
