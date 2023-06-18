@@ -6,12 +6,16 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 12:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/18 12:43:38 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/06/18 13:09:57 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_INTERNAL_H
 # define LIBFT_INTERNAL_H
+
+# ifdef MEMCHEK
+#  include <memory_leak_detector.h>
+# endif // MEMCHEK
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
