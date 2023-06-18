@@ -6,11 +6,11 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 15:31:23 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/22 15:32:45 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/06/18 12:22:38 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft_internal.h"
 
 char	*ft_strdup(const char *s1)
 {

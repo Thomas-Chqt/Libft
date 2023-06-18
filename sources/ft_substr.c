@@ -6,11 +6,11 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:48:37 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/26 12:48:37 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/06/18 12:22:38 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft_internal.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

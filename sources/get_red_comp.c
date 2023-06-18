@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_red_comp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/01 21:47:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/16 19:22:47 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/06/18 12:41:38 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/06/18 12:41:52 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft_internal.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
-# endif
-
-# include "libft.h"
-
-size_t	gnl_strlen(const char *s);
-char	*append_buff(char *str, void const *buff, size_t buff_len);
-size_t	first_index(unsigned char value, void *buffer, size_t buffer_len);
-void	memmove_zero(void *dst, void *src, size_t src_len);
-
-#endif
+t_color_comp	get_red_comp(t_color color)
+{
+	return ((t_color_comp)((((t_uint32)color) & 0x00FF0000) >> 16));
+}

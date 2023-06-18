@@ -6,11 +6,11 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 15:49:08 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/22 16:28:26 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/06/18 12:22:38 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft_internal.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {

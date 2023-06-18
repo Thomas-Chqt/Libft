@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   libft_internal.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/19 14:48:46 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/18 12:22:38 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/06/18 12:20:36 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/06/18 12:43:38 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_internal.h"
+#ifndef LIBFT_INTERNAL_H
+# define LIBFT_INTERNAL_H
 
-static void	ft_putabnbr_fd(long nb, int fd);
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
+# endif
 
-void	ft_putnbr_fd(int n, int fd)
-{
-	long	l_n;
+# include <stdlib.h>
+# include <unistd.h>
+# include <limits.h>
+# include <math.h>
 
-	l_n = (long)n;
-	if (l_n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		l_n *= -1;
-	}
-	ft_putabnbr_fd(l_n, fd);
-}
+# include "libft.h"
 
-static void	ft_putabnbr_fd(long nb, int fd)
-{
-	if ((nb / 10) > 0)
-		ft_putabnbr_fd(nb / 10, fd);
-	ft_putchar_fd((nb % 10) + '0', fd);
-}
+#endif // LIBFT_INTERNAL_H
+
+
+
+

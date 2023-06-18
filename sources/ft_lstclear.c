@@ -6,11 +6,11 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 21:11:51 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/15 21:13:10 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/06/18 12:22:38 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft_internal.h"
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {

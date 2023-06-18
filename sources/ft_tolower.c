@@ -6,11 +6,11 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 16:18:44 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/05/21 16:19:19 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/06/18 12:22:38 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft_internal.h"
 
 int	ft_tolower(int c)
 {

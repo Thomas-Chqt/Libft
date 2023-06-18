@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   first_index.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/19 14:48:46 by tchoquet          #+#    #+#             */
+/*   Created: 2023/06/18 12:10:59 by tchoquet          #+#    #+#             */
 /*   Updated: 2023/06/18 12:22:38 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static void	ft_putabnbr_fd(long nb, int fd);
-
-void	ft_putnbr_fd(int n, int fd)
+size_t	first_index(unsigned char value, void *buffer, size_t buffer_len)
 {
-	long	l_n;
+	size_t	i;
 
-	l_n = (long)n;
-	if (l_n < 0)
+	i = 0;
+	while (i < buffer_len)
 	{
-		ft_putchar_fd('-', fd);
-		l_n *= -1;
+		if (((unsigned char *)buffer)[i] == value)
+			return (i);
+		i++;
 	}
-	ft_putabnbr_fd(l_n, fd);
-}
-
-static void	ft_putabnbr_fd(long nb, int fd)
-{
-	if ((nb / 10) > 0)
-		ft_putabnbr_fd(nb / 10, fd);
-	ft_putchar_fd((nb % 10) + '0', fd);
+	return (i - 1);
 }

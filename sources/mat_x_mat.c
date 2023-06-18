@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   mat_x_mat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/19 14:48:46 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/18 12:22:38 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/06/18 12:51:50 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/06/18 12:52:00 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static void	ft_putabnbr_fd(long nb, int fd);
-
-void	ft_putnbr_fd(int n, int fd)
+t_mat4x4	mat_x_mat(t_mat4x4 m1, t_mat4x4 m2)
 {
-	long	l_n;
+	t_mat4x4	matrix;
+	t_uint32	c;
+	t_uint32	r;
 
-	l_n = (long)n;
-	if (l_n < 0)
+	c = 0;
+	while (c < 4)
 	{
-		ft_putchar_fd('-', fd);
-		l_n *= -1;
-	}
-	ft_putabnbr_fd(l_n, fd);
-}
-
-static void	ft_putabnbr_fd(long nb, int fd)
-{
-	if ((nb / 10) > 0)
-		ft_putabnbr_fd(nb / 10, fd);
-	ft_putchar_fd((nb % 10) + '0', fd);
+		r = 0;
+		while (r < 4)
+		{
+			matrix.m[r][c] = m1.m[r][0] * m2.m[0][c]
+				+ m1.m[r][1] * m2.m[1][c]
+				+ m1.m[r][2] * m2.m[2][c]
+				+ m1.m[r][3] * m2.m[3][c];
+			r++;
+		}
+		c++;
+	}			
+	return (matrix);
 }

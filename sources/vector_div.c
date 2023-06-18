@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   vector_div.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/19 14:48:46 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/18 12:22:38 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/06/18 12:51:31 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/06/18 12:51:41 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static void	ft_putabnbr_fd(long nb, int fd);
-
-void	ft_putnbr_fd(int n, int fd)
+t_vect_3d	vector_div(t_vect_3d v1, float k)
 {
-	long	l_n;
-
-	l_n = (long)n;
-	if (l_n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		l_n *= -1;
-	}
-	ft_putabnbr_fd(l_n, fd);
-}
-
-static void	ft_putabnbr_fd(long nb, int fd)
-{
-	if ((nb / 10) > 0)
-		ft_putabnbr_fd(nb / 10, fd);
-	ft_putchar_fd((nb % 10) + '0', fd);
+	return ((t_vect_3d){v1.x / k, v1.y / k, v1.z / k, v1.w / k});
 }
