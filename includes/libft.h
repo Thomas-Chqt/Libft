@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/18 17:27:26 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/06/19 01:00:42 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -342,6 +342,7 @@ t_mat4x4		identity_matrix(void);
 float			vector_length(t_vect_3d vector);
 t_vect_3d		vector_normalise(t_vect_3d vector);
 t_vect_3d		vector_sub(t_vect_3d vector1, t_vect_3d vector2);
+t_vect_3d		vector_add(t_vect_3d vector1, t_vect_3d vector2);
 float			vector_dot_product(t_vect_3d vector1, t_vect_3d vector2);
 
 #endif
