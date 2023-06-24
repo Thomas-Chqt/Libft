@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/19 01:00:42 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/06/24 18:39:56 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -336,6 +336,7 @@ t_color			get_gradian(t_color src, t_color dst,
 t_vect_3d		new_vect_3d(float x, float y, float z);
 t_vect_3d		vect_x_mat(t_vect_3d vector, t_mat4x4 matrix);
 t_vect_3d		vector_div(t_vect_3d v1, float k);
+t_vect_3d		vector_mult(t_vect_3d v1, float k);
 t_mat4x4		mat_x_mat(t_mat4x4 m1, t_mat4x4 m2);
 t_vect_3d		cross_product(t_vect_3d p0, t_vect_3d p1, t_vect_3d p2);
 t_mat4x4		identity_matrix(void);
