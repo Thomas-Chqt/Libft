@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   change_opacity.c                                   :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/18 12:40:37 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/25 15:56:47 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/06/25 16:37:25 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/06/25 17:05:34 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-t_color	change_opacity(t_color color, t_color_comp opacity)
+int	ft_lstsize(t_list *lst)
 {
-	t_uint32	opacity_component;
-	t_color		new_color;
+	t_list	*watched;
+	int		len;
 
-	opacity_component = (t_uint32)opacity << 24;
-	new_color = (t_color)((t_uint32)color | opacity_component);
-	return (new_color);
+	len = 0;
+	watched = lst;
+	while (watched != NULL)
+	{
+		len++;
+		watched = watched->next;
+	}
+	return (len);
 }

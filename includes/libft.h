@@ -6,14 +6,14 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/24 18:39:56 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/06/25 17:05:43 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include <stddef.h>
+# include <stddef.h>
 
 # define RED	0x00FF0000
 # define GREEN	0x0000FF00
@@ -315,6 +315,7 @@ void			ft_putnbr_fd(int n, int fd);
 
 t_list			*ft_lstnew(void *content);
 void			ft_lstadd_front(t_list **lst, t_list *new);
+int				ft_lstsize(t_list *lst);
 void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			lstiter_data(t_list *lst, void (*f)(void*, void*), void *data);
 char			*get_next_line(int fd);
@@ -345,5 +346,6 @@ t_vect_3d		vector_normalise(t_vect_3d vector);
 t_vect_3d		vector_sub(t_vect_3d vector1, t_vect_3d vector2);
 t_vect_3d		vector_add(t_vect_3d vector1, t_vect_3d vector2);
 float			vector_dot_product(t_vect_3d vector1, t_vect_3d vector2);
+size_t			array_len(void *array, size_t element_size);
 
 #endif

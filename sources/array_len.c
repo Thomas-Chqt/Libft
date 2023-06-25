@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   change_opacity.c                                   :+:      :+:    :+:   */
+/*   array_len.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/18 12:40:37 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/25 15:56:47 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/06/25 15:29:35 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/06/25 15:56:02 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-t_color	change_opacity(t_color color, t_color_comp opacity)
+size_t	array_len(void *array, size_t element_size)
 {
-	t_uint32	opacity_component;
-	t_color		new_color;
+	size_t	len;
+	t_uint8	*readable_array;
+	t_uint8	*end_bytes;
 
-	opacity_component = (t_uint32)opacity << 24;
-	new_color = (t_color)((t_uint32)color | opacity_component);
-	return (new_color);
+	if (array == NULL)
+		return (0);
+	readable_array = (t_uint8 *)array;
+	end_bytes = ft_calloc(1, element_size);
+	len = 0;
+	while (ft_memcmp(readable_array + (len * element_size),
+			end_bytes, element_size) != 0)
+		len ++;
+	free(end_bytes);
+	return (len);
 }

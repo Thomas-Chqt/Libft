@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/18 13:14:45 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/06/25 15:51:20 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ static void	destructor(void)
 
 int main()
 {
-	char *str = "-12314.56";
+	char **splited_str = ft_split("a b cde fg", ' ');
 
-	float nbr = ft_atof(str);
+	size_t len = array_len(splited_str, sizeof(char *));
+
+	free_splited_str(splited_str);
 
 	return 0; 
 }
