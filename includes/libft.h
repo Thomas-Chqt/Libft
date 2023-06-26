@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/25 17:05:43 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:57:02 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -347,5 +347,6 @@ t_vect_3d		vector_sub(t_vect_3d vector1, t_vect_3d vector2);
 t_vect_3d		vector_add(t_vect_3d vector1, t_vect_3d vector2);
 float			vector_dot_product(t_vect_3d vector1, t_vect_3d vector2);
 size_t			array_len(void *array, size_t element_size);
+void			free_null(void **ptr);
 
 #endif
