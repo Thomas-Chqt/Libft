@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/26 16:39:05 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/06/29 16:49:59 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -355,5 +355,13 @@ t_mat4x4		rota_z_mat(float angle);
 t_mat4x4		rotation_matrix(t_vect_3d rotation);
 t_mat4x4		translate_matrix(t_vect_3d translation);
 t_mat4x4		scale_matrix(t_vect_3d scale);
+void			*find_best(void *array, size_t array_len, size_t el_size,
+					t_bool (*diff)(void *, void *));
+t_bool			fbigest(void *a, void *b);
+t_bool			fsmallest(void *a, void *b);
+// t_bool			vect_bigest(void *a, void *b);
+// t_bool			vect_smallest(void *a, void *b);
+void			foreach(void *array, size_t len, size_t el_size,
+					void (*func)(void *));
 
 #endif

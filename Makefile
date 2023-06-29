@@ -6,7 +6,7 @@
 #    By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 16:24:59 by tchoquet          #+#    #+#              #
-#    Updated: 2023/06/18 13:13:47 by tchoquet         ###   ########.fr        #
+#    Updated: 2023/06/29 12:36:46 by tchoquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ DEBUG_EXE 		= ${ROOT}/Debug.out
 
 vpath %.c ${ROOT} ${SRCS_DIR}
 
-.PHONY: all clean fclean re alldebug cleandebug fcleandebug redebug
+.PHONY: all clean fclean re debug alldebug cleandebug fcleandebug redebug
 
 
 all: ${NAME} ${EXPORT_INCLUDE}
@@ -58,6 +58,7 @@ fclean: clean
 re: fclean all
 
 
+debug: alldebug
 
 alldebug: ${DEBUG_EXE}
 

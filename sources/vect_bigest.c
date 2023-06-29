@@ -1,39 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_for_test.c                                    :+:      :+:    :+:   */
+/*   vect_bigest.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/29 12:41:55 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/06/29 16:23:45 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/06/29 16:50:16 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft_internal.h"
 
-# ifdef MEMCHEK
-
-#  include <memory_leak_detector.h>
-
-__attribute__((destructor))
-static void	destructor(void)
+t_bool	vect_bigest(void *a, void *b)
 {
-	print_report();
-}
-
-# endif // MEMCHEK
-
-t_bool diff_func(void *a, void *b)
-{
-	return (*((int *)b) < *((int *)a));
-}
-
-int main()
-{
-	int	array[5] = { 3, 5, 8, 3, 1};
-
-	int *best = (int *)find_best(array, 5, sizeof(int), &diff_func);
-
-	return 0; 
+	return ((((t_vect_3d *)b)->x >= ((t_vect_3d *)a)->x)
+		&& (((t_vect_3d *)b)->y >= ((t_vect_3d *)a)->y)
+		&& (((t_vect_3d *)b)->z >= ((t_vect_3d *)a)->z));
 }

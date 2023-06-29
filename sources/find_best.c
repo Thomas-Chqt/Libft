@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_for_test.c                                    :+:      :+:    :+:   */
+/*   find_best.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/29 12:41:55 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/06/29 12:26:25 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/06/29 12:43:12 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft_internal.h"
 
-# ifdef MEMCHEK
-
-#  include <memory_leak_detector.h>
-
-__attribute__((destructor))
-static void	destructor(void)
+void	*find_best(void *array, size_t array_len, size_t el_size,
+			t_bool (*diff)(void *, void *))
 {
-	print_report();
-}
+	size_t	i;
+	void	*best;
 
-# endif // MEMCHEK
-
-t_bool diff_func(void *a, void *b)
-{
-	return (*((int *)b) < *((int *)a));
-}
-
-int main()
-{
-	int	array[5] = { 3, 5, 8, 3, 1};
-
-	int *best = (int *)find_best(array, 5, sizeof(int), &diff_func);
-
-	return 0; 
+	if (array == NULL || diff == NULL)
+		return (NULL);
+	best = array;
+	i = 1;
+	while (i < array_len)
+	{
+		if (diff(best, (void *)(((t_uint8 *)array) + (i * el_size))) == true)
+			best = (void *)(((t_uint8 *)array) + (i * el_size));
+		i++;
+	}
+	return (best);
 }
