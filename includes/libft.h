@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/29 16:49:59 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/01 22:58:04 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -325,6 +325,7 @@ t_bool			is_number(const char *str);
 size_t			first_index(unsigned char value, void *buffer,
 					size_t buffer_len);
 t_color			color_rgb(t_color_comp r, t_color_comp g, t_color_comp b);
+t_color			color_raw_rgb(unsigned int hex);
 t_color			color_rgba(t_color_comp r, t_color_comp g, t_color_comp b,
 					t_color_comp a);
 t_color			change_opacity(t_color color, t_color_comp opacity);
@@ -363,5 +364,8 @@ t_bool			fsmallest(void *a, void *b);
 // t_bool			vect_smallest(void *a, void *b);
 void			foreach(void *array, size_t len, size_t el_size,
 					void (*func)(void *));
+int				atoi_base(const char *str, const char *base);
+unsigned int	atoi_hex(const char *str);
+
 
 #endif

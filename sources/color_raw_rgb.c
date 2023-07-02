@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_for_test.c                                    :+:      :+:    :+:   */
+/*   color_raw_rgb.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/01 22:42:40 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/01 22:58:15 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/01 23:03:33 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft_internal.h"
 
-# ifdef MEMCHEK
-
-#  include <memory_leak_detector.h>
-
-__attribute__((destructor))
-static void	destructor(void)
+t_color	color_raw_rgb(unsigned int hex)
 {
-	print_report();
-}
-
-# endif // MEMCHEK
-
-int main()
-{
-	char *str = "FF";
-	unsigned int nbr = atoi_hex(str);
-
-	return 0; 
+	return (color_rgb((hex & 0xFF0000) >> 16,
+			(hex & 0x00FF00) >> 8,
+			(hex & 0x0000FF)));
 }
