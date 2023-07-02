@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/01 22:58:04 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/02 14:30:12 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -366,6 +366,5 @@ void			foreach(void *array, size_t len, size_t el_size,
 					void (*func)(void *));
 int				atoi_base(const char *str, const char *base);
 unsigned int	atoi_hex(const char *str);
-
 
 #endif
