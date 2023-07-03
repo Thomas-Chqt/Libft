@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/03 13:54:18 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/03 19:02:42 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,11 @@
 
 # include <stddef.h>
 
-# define RED	0x00FF0000
-# define GREEN	0x0000FF00
-# define BLUE	0x000000FF
-# define BLACK	0x00000000
-# define WHITE	0x00FFFFFF
-
-typedef unsigned char		t_uint8;
-typedef unsigned int		t_uint32;
-
-typedef t_uint32			t_color;
-typedef t_uint8				t_color_comp;
-
-typedef enum e_bool			t_bool;
-typedef struct s_list		t_list;
-
-typedef struct s_vect_3d	t_vect_3d;
-typedef struct s_mat4x4		t_mat4x4;
-
-enum e_bool { false = 0, true = 1 };
-
-struct s_list
-{
-	void	*data;
-	t_list	*next;
-};
-
-struct s_vect_3d
-{
-	float	x;
-	float	y;
-	float	z;
-	float	w;
-};
-
-struct s_mat4x4
-{
-	float	m[4][4];
-};
+/* ************************************************************************** */
+/*                                                                            */
+/*                                 Mandatory                                  */
+/*                                                                            */
+/* ************************************************************************** */
 
 // @brief Test if `c` is uppercase or lowercase
 // @param c character to test as an unsigned char
@@ -104,15 +71,6 @@ void			ft_bzero(void *s, size_t n);
 // @param n length
 // @return original value of dst.
 void			*ft_memcpy(void *dst, const void *src, size_t n);
-
-// @brief copies n bytes from memory area src to memory area dst.
-// @brief and set the source memory to 0
-// @brief If dst and src overlap, behavior is undefined.
-// @param dst destination
-// @param src source
-// @param n length
-// @return original value of dst.
-void			*memcpy_zero(void *dst, void *src, size_t n);
 
 // @brief copies len bytes from memory area src to memory area dst.
 // @brief The two strings may overlap.
@@ -261,7 +219,6 @@ char			*ft_strtrim(char const *s1, char const *set);
 // @return The array of new strings resulting from the split.
 // @return NULL if the allocation fails.
 char			**ft_split(char const *s, char c);
-void			free_splited_str(char **splited_str);
 
 // @brief Allocates (with malloc(3)) and returns a string
 // @brief representing the integer received as an argument. 
@@ -313,19 +270,94 @@ void			ft_putendl_fd(char *s, int fd);
 // @param fd The file descriptor on which to write.
 void			ft_putnbr_fd(int n, int fd);
 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                   Bonus                                    */
+/*                                                                            */
+/* ************************************************************************** */
+
+typedef struct s_list		t_list;
+
+struct s_list
+{
+	void	*data;
+	t_list	*next;
+};
+
+// @brief Allocates (with malloc(3)) and returns a new node.
+// @brief The member variable ’content’ is initialized with
+// @brief the value of the parameter ’content’.  The variable
+// @brief ’next’ is initialized to NULL.
+// @param content The content to create the node with.
+// @return The new node
 t_list			*ft_lstnew(void *content);
+
+// @brief Adds the node ’new’ at the beginning of the list.
+// @param lst The address of a pointer to the first link of a list.
+// @param new The address of a pointer to the node to be added to the list.
 void			ft_lstadd_front(t_list **lst, t_list *new);
+
+// @brief Counts the number of nodes in a list.
+// @param lst The beginning of the list.
+// @return The length of the list
 int				ft_lstsize(t_list *lst);
+
+// @brief Deletes and frees the given node and every
+// @brief successor of that node, using the function ’del’
+// @brief and free(3).
+// @brief Finally, the pointer to the list must be set to
+// @brief NULL.
+// @param lst The address of a pointer to a node.
+// @param del The address of the function used to delete
+// 				the content of the node.
 void			ft_lstclear(t_list **lst, void (*del)(void*));
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                 Extension                                  */
+/*                                                                            */
+/* ************************************************************************** */
+
+/*                                    42                                      */
+
+char			*get_next_line(int fd);
+
+/*                                  Types                                     */
+
+typedef unsigned char		t_uint8;
+typedef unsigned int		t_uint32;
+
+typedef enum e_bool			t_bool;
+
+enum e_bool { false = 0, true = 1 };
+
+/*                                  Listes                                    */
+
 void			lstiter_data(t_list *lst, void (*f)(void*, void*), void *data);
 void			lst_delete_if(t_list **head, void (*del)(void *),
 					t_bool (*condition)(void *, void *), void *data);
-char			*get_next_line(int fd);
-float			ft_atof(const char *str);
-double			atodouble(const char *str);
-t_bool			is_number(const char *str);
+
+/*                                  Arrays                                    */
+
 size_t			first_index(unsigned char value, void *buffer,
 					size_t buffer_len);
+void			*find_best(void *array, size_t array_len, size_t el_size,
+					t_bool (*diff)(void *, void *));
+void			foreach(void *array, size_t len, size_t el_size,
+					void (*func)(void *));
+size_t			array_len(void *array, size_t element_size);
+
+/*                                  Colors                                    */
+
+# define RED	0x00FF0000
+# define GREEN	0x0000FF00
+# define BLUE	0x000000FF
+# define BLACK	0x00000000
+# define WHITE	0x00FFFFFF
+
+typedef t_uint32			t_color;
+typedef t_uint8				t_color_comp;
+
 t_color			color_rgb(t_color_comp r, t_color_comp g, t_color_comp b);
 t_color			color_raw_rgb(unsigned int hex);
 t_color			color_rgba(t_color_comp r, t_color_comp g, t_color_comp b,
@@ -337,6 +369,25 @@ t_color_comp	get_blue_comp(t_color color);
 t_color_comp	get_opacity_comp(t_color color);
 t_color			get_gradian(t_color src, t_color dst,
 					t_uint32 max, t_uint32 step);
+
+/*                                  Maths                                     */
+
+typedef struct s_vect_3d	t_vect_3d;
+typedef struct s_mat4x4		t_mat4x4;
+
+struct s_vect_3d
+{
+	float	x;
+	float	y;
+	float	z;
+	float	w;
+};
+
+struct s_mat4x4
+{
+	float	m[4][4];
+};
+
 t_vect_3d		new_vect_3d(float x, float y, float z);
 t_vect_3d		vect_x_mat(t_vect_3d vector, t_mat4x4 matrix);
 t_vect_3d		vector_div(t_vect_3d v1, float k);
@@ -349,8 +400,6 @@ t_vect_3d		vector_normalise(t_vect_3d vector);
 t_vect_3d		vector_sub(t_vect_3d vector1, t_vect_3d vector2);
 t_vect_3d		vector_add(t_vect_3d vector1, t_vect_3d vector2);
 float			vector_dot_product(t_vect_3d vector1, t_vect_3d vector2);
-size_t			array_len(void *array, size_t element_size);
-void			free_null(void **ptr);
 float			torad(float angle);
 t_mat4x4		rota_x_mat(float angle);
 t_mat4x4		rota_y_mat(float angle);
@@ -358,14 +407,17 @@ t_mat4x4		rota_z_mat(float angle);
 t_mat4x4		rotation_matrix(t_vect_3d rotation);
 t_mat4x4		translate_matrix(t_vect_3d translation);
 t_mat4x4		scale_matrix(t_vect_3d scale);
-void			*find_best(void *array, size_t array_len, size_t el_size,
-					t_bool (*diff)(void *, void *));
+
+/*                                  Others                                    */
+
+void			*memcpy_zero(void *dst, void *src, size_t n);
+void			free_splited_str(char **splited_str);
+float			ft_atof(const char *str);
+double			atodouble(const char *str);
+t_bool			is_number(const char *str);
+void			free_null(void **ptr);
 t_bool			fbigest(void *a, void *b);
 t_bool			fsmallest(void *a, void *b);
-// t_bool			vect_bigest(void *a, void *b);
-// t_bool			vect_smallest(void *a, void *b);
-void			foreach(void *array, size_t len, size_t el_size,
-					void (*func)(void *));
 int				atoi_base(const char *str, const char *base);
 unsigned int	atoi_hex(const char *str);
 
