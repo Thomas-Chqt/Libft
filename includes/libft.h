@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/03 19:02:42 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/03 19:42:01 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -420,5 +420,6 @@ t_bool			fbigest(void *a, void *b);
 t_bool			fsmallest(void *a, void *b);
 int				atoi_base(const char *str, const char *base);
 unsigned int	atoi_hex(const char *str);
+void			wrapped_free(void *ptr);
 
 #endif
