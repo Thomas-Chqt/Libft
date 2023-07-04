@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/03 19:42:01 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/04 18:50:04 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -314,15 +314,19 @@ void			ft_lstclear(t_list **lst, void (*del)(void*));
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                                 Extension                                  */
+/*                                Extensions                                  */
 /*                                                                            */
 /* ************************************************************************** */
 
+/* ************************************************************************** */
 /*                                    42                                      */
+/* ************************************************************************** */
 
 char			*get_next_line(int fd);
 
+/* ************************************************************************** */
 /*                                  Types                                     */
+/* ************************************************************************** */
 
 typedef unsigned char		t_uint8;
 typedef unsigned int		t_uint32;
@@ -331,13 +335,23 @@ typedef enum e_bool			t_bool;
 
 enum e_bool { false = 0, true = 1 };
 
+/* ************************************************************************** */
 /*                                  Listes                                    */
+/* ************************************************************************** */
 
 void			lstiter_data(t_list *lst, void (*f)(void*, void*), void *data);
 void			lst_delete_if(t_list **head, void (*del)(void *),
 					t_bool (*condition)(void *, void *), void *data);
 
+// @return the removed node as if it was created with ft_lstnew
+t_list			*lst_remove_last(t_list **head);
+
+// @brief use the print_func to print each node
+void			*lst_print(t_list *head, void (*print_func)(void *));
+
+/* ************************************************************************** */
 /*                                  Arrays                                    */
+/* ************************************************************************** */
 
 size_t			first_index(unsigned char value, void *buffer,
 					size_t buffer_len);
@@ -347,7 +361,9 @@ void			foreach(void *array, size_t len, size_t el_size,
 					void (*func)(void *));
 size_t			array_len(void *array, size_t element_size);
 
+/* ************************************************************************** */
 /*                                  Colors                                    */
+/* ************************************************************************** */
 
 # define RED	0x00FF0000
 # define GREEN	0x0000FF00
@@ -370,7 +386,9 @@ t_color_comp	get_opacity_comp(t_color color);
 t_color			get_gradian(t_color src, t_color dst,
 					t_uint32 max, t_uint32 step);
 
+/* ************************************************************************** */
 /*                                  Maths                                     */
+/* ************************************************************************** */
 
 typedef struct s_vect_3d	t_vect_3d;
 typedef struct s_mat4x4		t_mat4x4;
@@ -408,7 +426,9 @@ t_mat4x4		rotation_matrix(t_vect_3d rotation);
 t_mat4x4		translate_matrix(t_vect_3d translation);
 t_mat4x4		scale_matrix(t_vect_3d scale);
 
+/* ************************************************************************** */
 /*                                  Others                                    */
+/* ************************************************************************** */
 
 void			*memcpy_zero(void *dst, void *src, size_t n);
 void			free_splited_str(char **splited_str);

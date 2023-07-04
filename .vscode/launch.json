@@ -5,15 +5,15 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Debug Libft",
+			"name": "Debug",
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/Debug.out",
 			"stopAtEntry": false,
-			"cwd": "${fileDirname}",
+			"cwd": "{workspaceFolder}",
 			"externalConsole": false,
 			"MIMode": "lldb",
-			"preLaunchTask": "Build Libft Debug"
+			"preLaunchTask": "Build Debug"
 		}
 	]
 }
