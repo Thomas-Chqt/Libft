@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 15:38:35 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/05 20:27:42 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/05 22:59:21 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ t_bool	is_number(const char *str)
 
 static t_bool	is_not_digit_wrapper(void *c, void *none)
 {
-	none = NULL;
+	if (none) 
+		none = NULL;
+
 	return (!ft_isdigit(*((char *)c)));
 }
