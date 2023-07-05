@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quick_sort_int.c                                   :+:      :+:    :+:   */
+/*   array_contain_int.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 11:51:11 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/05 19:48:30 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/05 19:19:52 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/05 19:46:48 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static t_bool	diff_func(void *a, void *b);
+static t_bool	is_equal_func(void *a, void *b);
 
-void	quick_sort_int(int *array, size_t array_len)
+t_bool	contains_int(int *array, size_t array_len, int searched)
 {
-	quick_sort((t_array){
-		.buff = (void *)array,
-		.len = array_len,
-		.el_size = sizeof(int)
-	}, &diff_func);
+	return (contains((t_array){
+			.buff = (void *)array,
+			.len = array_len,
+			.el_size = sizeof(int)},
+		(void *)(&searched), &is_equal_func));
 }
 
-static t_bool	diff_func(void *a, void *b)
+static t_bool	is_equal_func(void *a, void *b)
 {
 	int	ia;
 	int	ib;
 
 	ia = *((int *)a);
 	ib = *((int *)b);
-	return (ia <= ib);
+	return (ia == ib);
 }

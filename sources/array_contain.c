@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quick_sort_int.c                                   :+:      :+:    :+:   */
+/*   array_contain.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 11:51:11 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/05 19:48:30 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/05 19:01:17 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/05 19:27:20 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static t_bool	diff_func(void *a, void *b);
-
-void	quick_sort_int(int *array, size_t array_len)
+t_bool	contains(t_array array, void *searched,
+			t_bool (*is_equal)(void *, void *))
 {
-	quick_sort((t_array){
-		.buff = (void *)array,
-		.len = array_len,
-		.el_size = sizeof(int)
-	}, &diff_func);
-}
+	size_t	i;
 
-static t_bool	diff_func(void *a, void *b)
-{
-	int	ia;
-	int	ib;
-
-	ia = *((int *)a);
-	ib = *((int *)b);
-	return (ia <= ib);
+	i = 0;
+	while (i < array.len)
+	{
+		if (is_equal(get_el(array, i), searched) == true)
+			return (true);
+		i++;
+	}
+	return (false);
 }

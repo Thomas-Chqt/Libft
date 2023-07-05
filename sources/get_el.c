@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quick_sort_int.c                                   :+:      :+:    :+:   */
+/*   get_el.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 11:51:11 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/05 19:48:30 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/05 18:31:08 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/05 19:26:41 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static t_bool	diff_func(void *a, void *b);
-
-void	quick_sort_int(int *array, size_t array_len)
+void	*get_el(t_array array, size_t index)
 {
-	quick_sort((t_array){
-		.buff = (void *)array,
-		.len = array_len,
-		.el_size = sizeof(int)
-	}, &diff_func);
-}
-
-static t_bool	diff_func(void *a, void *b)
-{
-	int	ia;
-	int	ib;
-
-	ia = *((int *)a);
-	ib = *((int *)b);
-	return (ia <= ib);
+	return (array.buff + (index * array.el_size));
 }

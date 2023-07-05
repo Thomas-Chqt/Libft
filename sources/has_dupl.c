@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quick_sort_int.c                                   :+:      :+:    :+:   */
+/*   has_dupl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 11:51:11 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/05 19:48:30 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/05 19:36:33 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/05 19:47:56 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static t_bool	diff_func(void *a, void *b);
-
-void	quick_sort_int(int *array, size_t array_len)
+t_bool	has_dupl(t_array array, t_bool (*is_equal)(void *, void *))
 {
-	quick_sort((t_array){
-		.buff = (void *)array,
-		.len = array_len,
-		.el_size = sizeof(int)
-	}, &diff_func);
-}
+	size_t	i;
 
-static t_bool	diff_func(void *a, void *b)
-{
-	int	ia;
-	int	ib;
-
-	ia = *((int *)a);
-	ib = *((int *)b);
-	return (ia <= ib);
+	i = 1;
+	while (i < array.len)
+	{
+		if (contains((t_array){array.buff, i, array.el_size},
+			get_el(array, i), is_equal) == true)
+			return (true);
+		i++;
+	}
+	return (false);
 }

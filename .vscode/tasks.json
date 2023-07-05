@@ -6,7 +6,10 @@
 		{
 			"label": "Build Debug",
 			"type": "shell",
-			"group": "build",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
 			"command": "make",
 			"args": [
 				"debug"
@@ -23,10 +26,7 @@
 		{
 			"label": "Build Release",
 			"type": "shell",
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
+			"group": "build",
 			"command": "make",
 			"args": [
 				"all"

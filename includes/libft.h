@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/05 17:24:32 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/05 19:46:08 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -344,7 +344,16 @@ typedef unsigned int		t_uint32;
 
 typedef enum e_bool			t_bool;
 
+typedef struct s_array		t_array;
+
 enum e_bool { false = 0, true = 1 };
+
+struct s_array
+{
+	void	*buff;
+	size_t	len;
+	size_t	el_size;
+};
 
 /* ************************************************************************** */
 /*                                  Listes                                    */
@@ -365,6 +374,9 @@ t_list			*list_from_array(void *array, size_t array_len, size_t el_size);
 /*                                  Arrays                                    */
 /* ************************************************************************** */
 
+// @return the adress of the element for a given index
+void			*get_el(t_array array, size_t index);
+
 size_t			first_index(unsigned char value, void *buffer,
 					size_t buffer_len);
 void			*find_best(void *array, size_t array_len, size_t el_size,
@@ -372,7 +384,6 @@ void			*find_best(void *array, size_t array_len, size_t el_size,
 void			foreach(void *array, size_t len, size_t el_size,
 					void (*func)(void *));
 size_t			array_len(void *array, size_t element_size);
-void			quick_sort_int(int *array, size_t array_len);
 
 // @brief sort the array using QuickSort algo
 // @param array the array to sort
@@ -381,8 +392,15 @@ void			quick_sort_int(int *array, size_t array_len);
 // @param diff the function used to define the order of the elements.
 // for a array of int sorted from small to big, diff(1, 2) or diff(1, 1)
 // should return true
-void			quick_sort(void *array, size_t array_len, size_t el_size,
-					t_bool (*diff)(void *a, void *b));
+void			quick_sort(t_array array, t_bool (*diff)(void *a, void *b));
+void			quick_sort_int(int *array, size_t array_len);
+
+t_bool			contains(t_array array, void *searched,
+					t_bool (*is_equal)(void *, void *));
+t_bool			contains_int(int *array, size_t array_len, int searched);
+
+t_bool			has_dupl(t_array array, t_bool (*is_equal)(void *, void *));
+t_bool			has_dupl_int(int *array, size_t array_len);
 
 /* ************************************************************************** */
 /*                                  Colors                                    */

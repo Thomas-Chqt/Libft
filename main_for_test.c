@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/05 17:34:02 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/05 19:45:18 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,27 @@ static void	destructor(void)
 
 # endif // MEMCHECK
 
-void	print_node(void *node)
+#define ARRAY_LEN 10
+
+t_bool	equal(void *a, void *b)
 {
-	printf("%s\n", *((char **)node));
+	int	ia;
+	int	ib;
+
+	ia = *((int *)a);
+	ib = *((int *)b);
+	return (ia == ib );
 }
 
 int main()
 {
-	char *str = "A B C D E F G H I J";
-	char **splited_str = ft_split(str, ' ');
+	int *array = malloc(sizeof(int) * ARRAY_LEN);
+	ft_memcpy(array, (int[]){ 9, 8, 35, 7, 0, 34, 87, 28, 86, 9 }, sizeof(int) * ARRAY_LEN);
+	
+	quick_sort_int(array, ARRAY_LEN);
 
-	t_list *head = list_from_array(splited_str, 10, sizeof(char *));
+	printf("%d\n", has_dupl_int(array, ARRAY_LEN));
 
-	ft_lstadd_front(&head, lst_remove_last(&head));
-	ft_lstadd_back(&head,lst_remove_first(&head));
-
-	ft_lstiter(head, &print_node);
-	ft_lstclear(&head, NULL);
-	free_splited_str(splited_str);
-
+	free(array);
 	return 0; 
 }
