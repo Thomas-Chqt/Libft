@@ -10,7 +10,7 @@
 			"request": "launch",
 			"program": "${workspaceFolder}/Debug.out",
 			"stopAtEntry": false,
-			"cwd": "{workspaceFolder}",
+			"cwd": "${workspaceFolder}",
 			"externalConsole": false,
 			"MIMode": "lldb",
 			"preLaunchTask": "Build Debug"

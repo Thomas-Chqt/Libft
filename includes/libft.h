@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/04 18:50:04 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/04 19:11:08 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -309,8 +309,14 @@ int				ft_lstsize(t_list *lst);
 // @brief NULL.
 // @param lst The address of a pointer to a node.
 // @param del The address of the function used to delete
-// 				the content of the node.
+// the content of the node.
 void			ft_lstclear(t_list **lst, void (*del)(void*));
+
+// @brief Iterates the list ’lst’ and applies the function
+// @brief ’f’ on the content of each node.
+// @param lst The address of a pointer to a node.
+// @param f The address of the function used to iterate on the list.
+void			ft_lstiter(t_list *lst, void (*f)(void *));
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -339,15 +345,12 @@ enum e_bool { false = 0, true = 1 };
 /*                                  Listes                                    */
 /* ************************************************************************** */
 
-void			lstiter_data(t_list *lst, void (*f)(void*, void*), void *data);
+void			lst_iter_data(t_list *lst, void (*f)(void*, void*), void *data);
 void			lst_delete_if(t_list **head, void (*del)(void *),
 					t_bool (*condition)(void *, void *), void *data);
 
 // @return the removed node as if it was created with ft_lstnew
 t_list			*lst_remove_last(t_list **head);
-
-// @brief use the print_func to print each node
-void			*lst_print(t_list *head, void (*print_func)(void *));
 
 /* ************************************************************************** */
 /*                                  Arrays                                    */

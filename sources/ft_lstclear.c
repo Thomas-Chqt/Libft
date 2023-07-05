@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 21:11:51 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/18 12:22:38 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/04 19:33:33 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	watched = *lst;
 	while (watched != NULL)
 	{
-		del(watched->data);
+		if (del != NULL)
+			del(watched->data);
 		temp = watched->next;
 		free(watched);
 		watched = temp;
