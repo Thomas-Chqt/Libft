@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:37:38 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/05 20:44:58 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/05 22:52:33 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ static t_bool	is_equal_func(void *s1, void *s2)
 
 	cs1 = *((char **)s1);
 	cs2 = *((char **)s2);
-	return (str_cmp(cs1, cs2));
+	return (str_cmp(cs1, cs2) == 0);
 }

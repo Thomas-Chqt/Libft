@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/05 20:18:45 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/05 22:53:21 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ static void	destructor(void)
 
 int main()
 {
-	char *str = "g452345";
+	char *str = "AA BB CC CC";
+	char **splited_str = ft_split(str, ' ');
 
-	printf("%d\n", is_number(str));
+	t_bool result = has_dupl_str(splited_str, 4);
+
 	return 0; 
 }
