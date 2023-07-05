@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/15 21:10:24 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/05 16:10:46 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/05 17:25:31 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/05 17:37:44 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (lst == NULL || new == NULL)
+	t_list	*watched;
+
+	if (lst == NULL || *lst == NULL || new == NULL)
 		return ;
-	new->next = (*lst);
-	(*lst) = new;
+	watched = *lst;
+	while (watched->next != NULL)
+		watched = watched->next;
+	watched->next = new;
 }

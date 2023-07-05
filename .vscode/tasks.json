@@ -23,7 +23,10 @@
 		{
 			"label": "Build Release",
 			"type": "shell",
-			"group": "build",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
 			"command": "make",
 			"args": [
 				"all"

@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/15 21:10:24 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/05 16:10:46 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/05 11:55:59 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/05 12:04:11 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	swap(void *a, void *b, size_t el_size)
 {
-	if (lst == NULL || new == NULL)
-		return ;
-	new->next = (*lst);
-	(*lst) = new;
+	void	*temp;
+
+	temp = malloc(el_size);
+	ft_memmove(temp, a, el_size);
+	ft_memmove(a, b, el_size);
+	ft_memmove(b, temp, el_size);
+	free(temp);
 }

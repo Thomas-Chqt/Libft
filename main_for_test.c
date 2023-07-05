@@ -6,13 +6,14 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/04 19:32:59 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/05 17:34:02 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libc.h>
-
 #include "libft.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 # ifdef MEMCHECK
 
@@ -26,24 +27,24 @@ static void	destructor(void)
 
 # endif // MEMCHECK
 
-void print_int(void *data)
+void	print_node(void *node)
 {
-	printf("%d\n", *((int *)data));
+	printf("%s\n", *((char **)node));
 }
 
 int main()
 {
-	t_list *head = NULL;
+	char *str = "A B C D E F G H I J";
+	char **splited_str = ft_split(str, ' ');
 
-	int a = 1;
-	int b = 2;
-	int c = 3;
+	t_list *head = list_from_array(splited_str, 10, sizeof(char *));
 
-	ft_lstadd_front(&head, ft_lstnew(&c));
-	ft_lstadd_front(&head, ft_lstnew(&b));
-	ft_lstadd_front(&head, ft_lstnew(&a));
+	ft_lstadd_front(&head, lst_remove_last(&head));
+	ft_lstadd_back(&head,lst_remove_first(&head));
 
-	ft_lstiter(head, &print_int);
+	ft_lstiter(head, &print_node);
 	ft_lstclear(&head, NULL);
+	free_splited_str(splited_str);
+
 	return 0; 
 }

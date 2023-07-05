@@ -10,6 +10,10 @@
 		"product/": true
 	},
 	"files.associations": {
-		"libft.h": "c"
+		"libft.h": "c",
+		"stdio.h": "c",
+		"__tuple": "c",
+		"array": "c",
+		"libft_internal.h": "c"
 	},
 }

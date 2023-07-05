@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/04 19:11:08 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/05 17:24:32 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -302,6 +302,11 @@ void			ft_lstadd_front(t_list **lst, t_list *new);
 // @return The length of the list
 int				ft_lstsize(t_list *lst);
 
+// @brief Adds the node ’new’ at the end of the list.
+// @param lst The address of a pointer to the first link of a list.
+// @param new The address of a pointer to the node to be added to the list.
+void			ft_lstadd_back(t_list **lst, t_list *new);
+
 // @brief Deletes and frees the given node and every
 // @brief successor of that node, using the function ’del’
 // @brief and free(3).
@@ -352,6 +357,10 @@ void			lst_delete_if(t_list **head, void (*del)(void *),
 // @return the removed node as if it was created with ft_lstnew
 t_list			*lst_remove_last(t_list **head);
 
+// @return the removed node as if it was created with ft_lstnew
+t_list			*lst_remove_first(t_list **head);
+t_list			*list_from_array(void *array, size_t array_len, size_t el_size);
+
 /* ************************************************************************** */
 /*                                  Arrays                                    */
 /* ************************************************************************** */
@@ -363,6 +372,17 @@ void			*find_best(void *array, size_t array_len, size_t el_size,
 void			foreach(void *array, size_t len, size_t el_size,
 					void (*func)(void *));
 size_t			array_len(void *array, size_t element_size);
+void			quick_sort_int(int *array, size_t array_len);
+
+// @brief sort the array using QuickSort algo
+// @param array the array to sort
+// @param array_len the number of element in th array
+// @param el_size the size of one element
+// @param diff the function used to define the order of the elements.
+// for a array of int sorted from small to big, diff(1, 2) or diff(1, 1)
+// should return true
+void			quick_sort(void *array, size_t array_len, size_t el_size,
+					t_bool (*diff)(void *a, void *b));
 
 /* ************************************************************************** */
 /*                                  Colors                                    */
@@ -444,5 +464,7 @@ t_bool			fsmallest(void *a, void *b);
 int				atoi_base(const char *str, const char *base);
 unsigned int	atoi_hex(const char *str);
 void			wrapped_free(void *ptr);
+void			swap(void *a, void *b, size_t el_size);
+void			swap_int(int *a, int *b);
 
 #endif

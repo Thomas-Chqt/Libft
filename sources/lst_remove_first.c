@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_remove_last2.c                                 :+:      :+:    :+:   */
+/*   lst_remove_first.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 19:14:22 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/04 19:14:36 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/05 17:12:54 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/05 17:37:59 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-t_list	*lst_remove_last(t_list **head)
+t_list	*lst_remove_first(t_list **head)
 {
-	t_list	**watched;
 	t_list	*temp;
 
 	if (head == NULL || (*head) == NULL)
 		return (NULL);
-	watched = head;
-	while ((*watched)->next != NULL)
-		watched = &((*watched)->next);
-	temp = *watched;
-	*watched = NULL;
+	temp = *head;
+	*head = (*head)->next;
+	temp->next = NULL;
 	return (temp);
 }

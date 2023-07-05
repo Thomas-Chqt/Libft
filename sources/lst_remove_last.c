@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   lst_remove_last2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/15 21:10:24 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/05 16:10:46 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/04 19:14:22 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/05 11:48:39 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+t_list	*lst_remove_last(t_list **head)
 {
-	if (lst == NULL || new == NULL)
-		return ;
-	new->next = (*lst);
-	(*lst) = new;
+	t_list	**watched;
+	t_list	*temp;
+
+	if (head == NULL || (*head) == NULL)
+		return (NULL);
+	watched = head;
+	while ((*watched)->next != NULL)
+		watched = &((*watched)->next);
+	temp = *watched;
+	*watched = NULL;
+	return (temp);
 }
