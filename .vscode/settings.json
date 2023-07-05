@@ -14,6 +14,7 @@
 		"stdio.h": "c",
 		"__tuple": "c",
 		"array": "c",
-		"libft_internal.h": "c"
+		"libft_internal.h": "c",
+		"memory_leak_detector.h": "c"
 	},
 }

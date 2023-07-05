@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_for_test.c                                    :+:      :+:    :+:   */
+/*   str_cmp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/05 20:18:45 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/05 20:39:06 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/05 20:41:52 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include "libft_internal.h"
 
-# ifdef MEMCHECK
-
-#  include <memory_leak_detector.h>
-
-__attribute__((destructor))
-static void	destructor(void)
+int	str_cmp(const char *s1, const char *s2)
 {
-	print_report();
-}
+	size_t	i;
 
-# endif // MEMCHECK
-
-#define ARRAY_LEN 10
-
-
-int main()
-{
-	char *str = "g452345";
-
-	printf("%d\n", is_number(str));
-	return 0; 
+	i = 0;
+	while (s1[i] && s2[i])
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (s1[i] - s2[i]);
 }

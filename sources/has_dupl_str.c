@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_for_test.c                                    :+:      :+:    :+:   */
+/*   has_dupl_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/05 20:18:45 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/05 20:37:38 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/05 20:44:58 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include "libft_internal.h"
 
-# ifdef MEMCHECK
+static t_bool	is_equal_func(void *a, void *b);
 
-#  include <memory_leak_detector.h>
-
-__attribute__((destructor))
-static void	destructor(void)
+t_bool	has_dupl_str(char **array, size_t array_len)
 {
-	print_report();
+	return (has_dupl((t_array){
+			.buff = (void *)array,
+			.len = array_len,
+			.el_size = sizeof(char *)},
+		&is_equal_func));
 }
 
-# endif // MEMCHECK
-
-#define ARRAY_LEN 10
-
-
-int main()
+static t_bool	is_equal_func(void *s1, void *s2)
 {
-	char *str = "g452345";
+	char	*cs1;
+	char	*cs2;
 
-	printf("%d\n", is_number(str));
-	return 0; 
+	cs1 = *((char **)s1);
+	cs2 = *((char **)s2);
+	return (str_cmp(cs1, cs2));
 }

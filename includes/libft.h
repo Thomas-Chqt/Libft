@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/05 19:46:08 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/05 20:52:49 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -401,6 +401,15 @@ t_bool			contains_int(int *array, size_t array_len, int searched);
 
 t_bool			has_dupl(t_array array, t_bool (*is_equal)(void *, void *));
 t_bool			has_dupl_int(int *array, size_t array_len);
+t_bool			has_dupl_str(char **array, size_t array_len);
+
+/* ************************************************************************** */
+/*                                  Strings                                   */
+/* ************************************************************************** */
+
+void			free_splited_str(char **splited_str);
+t_bool			is_number(const char *str);
+int				str_cmp(const char *s1, const char *s2);
 
 /* ************************************************************************** */
 /*                                  Colors                                    */
@@ -472,10 +481,8 @@ t_mat4x4		scale_matrix(t_vect_3d scale);
 /* ************************************************************************** */
 
 void			*memcpy_zero(void *dst, void *src, size_t n);
-void			free_splited_str(char **splited_str);
 float			ft_atof(const char *str);
 double			atodouble(const char *str);
-t_bool			is_number(const char *str);
 void			free_null(void **ptr);
 t_bool			fbigest(void *a, void *b);
 t_bool			fsmallest(void *a, void *b);
@@ -484,5 +491,6 @@ unsigned int	atoi_hex(const char *str);
 void			wrapped_free(void *ptr);
 void			swap(void *a, void *b, size_t el_size);
 void			swap_int(int *a, int *b);
+long			atoi_long(const char *str);
 
 #endif

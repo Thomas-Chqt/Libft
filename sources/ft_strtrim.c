@@ -6,17 +6,17 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:35:47 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/18 12:22:38 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/05 20:25:42 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static int	contains(char const *str, char c);
+static int	contains_strim(char const *str, char c);
 static void	strtrim_analize(char const *s1, char const *set,
 				unsigned int *start, size_t *len);
 
-static int	contains(char const *str, char c)
+static int	contains_strim(char const *str, char c)
 {
 	size_t	i;
 
@@ -37,7 +37,7 @@ static void	strtrim_analize(char const *s1, char const *set,
 
 	*len = ft_strlen(s1);
 	i = 0;
-	while (s1[i] && contains(set, s1[i]) != 0)
+	while (s1[i] && contains_strim(set, s1[i]) != 0)
 	{
 		(*len)--;
 		if (*len == 0)
@@ -49,7 +49,7 @@ static void	strtrim_analize(char const *s1, char const *set,
 	}
 	*start = i;
 	i = i + (*len) - 1;
-	while (contains(set, s1[i]) != 0)
+	while (contains_strim(set, s1[i]) != 0)
 	{
 		(*len)--;
 		i--;
