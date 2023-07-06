@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_number.c                                        :+:      :+:    :+:   */
+/*   lst_map_ft_atoi.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/17 15:38:35 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/06 13:55:17 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/06 14:12:03 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/06 14:25:26 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static t_bool	is_not_digit_wrapper(void *c, void *none);
+static t_list	*create_nodes(void *str, void *none);
 
-t_bool	is_number(const char *str)
+t_list	*lst_map_ft_atoi(t_list *lst)
 {
-	size_t	i;
-
-	if (str == NULL)
-		return (false);
-	i = 0;
-	if (str[0] == '-')
-		i++;
-	return (!contains(
-			(t_array){(void *)(str + i), ft_strlen(str + i), sizeof(char)},
-			NULL,
-			&is_not_digit_wrapper
-		));
+	return (lst_map(lst, &create_nodes, NULL, &free_wrap));
 }
 
-static t_bool	is_not_digit_wrapper(void *c, void *none)
+static t_list	*create_nodes(void *str, void *none)
 {
+	int		*nbr;
+
 	if (none)
 		none = NULL;
-	return (!ft_isdigit(*((char *)c)));
+	nbr = malloc(sizeof(int));
+	if (nbr == NULL)
+		return (NULL);
+	*nbr = atoi((const char *)str);
+	return (ft_lstnew((void *)nbr));
 }

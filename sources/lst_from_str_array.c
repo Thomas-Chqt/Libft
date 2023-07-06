@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_number.c                                        :+:      :+:    :+:   */
+/*   lst_from_str_array.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/17 15:38:35 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/06 13:55:17 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/06 13:50:53 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/06 14:27:01 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static t_bool	is_not_digit_wrapper(void *c, void *none);
+static void	*make_data(void *data);
 
-t_bool	is_number(const char *str)
+t_list	*lst_from_str_array(char **array, size_t array_len)
 {
-	size_t	i;
-
-	if (str == NULL)
-		return (false);
-	i = 0;
-	if (str[0] == '-')
-		i++;
-	return (!contains(
-			(t_array){(void *)(str + i), ft_strlen(str + i), sizeof(char)},
-			NULL,
-			&is_not_digit_wrapper
-		));
+	return (
+		lst_from_array((t_array){array, array_len, sizeof(char *)},
+		&make_data, &free_wrap)
+	);
 }
 
-static t_bool	is_not_digit_wrapper(void *c, void *none)
+static void	*make_data(void *data)
 {
-	if (none)
-		none = NULL;
-	return (!ft_isdigit(*((char *)c)));
+	size_t	len;
+	char	*str;
+
+	len = ft_strlen(*((char **)data));
+	str = malloc(sizeof(char) * (len + 1));
+	if (str == NULL)
+		return (NULL);
+	ft_strlcpy(str, *((char **)data), len + 1);
+	return (str);
 }

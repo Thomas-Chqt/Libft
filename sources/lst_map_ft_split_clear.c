@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_number.c                                        :+:      :+:    :+:   */
+/*   lst_map_ft_split_clear.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/17 15:38:35 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/06 13:55:17 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/06 14:43:41 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/06 16:17:45 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static t_bool	is_not_digit_wrapper(void *c, void *none);
-
-t_bool	is_number(const char *str)
+t_list	*lst_map_ft_split_clear(t_list **lst, char c)
 {
-	size_t	i;
+	t_list	*new_list;
 
-	if (str == NULL)
-		return (false);
-	i = 0;
-	if (str[0] == '-')
-		i++;
-	return (!contains(
-			(t_array){(void *)(str + i), ft_strlen(str + i), sizeof(char)},
-			NULL,
-			&is_not_digit_wrapper
-		));
-}
-
-static t_bool	is_not_digit_wrapper(void *c, void *none)
-{
-	if (none)
-		none = NULL;
-	return (!ft_isdigit(*((char *)c)));
+	if (lst == NULL || *lst == NULL)
+		return (NULL);
+	new_list = lst_map_ft_split(*lst, c);
+	ft_lstclear(lst, &free_wrap);
+	return (new_list);
 }

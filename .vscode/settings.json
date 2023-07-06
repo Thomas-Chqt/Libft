@@ -17,4 +17,14 @@
 		"libft_internal.h": "c",
 		"memory_leak_detector.h": "c"
 	},
+	"autoSnippet.snippets": [
+		{
+			"pattern": "**/*.c",
+			"snippet": "New source file (Libft)"
+		},
+		{
+			"pattern": "**/*.h",
+			"snippet": "New header file"
+		}
+	],
 }

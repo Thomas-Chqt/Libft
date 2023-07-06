@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/05 20:52:49 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/06 16:29:36 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -323,6 +323,20 @@ void			ft_lstclear(t_list **lst, void (*del)(void*));
 // @param f The address of the function used to iterate on the list.
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 
+// @brief Iterates the list ’lst’ and applies the function
+// @brief ’f’ on the content of each node.  Creates a new
+// @brief list resulting of the successive applications of
+// @brief the function ’f’.  The ’del’ function is used to
+// @brief delete the content of a node if needed.
+// @param lst The address of a pointer to a node.
+// @param f The address of the function used to iterate on
+// list.
+// @param del The address of the function used to delete
+// content of a node if needed.
+// @return The new list. NULL if the allocation fails.
+// t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
+// 					void (*del)(void *));
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                Extensions                                  */
@@ -368,7 +382,34 @@ t_list			*lst_remove_last(t_list **head);
 
 // @return the removed node as if it was created with ft_lstnew
 t_list			*lst_remove_first(t_list **head);
-t_list			*list_from_array(void *array, size_t array_len, size_t el_size);
+
+t_list			*lst_from_array(t_array array, void *(*make_data)(void *),
+					void (*del));
+t_list			*lst_from_str_array(char **array, size_t array_len);
+
+// @brief Iterates the list ’lst’ and applies the function
+// @brief ’f’ on the content of each node.  Creates a new
+// @brief list resulting of the successive applications of
+// @brief The function ’f’. 'f' can return multiple node.
+// @brief The ’del’ function is used to
+// @brief delete the content of a node if needed.
+// @param lst The address of a pointer to a node.
+// @param f The address of the function used to iterate on
+// list.
+// @param del The address of the function used to delete
+// content of a node if needed.
+// @return The new list. NULL if the allocation fails.
+t_list			*lst_map(t_list *lst, t_list *(*f)(void *, void *), void *data,
+					void (*del)(void *));
+t_list			*lst_map_ft_split(t_list *lst, char c);
+t_list			*lst_map_ft_split_clear(t_list **lst, char c);
+t_list			*lst_map_ft_atoi(t_list *lst);
+t_list			*lst_map_ft_atoi_clear(t_list **lst);
+
+t_bool			lst_contains(t_list *lst, void *searched,
+					t_bool (*is_equal)(void *, void *));
+t_bool			lst_has_dupl(t_list *lst, t_bool (*is_equal)(void *, void *));
+t_bool			lst_has_dupl_str(t_list *lst);
 
 /* ************************************************************************** */
 /*                                  Arrays                                    */
@@ -488,7 +529,7 @@ t_bool			fbigest(void *a, void *b);
 t_bool			fsmallest(void *a, void *b);
 int				atoi_base(const char *str, const char *base);
 unsigned int	atoi_hex(const char *str);
-void			wrapped_free(void *ptr);
+void			free_wrap(void *ptr);
 void			swap(void *a, void *b, size_t el_size);
 void			swap_int(int *a, int *b);
 long			atoi_long(const char *str);
