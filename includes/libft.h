@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/06 16:29:36 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/08 11:58:16 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -343,6 +343,14 @@ void			ft_lstiter(t_list *lst, void (*f)(void *));
 /*                                                                            */
 /* ************************************************************************** */
 
+typedef unsigned char		t_uint8;
+typedef unsigned short		t_uint16;
+typedef unsigned int		t_uint32;
+typedef unsigned long		t_uint64;
+
+typedef enum e_bool			t_bool;
+typedef struct s_array		t_array;
+
 /* ************************************************************************** */
 /*                                    42                                      */
 /* ************************************************************************** */
@@ -350,15 +358,21 @@ void			ft_lstiter(t_list *lst, void (*f)(void *));
 char			*get_next_line(int fd);
 
 /* ************************************************************************** */
+/*                                   Char                                     */
+/* ************************************************************************** */
+
+// TODO
+
+/* ************************************************************************** */
+/*                                  String                                    */
+/* ************************************************************************** */
+
+// TODO
+
+/* ************************************************************************** */
 /*                                  Types                                     */
 /* ************************************************************************** */
 
-typedef unsigned char		t_uint8;
-typedef unsigned int		t_uint32;
-
-typedef enum e_bool			t_bool;
-
-typedef struct s_array		t_array;
 
 enum e_bool { false = 0, true = 1 };
 
@@ -385,6 +399,8 @@ t_list			*lst_remove_first(t_list **head);
 
 t_list			*lst_from_array(t_array array, void *(*make_data)(void *),
 					void (*del));
+
+// ! In the liste the void ptr is not a poiter to a string but a ptr to a char
 t_list			*lst_from_str_array(char **array, size_t array_len);
 
 // @brief Iterates the list ’lst’ and applies the function
@@ -399,8 +415,7 @@ t_list			*lst_from_str_array(char **array, size_t array_len);
 // @param del The address of the function used to delete
 // content of a node if needed.
 // @return The new list. NULL if the allocation fails.
-t_list			*lst_map(t_list *lst, t_list *(*f)(void *, void *), void *data,
-					void (*del)(void *));
+t_list			*lst_map(t_list *lst, t_list *(*f)(void *, void *), void *data);
 t_list			*lst_map_ft_split(t_list *lst, char c);
 t_list			*lst_map_ft_split_clear(t_list **lst, char c);
 t_list			*lst_map_ft_atoi(t_list *lst);
@@ -410,6 +425,24 @@ t_bool			lst_contains(t_list *lst, void *searched,
 					t_bool (*is_equal)(void *, void *));
 t_bool			lst_has_dupl(t_list *lst, t_bool (*is_equal)(void *, void *));
 t_bool			lst_has_dupl_str(t_list *lst);
+
+void			*lst_to_array(t_list *lst, size_t el_size);
+int				*lst_to_int_array(t_list *lst);
+
+// ! Need to free the result
+void			*lst_find_median(t_list *lst, size_t el_size,
+					t_bool (*diff)(void *a, void *b));
+int				lst_find_median_int(t_list *lst);
+// ! Do not nullify the original lst 
+int				lst_find_median_int_free(t_list *lst);
+
+t_list			*sub_lst(t_list *lst, size_t new_len,
+					void *(*data_dup)(void *), void (*del)(void *));
+t_list			*sub_lst_int(t_list *lst, size_t new_len);
+
+t_bool			lst_is_sorted(t_list *lst, t_bool (*diff)(void *a, void *b));
+t_bool			lst_int_is_asc_sort(t_list *lst);
+t_bool			lst_int_is_dec_sort(t_list *lst);
 
 /* ************************************************************************** */
 /*                                  Arrays                                    */
@@ -443,6 +476,13 @@ t_bool			contains_int(int *array, size_t array_len, int searched);
 t_bool			has_dupl(t_array array, t_bool (*is_equal)(void *, void *));
 t_bool			has_dupl_int(int *array, size_t array_len);
 t_bool			has_dupl_str(char **array, size_t array_len);
+
+t_array			array_dup(t_array array);
+int				*array_int_dup(int *array, t_uint64 array_len);
+
+// ! Need to free the result
+void			*find_median(t_array array, t_bool (*diff)(void *a, void *b));
+int				find_median_int(int *array, size_t array_len);
 
 /* ************************************************************************** */
 /*                                  Strings                                   */
@@ -533,5 +573,6 @@ void			free_wrap(void *ptr);
 void			swap(void *a, void *b, size_t el_size);
 void			swap_int(int *a, int *b);
 long			atoi_long(const char *str);
+void			*mem_dup(void *ptr, size_t len);
 
 #endif

@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_number.c                                        :+:      :+:    :+:   */
+/*   lst_int_is_asc_sort.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/17 15:38:35 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/07 19:11:20 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/07 20:27:40 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/07 20:29:50 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static t_bool	is_not_digit_wrapper(void *c, void *none);
+static t_bool	diff_func(void *a, void *b);
 
-t_bool	is_number(const char *str)
+t_bool	lst_int_is_asc_sort(t_list *lst)
 {
-	size_t	i;
-
-	if (str == NULL)
-		return (false);
-	i = 0;
-	if (str[0] == '-' && ft_isdigit(str[1]))
-		i++;
-	return (!contains(
-			(t_array){(void *)(str + i), ft_strlen(str + i), sizeof(char)},
-			NULL,
-			&is_not_digit_wrapper
-		));
+	return (lst_is_sorted(lst, &diff_func));
 }
 
-static t_bool	is_not_digit_wrapper(void *c, void *none)
+static t_bool	diff_func(void *a, void *b)
 {
-	if (none)
-		none = NULL;
-	return (!ft_isdigit(*((char *)c)));
+	int	ia;
+	int	ib;
+
+	ia = *((int *)a);
+	ib = *((int *)b);
+	return (ia <= ib);
 }

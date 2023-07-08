@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/06 16:14:09 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/07 17:07:50 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,22 @@ static void	destructor(void)
 
 # endif // MEMCHECK
 
-void print_wrapper(void *nbr)
+void	print_wrap(void *nbr)
 {
-	printf("%d\n", *((int *)nbr));
+	printf("%d ", *((int *)nbr));
 }
 
 int main()
 {
-	char *str = "123,456 789";
+	char *str = "1 4 6 3 2";
 	char **splited_str = ft_split(str, ' ');
-	t_list *one = lst_from_str_array(splited_str, array_len(splited_str, sizeof(char *)));
-	t_list *two = lst_map_ft_split(one, ',');
-	t_list *tree = lst_map_ft_atoi(two);
+	t_list *list = lst_from_str_array(splited_str, array_len(splited_str, sizeof(char *)));
+	list = lst_map_ft_atoi_clear(&list);
 
-	ft_lstiter(tree, &print_wrapper);
-
-	printf("%d\n", lst_has_dupl_str(tree));
+	printf("Median : %d\n", lst_find_median_int_free(sub_lst_int(list, 3)));
 
 	free_splited_str(splited_str);
-	ft_lstclear(&one, &free_wrap);
-	ft_lstclear(&two, &free_wrap);
-	ft_lstclear(&tree, &free_wrap);
+	ft_lstclear(&list, &free_wrap);
 
 	return 0; 
 }

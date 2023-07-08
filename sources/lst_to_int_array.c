@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   lst_to_int_array.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/15 21:08:11 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/07 16:10:58 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/07 13:19:00 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/07 13:19:38 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-t_list	*ft_lstnew(void *content)
+int	*lst_to_int_array(t_list *lst)
 {
-	t_list	*new_lst;
-
-	new_lst = malloc(sizeof(t_list));
-	if (new_lst == NULL)
-		return (NULL);
-	new_lst->data = content;
-	new_lst->next = NULL;
-	return (new_lst);
+	return ((int *)lst_to_array(lst, sizeof(int)));
 }

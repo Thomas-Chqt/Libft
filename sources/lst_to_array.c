@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_number.c                                        :+:      :+:    :+:   */
+/*   lst_to_array.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/17 15:38:35 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/07 19:11:20 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/07 13:06:53 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/07 13:23:53 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static t_bool	is_not_digit_wrapper(void *c, void *none);
-
-t_bool	is_number(const char *str)
+void	*lst_to_array(t_list *lst, size_t el_size)
 {
+	void	*array;
+	t_list	*current;
 	size_t	i;
 
-	if (str == NULL)
-		return (false);
+	if (lst == NULL)
+		return (NULL);
+	array = malloc(el_size * ft_lstsize(lst));
+	if (array == NULL)
+		return (NULL);
+	current = lst;
 	i = 0;
-	if (str[0] == '-' && ft_isdigit(str[1]))
+	while (current != NULL)
+	{
+		ft_memcpy(array + (i * el_size), current->data, el_size);
+		current = current->next;
 		i++;
-	return (!contains(
-			(t_array){(void *)(str + i), ft_strlen(str + i), sizeof(char)},
-			NULL,
-			&is_not_digit_wrapper
-		));
-}
-
-static t_bool	is_not_digit_wrapper(void *c, void *none)
-{
-	if (none)
-		none = NULL;
-	return (!ft_isdigit(*((char *)c)));
+	}
+	return (array);
 }

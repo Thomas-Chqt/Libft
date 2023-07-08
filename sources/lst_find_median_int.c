@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   lst_find_median_int.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/15 21:08:11 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/07 16:10:58 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/07 15:33:03 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/07 17:12:45 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-t_list	*ft_lstnew(void *content)
+int	lst_find_median_int(t_list *lst)
 {
-	t_list	*new_lst;
+	int	*array;
+	int	ret;
 
-	new_lst = malloc(sizeof(t_list));
-	if (new_lst == NULL)
-		return (NULL);
-	new_lst->data = content;
-	new_lst->next = NULL;
-	return (new_lst);
+	array = lst_to_int_array(lst);
+	if (array == NULL)
+		return (0);
+	ret = find_median_int(array, ft_lstsize(lst));
+	free(array);
+	return (ret);
 }

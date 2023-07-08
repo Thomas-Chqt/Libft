@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_number.c                                        :+:      :+:    :+:   */
+/*   find_median_int.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/17 15:38:35 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/07 19:11:20 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/07 13:57:51 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/07 17:12:07 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static t_bool	is_not_digit_wrapper(void *c, void *none);
+static t_bool	diff_func(void *a, void *b);
 
-t_bool	is_number(const char *str)
+int	find_median_int(int *array, size_t array_len)
 {
-	size_t	i;
+	void	*median_ptr;
+	int		ret;
 
-	if (str == NULL)
-		return (false);
-	i = 0;
-	if (str[0] == '-' && ft_isdigit(str[1]))
-		i++;
-	return (!contains(
-			(t_array){(void *)(str + i), ft_strlen(str + i), sizeof(char)},
-			NULL,
-			&is_not_digit_wrapper
-		));
+	median_ptr = find_median((t_array){array, array_len, sizeof(int)},
+			&diff_func);
+	if (median_ptr == NULL)
+		return (0);
+	ret = *((int *)median_ptr);
+	free(median_ptr);
+	return (ret);
 }
 
-static t_bool	is_not_digit_wrapper(void *c, void *none)
+static t_bool	diff_func(void *a, void *b)
 {
-	if (none)
-		none = NULL;
-	return (!ft_isdigit(*((char *)c)));
+	int	ia;
+	int	ib;
+
+	ia = *((int *)a);
+	ib = *((int *)b);
+	return (ia <= ib);
 }

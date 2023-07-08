@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   is_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/15 21:08:11 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/07 16:10:58 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/07 19:18:26 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/07 20:25:40 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-t_list	*ft_lstnew(void *content)
+t_bool	lst_is_sorted(t_list *lst, t_bool (*diff)(void *a, void *b))
 {
-	t_list	*new_lst;
+	t_list	*current;
 
-	new_lst = malloc(sizeof(t_list));
-	if (new_lst == NULL)
-		return (NULL);
-	new_lst->data = content;
-	new_lst->next = NULL;
-	return (new_lst);
+	if (lst == NULL)
+		return (true);
+	current = lst;
+	while (current->next != NULL)
+	{
+		if (diff(current->data, current->next->data) == false)
+			return (false);
+		current = current->next;
+	}
+	return (true);
 }

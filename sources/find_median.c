@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_map_ft_split.c                                 :+:      :+:    :+:   */
+/*   find_median.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/06 13:57:50 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/07 23:52:29 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/07 13:50:45 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/07 15:29:21 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static t_list	*create_nodes(void *str, void *c);
-
-t_list	*lst_map_ft_split(t_list *lst, char c)
+void	*find_median(t_array array, t_bool (*diff)(void *a, void *b))
 {
-	return (lst_map(lst, &create_nodes, &c));
-}
+	t_array		use_array;
+	t_uint64	median_index;
+	void		*result;
 
-static t_list	*create_nodes(void *str, void *c)
-{
-	char	**splited_str;
-	t_list	*lst;
-
-	splited_str = ft_split((char *)str, (*(char *)c));
-	if (splited_str == NULL)
+	use_array = array_dup(array);
+	if (use_array.buff == NULL)
 		return (NULL);
-	lst = lst_from_str_array(splited_str,
-			array_len(splited_str, sizeof(char *)));
-	free_splited_str(splited_str);
-	return (lst);
+	quick_sort(use_array, diff);
+	median_index = array.len / 2;
+	result = malloc(array.el_size);
+	if (result != NULL)
+		ft_memcpy(result, get_el(use_array, median_index), array.el_size);
+	free(use_array.buff);
+	return (result);
 }

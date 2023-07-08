@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:09:32 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/06 13:34:32 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/07 20:57:35 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ t_list	*lst_from_array(t_array array, void *(*make_data)(void *), void (*del))
 	t_list	*new_lst_wtch;
 
 	if (array.buff == NULL || array.el_size < 1 || make_data == NULL)
+		return (NULL);
+	if (array.len == 0)
 		return (NULL);
 	new_lst = ft_lstnew(make_data(get_el(array, 0)));
 	if (new_lst == NULL || new_lst->data == NULL)
