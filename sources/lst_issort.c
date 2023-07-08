@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_internal.h                                   :+:      :+:    :+:   */
+/*   is_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/18 12:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 13:47:50 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/07 19:18:26 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/08 19:21:35 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_INTERNAL_H
-# define LIBFT_INTERNAL_H
+#include "libft_internal.h"
 
-# ifdef MEMCHECK
-#  include <memory_leak_detector.h>
-# endif // MEMCHECK
+t_bool	lst_issort(t_list *lst, t_bool (*diff)(void *a, void *b))
+{
+	t_list	*current;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
-# endif
-
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
-# include <math.h>
-
-# include "libft.h"
-
-#endif // LIBFT_INTERNAL_H
+	if (lst == NULL)
+		return (true);
+	current = lst;
+	while (current->next != NULL)
+	{
+		if (diff(current->data, current->next->data) == false)
+			return (false);
+		current = current->next;
+	}
+	return (true);
+}

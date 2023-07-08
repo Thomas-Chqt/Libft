@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_internal.h                                   :+:      :+:    :+:   */
+/*   free_str_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/18 12:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 13:47:50 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/08 19:10:23 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/08 19:59:23 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_INTERNAL_H
-# define LIBFT_INTERNAL_H
+#include "libft_internal.h"
 
-# ifdef MEMCHECK
-#  include <memory_leak_detector.h>
-# endif // MEMCHECK
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
-# endif
-
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
-# include <math.h>
-
-# include "libft.h"
-
-#endif // LIBFT_INTERNAL_H
+void	free_str_ptr(void *str_ptr)
+{
+	free(*((char **)str_ptr));
+	free(str_ptr);
+}

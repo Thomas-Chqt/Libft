@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_internal.h                                   :+:      :+:    :+:   */
+/*   el.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/18 12:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 13:47:50 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/05 18:31:08 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/08 18:17:26 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_INTERNAL_H
-# define LIBFT_INTERNAL_H
+#include "libft_internal.h"
 
-# ifdef MEMCHECK
-#  include <memory_leak_detector.h>
-# endif // MEMCHECK
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
-# endif
-
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
-# include <math.h>
-
-# include "libft.h"
-
-#endif // LIBFT_INTERNAL_H
+void	*el(t_array array, size_t index)
+{
+	return ((void *)(((t_uint8 *)array.buff) + (index * array.el_size)));
+}

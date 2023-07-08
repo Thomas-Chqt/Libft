@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/07 17:07:50 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/08 20:08:02 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
+#include <libc.h>
 
 # ifdef MEMCHECK
 
@@ -27,22 +29,19 @@ static void	destructor(void)
 
 # endif // MEMCHECK
 
-void	print_wrap(void *nbr)
+
+int main(int argc, char const *argv[])
 {
-	printf("%d ", *((int *)nbr));
-}
-
-int main()
-{
-	char *str = "1 4 6 3 2";
-	char **splited_str = ft_split(str, ' ');
-	t_list *list = lst_from_str_array(splited_str, array_len(splited_str, sizeof(char *)));
-	list = lst_map_ft_atoi_clear(&list);
-
-	printf("Median : %d\n", lst_find_median_int_free(sub_lst_int(list, 3)));
-
-	free_splited_str(splited_str);
-	ft_lstclear(&list, &free_wrap);
-
-	return 0; 
+	if (argc < 2)
+		return (-1);
+	int fd = open(argv[1], O_RDONLY);
+	char *line = get_next_line(fd);
+	while (line != NULL)
+	{
+		printf("%s", line);
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return 0;
 }

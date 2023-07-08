@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_number.c                                        :+:      :+:    :+:   */
+/*   lststr_atoimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/17 15:38:35 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 19:57:33 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/06 14:12:03 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/08 19:17:53 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static t_bool	is_not_digit_wrapper(void *c, void *none);
+static t_list	*create_nodes(void *str, void *none);
 
-t_bool	is_number(const char *str)
+t_list	*lststr_atoimap(t_list *lst)
 {
-	size_t	i;
-
-	if (str == NULL)
-		return (false);
-	i = 0;
-	if (str[0] == '-' && ft_isdigit(str[1]))
-		i++;
-	return (
-		!arr_chr((t_array){
-			(void *)(str + i), 
-			ft_strlen(str + i), 
-			sizeof(char)}, 
-			&is_not_digit_wrapper, NULL));
+	return (lst_map(lst, &create_nodes, NULL, &free_wrap));
 }
 
-static t_bool	is_not_digit_wrapper(void *c, void *none)
+static t_list	*create_nodes(void *str, void *none)
 {
+	int		*nbr;
+	t_list	*new_lst;
+
 	if (none)
 		none = NULL;
-	return (!ft_isdigit(*((char *)c)));
+	nbr = malloc(sizeof(int));
+	if (nbr == NULL)
+		return (NULL);
+	*nbr = atoi((const char *)str);
+	new_lst = ft_lstnew((void *)nbr);
+	if (new_lst == NULL)
+		free(nbr);
+	return (new_lst);
 }

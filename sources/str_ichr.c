@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_number.c                                        :+:      :+:    :+:   */
+/*   str_ichr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/17 15:38:35 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 19:57:33 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/08 19:43:23 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/08 19:49:07 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static t_bool	is_not_digit_wrapper(void *c, void *none);
+static t_bool test(void *, void *);
 
-t_bool	is_number(const char *str)
+t_uint64	str_ichr(char *str, char c, size_t len)
 {
-	size_t	i;
-
-	if (str == NULL)
-		return (false);
-	i = 0;
-	if (str[0] == '-' && ft_isdigit(str[1]))
-		i++;
 	return (
-		!arr_chr((t_array){
-			(void *)(str + i), 
-			ft_strlen(str + i), 
-			sizeof(char)}, 
-			&is_not_digit_wrapper, NULL));
+		arr_ichr((t_array){
+			.buff = str,
+			.el_size = sizeof(char),
+			.len = len
+		}, &test, &c)
+	);
 }
 
-static t_bool	is_not_digit_wrapper(void *c, void *none)
+static t_bool test(void *a, void *b)
 {
-	if (none)
-		none = NULL;
-	return (!ft_isdigit(*((char *)c)));
+	return (*((char *)a) == *((char *)b));
 }

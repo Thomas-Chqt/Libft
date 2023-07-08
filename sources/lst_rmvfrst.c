@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_internal.h                                   :+:      :+:    :+:   */
+/*   lst_rmvfrst.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/18 12:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 13:47:50 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/05 17:12:54 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/08 15:46:01 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_INTERNAL_H
-# define LIBFT_INTERNAL_H
+#include "libft_internal.h"
 
-# ifdef MEMCHECK
-#  include <memory_leak_detector.h>
-# endif // MEMCHECK
+t_list	*lst_rmvfrst(t_list **head)
+{
+	t_list	*temp;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
-# endif
-
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
-# include <math.h>
-
-# include "libft.h"
-
-#endif // LIBFT_INTERNAL_H
+	if (head == NULL || (*head) == NULL)
+		return (NULL);
+	temp = *head;
+	*head = (*head)->next;
+	temp->next = NULL;
+	return (temp);
+}

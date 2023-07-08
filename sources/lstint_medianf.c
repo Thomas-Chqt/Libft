@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_internal.h                                   :+:      :+:    :+:   */
+/*   lst_find_median_int_free.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/18 12:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 13:47:50 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/07 16:59:27 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/08 19:35:31 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_INTERNAL_H
-# define LIBFT_INTERNAL_H
+#include "libft_internal.h"
 
-# ifdef MEMCHECK
-#  include <memory_leak_detector.h>
-# endif // MEMCHECK
+int	lstint_medianf(t_list *lst)
+{
+	int	median;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
-# endif
-
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
-# include <math.h>
-
-# include "libft.h"
-
-#endif // LIBFT_INTERNAL_H
+	median = lstint_median(lst);
+	ft_lstclear(&lst, &free_wrap);
+	return (median);
+}

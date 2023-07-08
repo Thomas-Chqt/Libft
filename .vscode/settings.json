@@ -15,7 +15,10 @@
 		"__tuple": "c",
 		"array": "c",
 		"libft_internal.h": "c",
-		"memory_leak_detector.h": "c"
+		"memory_leak_detector.h": "c",
+		"string": "c",
+		"string_view": "c",
+		"vector": "c"
 	},
 	"autoSnippet.snippets": [
 		{

@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 11:58:16 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/08 19:59:06 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 # include <stddef.h>
 
-/* ************************************************************************** */
-/*                                                                            */
-/*                                 Mandatory                                  */
-/*                                                                            */
-/* ************************************************************************** */
+// . ************************************************************************ */
+// .                                                                          */
+// .                               Mandatory                                  */
+// .                                                                          */
+// . ************************************************************************ */
 
 // @brief Test if `c` is uppercase or lowercase
 // @param c character to test as an unsigned char
@@ -270,11 +270,11 @@ void			ft_putendl_fd(char *s, int fd);
 // @param fd The file descriptor on which to write.
 void			ft_putnbr_fd(int n, int fd);
 
-/* ************************************************************************** */
-/*                                                                            */
-/*                                   Bonus                                    */
-/*                                                                            */
-/* ************************************************************************** */
+// . ************************************************************************* */
+// .                                                                           */
+// .                                  Bonus                                    */
+// .                                                                           */
+// . ************************************************************************* */
 
 typedef struct s_list		t_list;
 
@@ -337,11 +337,11 @@ void			ft_lstiter(t_list *lst, void (*f)(void *));
 // t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 // 					void (*del)(void *));
 
-/* ************************************************************************** */
-/*                                                                            */
-/*                                Extensions                                  */
-/*                                                                            */
-/* ************************************************************************** */
+// . ************************************************************************ */
+// .                                                                          */
+// .                              Extensions                                  */
+// .                                                                          */
+// . ************************************************************************ */
 
 typedef unsigned char		t_uint8;
 typedef unsigned short		t_uint16;
@@ -351,30 +351,51 @@ typedef unsigned long		t_uint64;
 typedef enum e_bool			t_bool;
 typedef struct s_array		t_array;
 
-/* ************************************************************************** */
-/*                                    42                                      */
-/* ************************************************************************** */
+// . ************************************************************************ */
+// .                                  42                                      */
+// . ************************************************************************ */
 
 char			*get_next_line(int fd);
 
-/* ************************************************************************** */
-/*                                   Char                                     */
-/* ************************************************************************** */
+// . ************************************************************************ */
+// .                                Void *                                    */
+// . ************************************************************************ */
 
-// TODO
+void			*memcpy_zero(void *dst, void *src, size_t n);
+void			*mem_dup(void *ptr, size_t len);
+void			swap(void *a, void *b, size_t el_size);
 
-/* ************************************************************************** */
-/*                                  String                                    */
-/* ************************************************************************** */
+// . ************************************************************************ */
+// .                            Regular Types                                 */
+// . ************************************************************************ */
 
-// TODO
-
-/* ************************************************************************** */
-/*                                  Types                                     */
-/* ************************************************************************** */
-
+// *_________________________________ Bool ___________________________________*/
 
 enum e_bool { false = 0, true = 1 };
+
+// *_________________________________ Char ___________________________________*/
+
+// TODO
+
+// *__________________________________ Int ___________________________________*/
+
+void			swap_int(int *a, int *b);
+
+// . ************************************************************************ */
+// .                                String                                    */
+// . ************************************************************************ */
+
+int				str_cmp(const char *s1, const char *s2);
+t_bool			is_number(const char *str);
+void			free_splited_str(char **splited_str);
+void			free_str_ptr(void *str_ptr);
+t_uint64		str_ichr(char *str, char c, size_t len);
+
+// . ************************************************************************ */
+// .                                 Array                                    */
+// . ************************************************************************ */
+
+// *______________________________ Void Array ________________________________*/
 
 struct s_array
 {
@@ -383,118 +404,75 @@ struct s_array
 	size_t	el_size;
 };
 
-/* ************************************************************************** */
-/*                                  Listes                                    */
-/* ************************************************************************** */
+void			*el(t_array array, t_uint64 index);
+t_bool			arr_isvalid(t_array array);
 
-void			lst_iter_data(t_list *lst, void (*f)(void*, void*), void *data);
-void			lst_delete_if(t_list **head, void (*del)(void *),
-					t_bool (*condition)(void *, void *), void *data);
+void			*arr_best(t_array array, t_bool (*diff)(void *, void *));
+void			arr_foreach(t_array array, void (*func)(void *));
+void			arr_qcksort(t_array array, t_bool (*diff)(void *a, void *b));
+t_uint64		arr_ichr(t_array array, t_bool (*test)(void *, void *), void *data);
+void			*arr_chr(t_array array, t_bool (*test)(void *, void *), void *data);
+t_bool			arr_hasdup(t_array array, t_bool (*is_equal)(void *, void *));
 
-// @return the removed node as if it was created with ft_lstnew
-t_list			*lst_remove_last(t_list **head);
+t_array			arr_dup(t_array array, void *(*el_dup)(void *), void (*free_el)(void *));
+t_list			*arr_tolstmap(t_array array, void *(*el_dup)(void *), void (*del)(void *));
 
-// @return the removed node as if it was created with ft_lstnew
-t_list			*lst_remove_first(t_list **head);
+// *_______________________________ Int Array ________________________________*/
 
-t_list			*lst_from_array(t_array array, void *(*make_data)(void *),
-					void (*del));
+void			arrint_qcksort(int *array, size_t array_len);
+int				*arrint_chr(int *array, size_t array_len, t_bool (*test)(int, void *), void *data);
+t_bool			arrint_hasdup(int *array, size_t array_len);
+int				*arrint_dup(int *array, size_t array_len);
+int				arrint_median(int *array, size_t array_len);
 
-// ! In the liste the void ptr is not a poiter to a string but a ptr to a char
-t_list			*lst_from_str_array(char **array, size_t array_len);
+// *_____________________________ String Array _______________________________*/
 
-// @brief Iterates the list ’lst’ and applies the function
-// @brief ’f’ on the content of each node.  Creates a new
-// @brief list resulting of the successive applications of
-// @brief The function ’f’. 'f' can return multiple node.
-// @brief The ’del’ function is used to
-// @brief delete the content of a node if needed.
-// @param lst The address of a pointer to a node.
-// @param f The address of the function used to iterate on
-// list.
-// @param del The address of the function used to delete
-// content of a node if needed.
-// @return The new list. NULL if the allocation fails.
-t_list			*lst_map(t_list *lst, t_list *(*f)(void *, void *), void *data);
-t_list			*lst_map_ft_split(t_list *lst, char c);
-t_list			*lst_map_ft_split_clear(t_list **lst, char c);
-t_list			*lst_map_ft_atoi(t_list *lst);
-t_list			*lst_map_ft_atoi_clear(t_list **lst);
+size_t			arrstr_len(char **array);
+t_list			*arrstr_tolstmap(char **array, size_t array_len);
 
-t_bool			lst_contains(t_list *lst, void *searched,
-					t_bool (*is_equal)(void *, void *));
-t_bool			lst_has_dupl(t_list *lst, t_bool (*is_equal)(void *, void *));
-t_bool			lst_has_dupl_str(t_list *lst);
+// . ************************************************************************* */
+// .                                  Liste                                    */
+// . ************************************************************************* */
 
-void			*lst_to_array(t_list *lst, size_t el_size);
-int				*lst_to_int_array(t_list *lst);
+t_list			*lst_rmvfrst(t_list **head);
+t_list			*lst_rmvlast(t_list **head);
 
-// ! Need to free the result
-void			*lst_find_median(t_list *lst, size_t el_size,
-					t_bool (*diff)(void *a, void *b));
-int				lst_find_median_int(t_list *lst);
-// ! Do not nullify the original lst 
-int				lst_find_median_int_free(t_list *lst);
+// *______________________________ Void Liste ________________________________*/
 
-t_list			*sub_lst(t_list *lst, size_t new_len,
-					void *(*data_dup)(void *), void (*del)(void *));
-t_list			*sub_lst_int(t_list *lst, size_t new_len);
+t_list			*lst_chr(t_list *lst, t_bool (*test)(void *, void *), void *data);
+t_bool			lst_hasdup(t_list *lst, t_bool (*is_equal)(void *, void *));
+t_list			*lst_nodedup(t_list *node, void *(*data_dup)(void *));
+t_list			*lst_sublst(t_list *lst, size_t new_len, void *(*data_dup)(void *), void (*del)(void *));
+void			lst_delif(t_list **head, void (*del)(void *), t_bool (*condition)(void *, void *), void *data);
+t_bool			lst_issort(t_list *lst, t_bool (*diff)(void *a, void *b));
 
-t_bool			lst_is_sorted(t_list *lst, t_bool (*diff)(void *a, void *b));
-t_bool			lst_int_is_asc_sort(t_list *lst);
-t_bool			lst_int_is_dec_sort(t_list *lst);
+t_list			*lst_map(t_list *lst, t_list *(*new_node)(void *, void *), void *data, void (*del)(void *));
+t_array			lst_toarrmap(t_list *lst, size_t el_size, void *(*data_dup)(void *), void (*free_el)(void *));
 
-/* ************************************************************************** */
-/*                                  Arrays                                    */
-/* ************************************************************************** */
+// *_____________________________ String Liste _______________________________*/
 
-// @return the adress of the element for a given index
-void			*get_el(t_array array, size_t index);
 
-size_t			first_index(unsigned char value, void *buffer,
-					size_t buffer_len);
-void			*find_best(void *array, size_t array_len, size_t el_size,
-					t_bool (*diff)(void *, void *));
-void			foreach(void *array, size_t len, size_t el_size,
-					void (*func)(void *));
-size_t			array_len(void *array, size_t element_size);
+t_list			*lststr_splitmap(t_list *lst, char c);
+t_list			*lststr_atoimap(t_list *lst);
+t_bool			lststr_hasdup(t_list *lst);
 
-// @brief sort the array using QuickSort algo
-// @param array the array to sort
-// @param array_len the number of element in th array
-// @param el_size the size of one element
-// @param diff the function used to define the order of the elements.
-// for a array of int sorted from small to big, diff(1, 2) or diff(1, 1)
-// should return true
-void			quick_sort(t_array array, t_bool (*diff)(void *a, void *b));
-void			quick_sort_int(int *array, size_t array_len);
+// *______________________________ Int Liste _________________________________*/
 
-t_bool			contains(t_array array, void *searched,
-					t_bool (*is_equal)(void *, void *));
-t_bool			contains_int(int *array, size_t array_len, int searched);
+int				*lstint_toarrmap(t_list *lst);
+int				lstint_median(t_list *lst);
+t_bool			lstint_isac(t_list *lst);
+t_bool			lstint_isdec(t_list *lst);
+t_list			*lstint_sublst(t_list *lst, size_t new_len);
 
-t_bool			has_dupl(t_array array, t_bool (*is_equal)(void *, void *));
-t_bool			has_dupl_int(int *array, size_t array_len);
-t_bool			has_dupl_str(char **array, size_t array_len);
+// *___________________________ Clear Versions ________________________________*/
 
-t_array			array_dup(t_array array);
-int				*array_int_dup(int *array, t_uint64 array_len);
+t_list			*lststr_splitmapf(t_list *lst, char c);
+t_list			*lststr_atoimapf(t_list *lst);
+int				lstint_medianf(t_list *lst);
 
-// ! Need to free the result
-void			*find_median(t_array array, t_bool (*diff)(void *a, void *b));
-int				find_median_int(int *array, size_t array_len);
-
-/* ************************************************************************** */
-/*                                  Strings                                   */
-/* ************************************************************************** */
-
-void			free_splited_str(char **splited_str);
-t_bool			is_number(const char *str);
-int				str_cmp(const char *s1, const char *s2);
-
-/* ************************************************************************** */
-/*                                  Colors                                    */
-/* ************************************************************************** */
+// . ************************************************************************ */
+// .                                Colors                                    */
+// . ************************************************************************ */
 
 # define RED	0x00FF0000
 # define GREEN	0x0000FF00
@@ -517,9 +495,9 @@ t_color_comp	get_opacity_comp(t_color color);
 t_color			get_gradian(t_color src, t_color dst,
 					t_uint32 max, t_uint32 step);
 
-/* ************************************************************************** */
-/*                                  Maths                                     */
-/* ************************************************************************** */
+// . ************************************************************************ */
+// .                                Maths                                     */
+// . ************************************************************************ */
 
 typedef struct s_vect_3d	t_vect_3d;
 typedef struct s_mat4x4		t_mat4x4;
@@ -557,11 +535,16 @@ t_mat4x4		rotation_matrix(t_vect_3d rotation);
 t_mat4x4		translate_matrix(t_vect_3d translation);
 t_mat4x4		scale_matrix(t_vect_3d scale);
 
-/* ************************************************************************** */
-/*                                  Others                                    */
-/* ************************************************************************** */
+// . ************************************************************************ */
+// .                                Wrappers                                  */
+// . ************************************************************************ */
 
-void			*memcpy_zero(void *dst, void *src, size_t n);
+void			free_wrap(void *ptr);
+
+// . ************************************************************************ */
+// .                                 Other                                    */
+// . ************************************************************************ */
+
 float			ft_atof(const char *str);
 double			atodouble(const char *str);
 void			free_null(void **ptr);
@@ -569,10 +552,6 @@ t_bool			fbigest(void *a, void *b);
 t_bool			fsmallest(void *a, void *b);
 int				atoi_base(const char *str, const char *base);
 unsigned int	atoi_hex(const char *str);
-void			free_wrap(void *ptr);
-void			swap(void *a, void *b, size_t el_size);
-void			swap_int(int *a, int *b);
 long			atoi_long(const char *str);
-void			*mem_dup(void *ptr, size_t len);
 
 #endif

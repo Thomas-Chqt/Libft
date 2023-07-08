@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_internal.h                                   :+:      :+:    :+:   */
+/*   quick_sort_int.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/18 12:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 13:47:50 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/05 11:51:11 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/08 14:09:05 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_INTERNAL_H
-# define LIBFT_INTERNAL_H
+#include "libft_internal.h"
 
-# ifdef MEMCHECK
-#  include <memory_leak_detector.h>
-# endif // MEMCHECK
+static t_bool	diff_func(void *a, void *b);
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
-# endif
+void	arrint_qcksort(int *array, size_t array_len)
+{
+	arr_qcksort((t_array){
+		.buff = (void *)array,
+		.len = array_len,
+		.el_size = sizeof(int)
+	}, &diff_func);
+}
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
-# include <math.h>
+static t_bool	diff_func(void *a, void *b)
+{
+	int	ia;
+	int	ib;
 
-# include "libft.h"
-
-#endif // LIBFT_INTERNAL_H
+	ia = *((int *)a);
+	ib = *((int *)b);
+	return (ia <= ib);
+}

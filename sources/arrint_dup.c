@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_number.c                                        :+:      :+:    :+:   */
+/*   arrint_dup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/17 15:38:35 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 19:57:33 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/07 13:40:41 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/08 17:25:07 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static t_bool	is_not_digit_wrapper(void *c, void *none);
+static void	*el_dup(void *el);
 
-t_bool	is_number(const char *str)
+int	*arrint_dup(int *array, size_t array_len)
 {
-	size_t	i;
+	t_array	duped_array;
 
-	if (str == NULL)
-		return (false);
-	i = 0;
-	if (str[0] == '-' && ft_isdigit(str[1]))
-		i++;
-	return (
-		!arr_chr((t_array){
-			(void *)(str + i), 
-			ft_strlen(str + i), 
-			sizeof(char)}, 
-			&is_not_digit_wrapper, NULL));
+	duped_array = arr_dup((t_array){(void *)array, array_len, sizeof(int)}, &el_dup, NULL);
+	return((int *)duped_array.buff);
 }
 
-static t_bool	is_not_digit_wrapper(void *c, void *none)
+static void	*el_dup(void *el)
 {
-	if (none)
-		none = NULL;
-	return (!ft_isdigit(*((char *)c)));
+	return(mem_dup(el, sizeof(int)));
 }

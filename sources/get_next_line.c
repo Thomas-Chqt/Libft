@@ -6,24 +6,23 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 21:48:56 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/18 12:22:37 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/08 19:54:59 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static void	reset_buffer(unsigned char *buffer, size_t len);
+static void	reset_buffer(char *buffer, size_t len);
 static char	*free_str(char *str);
 static char	*append_buff(char *str, void const *buff, size_t buff_len);
 
 char	*get_next_line(int fd)
 {
-	static unsigned char	buffer[BUFFER_SIZE];
-	char					*line;
-	ssize_t					read_len;
+	static char	buffer[BUFFER_SIZE];
+	char		*line;
+	ssize_t		read_len;
 
-	line = append_buff(NULL, buffer,
-			first_index((unsigned char) '\n', buffer, BUFFER_SIZE) + 1);
+	line = append_buff(NULL, buffer, str_ichr(buffer, '\n', BUFFER_SIZE) + 1);
 	if (line == NULL)
 		return (NULL);
 	reset_buffer(buffer, BUFFER_SIZE);
@@ -32,8 +31,7 @@ char	*get_next_line(int fd)
 		read_len = read(fd, buffer, BUFFER_SIZE);
 		if (read_len < 0)
 			return (free_str(line));
-		line = append_buff(line, buffer,
-				first_index((unsigned char) '\n', buffer, read_len) + 1);
+		line = append_buff(line, buffer, str_ichr(buffer, '\n', read_len) + 1);
 		if (line == NULL || line[0] == '\0')
 			return (free_str(line));
 		reset_buffer(buffer, read_len);
@@ -43,7 +41,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-static void	reset_buffer(unsigned char *buffer, size_t len)
+static void	reset_buffer(char *buffer, size_t len)
 {
 	size_t	i;
 	size_t	n_index;
@@ -51,7 +49,7 @@ static void	reset_buffer(unsigned char *buffer, size_t len)
 	if (len == 0)
 		return ;
 	i = 0;
-	n_index = first_index((unsigned char) '\n', buffer, len);
+	n_index = str_ichr(buffer, '\n', len);
 	while (i <= n_index)
 		buffer[i++] = 0;
 	memcpy_zero(buffer, buffer + n_index + 1, len - (n_index + 1));

@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_number.c                                        :+:      :+:    :+:   */
+/*   lst_hasdup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/17 15:38:35 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 19:57:33 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/06 16:03:59 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/08 16:07:20 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static t_bool	is_not_digit_wrapper(void *c, void *none);
-
-t_bool	is_number(const char *str)
+t_bool	lst_hasdup(t_list *lst, t_bool (*is_equal)(void *, void *))
 {
-	size_t	i;
+	t_list	*watched;
 
-	if (str == NULL)
+	if (lst == NULL || lst->next == NULL)
 		return (false);
-	i = 0;
-	if (str[0] == '-' && ft_isdigit(str[1]))
-		i++;
-	return (
-		!arr_chr((t_array){
-			(void *)(str + i), 
-			ft_strlen(str + i), 
-			sizeof(char)}, 
-			&is_not_digit_wrapper, NULL));
-}
-
-static t_bool	is_not_digit_wrapper(void *c, void *none)
-{
-	if (none)
-		none = NULL;
-	return (!ft_isdigit(*((char *)c)));
+	watched = lst;
+	while (watched != NULL)
+	{
+		if (lst_chr(watched->next, is_equal, watched->data) != NULL)
+			return (true);
+		watched = watched->next;
+	}
+	return (false);
 }
