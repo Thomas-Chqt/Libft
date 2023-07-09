@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:50:53 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 18:12:37 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/09 14:15:24 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,20 @@ t_list	*arrstr_tolstmap(char **array, size_t array_len)
 
 static void *el_dup(void *el)
 {
-	char	**strptr;
-	char	**duped_strptr;
+	char	*str;
+	char	*duped_str;
+	char	**duped_str_ptr;
 
-	strptr = (char **)el;
-	duped_strptr = malloc(sizeof(char *));
-	if (duped_strptr == NULL)
+	str = *((char **)el);
+	duped_str = ft_strdup(str);
+	if (duped_str == NULL)
 		return (NULL);
-	*duped_strptr = ft_strdup(*strptr);
-	if (*duped_strptr == NULL)
-	{
-		free(duped_strptr);
-		return (NULL);
-	}
-	return (duped_strptr);
+	duped_str_ptr = malloc(sizeof(char *));
+	if (duped_str_ptr == NULL)
+		free(duped_str);
+	else
+		*duped_str_ptr = duped_str;
+	return (duped_str_ptr);
 }
 
 static void del(void *data)

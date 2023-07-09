@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_map_ft_atoi_clear.c                            :+:      :+:    :+:   */
+/*   lststr_atoimapf.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 16:28:48 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 19:38:01 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/09 14:18:22 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ t_list	*lststr_atoimapf(t_list *lst)
 {
 	t_list	*new_list;
 
-	if (lst == NULL)
-		return (NULL);
 	new_list = lststr_atoimap(lst);
-	ft_lstclear(&lst, &free_wrap);
+	ft_lstclear(&lst, &free_str_ptr);
 	return (new_list);
 }

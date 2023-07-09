@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:49:22 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 19:07:39 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/09 16:00:26 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_list	*lst_sublst(t_list *lst, size_t new_len, void *(*data_dup)(void *), void 
 
 	if (lst == NULL || data_dup == NULL || new_len == 0)
 		return (NULL);
-	new_lst = lst_nodedup(lst->data, data_dup);
+	new_lst = lst_nodedup(lst, data_dup);
 	if (new_lst == NULL)
 		return (NULL);
 	lst_current = lst->next;
@@ -31,7 +31,7 @@ t_list	*lst_sublst(t_list *lst, size_t new_len, void *(*data_dup)(void *), void 
 	i = 1;
 	while (lst_current != NULL && i < new_len)
 	{
-		new_lst_current->next = lst_nodedup(lst->data, data_dup);
+		new_lst_current->next = lst_nodedup(lst_current, data_dup);
 		if (new_lst_current->next == NULL)
 			return (ft_lstclear_wrap(&new_lst, del));
 		lst_current = lst_current->next;

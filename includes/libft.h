@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 19:59:06 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/09 17:15:30 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -439,6 +439,7 @@ t_list			*lst_rmvlast(t_list **head);
 
 // *______________________________ Void Liste ________________________________*/
 
+void			lst_iterdata(t_list *lst, void (*func)(void *, void *), void *data);
 t_list			*lst_chr(t_list *lst, t_bool (*test)(void *, void *), void *data);
 t_bool			lst_hasdup(t_list *lst, t_bool (*is_equal)(void *, void *));
 t_list			*lst_nodedup(t_list *node, void *(*data_dup)(void *));
@@ -455,6 +456,8 @@ t_array			lst_toarrmap(t_list *lst, size_t el_size, void *(*data_dup)(void *), v
 t_list			*lststr_splitmap(t_list *lst, char c);
 t_list			*lststr_atoimap(t_list *lst);
 t_bool			lststr_hasdup(t_list *lst);
+void			lststr_print(t_list	*lst, char *separator, t_bool endl);
+void			lststr_delifempty(t_list **head);
 
 // *______________________________ Int Liste _________________________________*/
 
@@ -463,12 +466,16 @@ int				lstint_median(t_list *lst);
 t_bool			lstint_isac(t_list *lst);
 t_bool			lstint_isdec(t_list *lst);
 t_list			*lstint_sublst(t_list *lst, size_t new_len);
+void			lstint_print(t_list	*lst, char *separator, t_bool endl);
+t_list			*lstint_chr(t_list *lst, t_bool (*test)(int, void *), void *data);
 
 // *___________________________ Clear Versions ________________________________*/
 
 t_list			*lststr_splitmapf(t_list *lst, char c);
 t_list			*lststr_atoimapf(t_list *lst);
 int				lstint_medianf(t_list *lst);
+t_bool			lstint_isacf(t_list *lst);
+t_bool			lstint_isdecf(t_list *lst);
 
 // . ************************************************************************ */
 // .                                Colors                                    */

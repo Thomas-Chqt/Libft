@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 12:37:18 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 19:15:13 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/09 14:56:14 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ t_list	*lst_map(t_list *lst, t_list *(*new_node)(void *, void *), void *data, vo
 	new_lst_current = new_lst;
 	while (lst_current != NULL)
 	{
-		new_lst_current->next = new_node(lst->data, data);
+		while (new_lst_current->next != NULL)
+			new_lst_current = new_lst_current->next;
+		new_lst_current->next = new_node(lst_current->data, data);
 		if (new_lst_current->next == NULL)
 			return (ft_lstclear_wrap(&new_lst, del));
 		lst_current = lst_current->next;
-		while (new_lst_current->next != NULL)
-			new_lst_current = new_lst_current->next;
 	}
 	return (new_lst);
 }

@@ -6,7 +6,7 @@
 #    By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 16:24:59 by tchoquet          #+#    #+#              #
-#    Updated: 2023/07/07 20:36:38 by tchoquet         ###   ########.fr        #
+#    Updated: 2023/07/09 16:02:22 by tchoquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ RELEASE_OBJ = ${patsubst ${SRCS_DIR}%, ${BUILD_DIR}%, ${RELEASE_SRC:.c=.o}}
 DEBUG_OBJ	= ${RELEASE_OBJ:.o=_debug.o} ${patsubst ${ROOT}%, ${BUILD_DIR}%, ${DEBUG_SRC:.c=.o}}
 
 CC						= gcc
-CFLAGS					= -Wall -Wextra -Werror -g
+CFLAGS					= -Wall -Wextra -Werror
 alldebug: CFLAGS		= -g -D MEMCHECK
 alldebug: EXTERNAL_LIBS	= -l memory_leak_detector
 

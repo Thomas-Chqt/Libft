@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   lstint_isacf.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/15 21:08:11 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/09 14:30:32 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/09 15:29:15 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/09 15:31:53 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-t_list	*ft_lstnew(void *content)
+t_bool	lstint_isacf(t_list *lst)
 {
-	t_list	*new_lst;
+	t_bool	res;
 
-	new_lst = malloc(sizeof(t_list));
-	if (new_lst == NULL)
-		return (NULL);
-	new_lst->data = content;
-	new_lst->next = NULL;
-	return (new_lst);
+	res = lstint_isac(lst);
+	ft_lstclear(&lst, free_wrap);
+	return (res);
 }

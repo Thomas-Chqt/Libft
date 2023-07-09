@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:57:50 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 19:16:06 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/09 12:31:29 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_list	*create_nodes(void *str, void *c)
 	char	**splited_str;
 	t_list	*lst;
 
-	splited_str = ft_split((char *)str, (*(char *)c));
+	splited_str = ft_split((*(char **)str), (*(char *)c));
 	if (splited_str == NULL)
 		return (NULL);
 	lst = arrstr_tolstmap(splited_str, arrstr_len(splited_str));
