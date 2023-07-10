@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:09:32 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 20:00:34 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:56:35 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 static t_list	*ft_lstclear_wrap(t_list **lst, void (*del)(void *));
 static t_list	*lstnew_wrap(void *data, void (*del)(void *));
 
-t_list	*arr_tolstmap(t_array array, void *(*el_dup)(void *), void (*del)(void *))
+t_list	*arr_tolstmap(t_array array, void *(*el_dup)(void *),
+			void (*del)(void *))
 {
 	t_list	*new_lst;
 	t_list	*new_lst_wtch;

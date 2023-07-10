@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 22:10:07 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 19:53:30 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:57:51 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ static long	atoi_base_long(const char *str, const char *base)
 		i++;
 	while (str[i] != 0 && ft_strchr(base, ft_toupper(str[i])) != NULL)
 	{
-		nbr = (nbr * ft_strlen(base)) + str_ichr((void *)base, ft_toupper(str[i]), ft_strlen(base));
+		nbr = (nbr * ft_strlen(base)) + str_ichr((void *)base,
+				ft_toupper(str[i]), ft_strlen(base));
 		i++;
 	}
 	return (signe * nbr);

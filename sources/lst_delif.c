@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 13:42:49 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 16:35:20 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:58:44 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ static void	lst_delete_if_mid(t_list *current, void (*del)(void *))
 	free(temp);
 }
 
-void	lst_delif(t_list **head, void (*del)(void *), t_bool (*condition)(void *, void *), void *data)
+void	lst_delif(t_list **head, void (*del)(void *),
+			t_bool (*condition)(void *, void *), void *data)
 {
 	t_list	*current;
 

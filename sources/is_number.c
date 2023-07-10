@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 15:38:35 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 19:57:33 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:58:27 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ t_bool	is_number(const char *str)
 		i++;
 	return (
 		!arr_chr((t_array){
-			(void *)(str + i), 
-			ft_strlen(str + i), 
-			sizeof(char)}, 
+			(void *)(str + i),
+		ft_strlen(str + i),
+		sizeof(char)},
 			&is_not_digit_wrapper, NULL));
 }
 

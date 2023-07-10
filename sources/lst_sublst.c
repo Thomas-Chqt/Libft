@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:49:22 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/09 16:00:26 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:59:15 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static t_list	*ft_lstclear_wrap(t_list **lst, void (*del)(void *));
 
-t_list	*lst_sublst(t_list *lst, size_t new_len, void *(*data_dup)(void *), void (*del)(void *))
+t_list	*lst_sublst(t_list *lst, size_t new_len, void *(*data_dup)(void *),
+			void (*del)(void *))
 {
 	t_list		*new_lst;
 	t_list		*lst_current;
@@ -46,4 +47,3 @@ static t_list	*ft_lstclear_wrap(t_list **lst, void (*del)(void *))
 	ft_lstclear(lst, del);
 	return (NULL);
 }
-

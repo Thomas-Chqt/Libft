@@ -14,7 +14,7 @@
 			},
 			"problemMatcher": "$gcc",
 			"presentation": {
-				"reveal": "silent",
+				"reveal": "silent"
 			}
 		},
 		{
@@ -28,7 +28,7 @@
 			},
 			"problemMatcher": "$gcc",
 			"presentation": {
-				"reveal": "silent",
+				"reveal": "silent"
 			}
 		},
 		{
@@ -76,6 +76,7 @@
 			},
 			"presentation": {
 				"reveal": "silent",
+				"close": true
 			}
 		}
 	]

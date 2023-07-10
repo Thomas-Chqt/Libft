@@ -6,13 +6,13 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:43:23 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 19:49:07 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:59:45 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static t_bool test(void *, void *);
+static t_bool	test(void *a, void *b);
 
 t_uint64	str_ichr(char *str, char c, size_t len)
 {
@@ -25,7 +25,7 @@ t_uint64	str_ichr(char *str, char c, size_t len)
 	);
 }
 
-static t_bool test(void *a, void *b)
+static t_bool	test(void *a, void *b)
 {
 	return (*((char *)a) == *((char *)b));
 }

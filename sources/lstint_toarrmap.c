@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:19:00 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 20:02:38 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:59:25 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ int	*lstint_toarrmap(t_list *lst)
 
 static void	*data_dup(void *data)
 {
-	return(mem_dup(data, sizeof(int)));
+	return (mem_dup(data, sizeof(int)));
 }

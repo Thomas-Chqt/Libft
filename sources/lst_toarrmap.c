@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:06:53 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 19:58:21 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:59:21 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static t_array	ret_error(t_array array, t_uint64 len, void (*free_el)(void *));
 
-t_array	lst_toarrmap(t_list *lst, size_t el_size, void *(*data_dup)(void *), void (*free_el)(void *))
+t_array	lst_toarrmap(t_list *lst, size_t el_size, void *(*data_dup)(void *),
+			void (*free_el)(void *))
 {
 	t_array	array;
 	void	*duped_el;

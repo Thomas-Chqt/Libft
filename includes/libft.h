@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/09 17:15:30 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:55:15 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,11 +270,11 @@ void			ft_putendl_fd(char *s, int fd);
 // @param fd The file descriptor on which to write.
 void			ft_putnbr_fd(int n, int fd);
 
-// . ************************************************************************* */
-// .                                                                           */
-// .                                  Bonus                                    */
-// .                                                                           */
-// . ************************************************************************* */
+// . ************************************************************************ */
+// .                                                                          */
+// .                                 Bonus                                    */
+// .                                                                          */
+// . ************************************************************************ */
 
 typedef struct s_list		t_list;
 
@@ -410,17 +410,22 @@ t_bool			arr_isvalid(t_array array);
 void			*arr_best(t_array array, t_bool (*diff)(void *, void *));
 void			arr_foreach(t_array array, void (*func)(void *));
 void			arr_qcksort(t_array array, t_bool (*diff)(void *a, void *b));
-t_uint64		arr_ichr(t_array array, t_bool (*test)(void *, void *), void *data);
-void			*arr_chr(t_array array, t_bool (*test)(void *, void *), void *data);
+t_uint64		arr_ichr(t_array array, t_bool (*test)(void *, void *),
+					void *data);
+void			*arr_chr(t_array array, t_bool (*test)(void *, void *),
+					void *data);
 t_bool			arr_hasdup(t_array array, t_bool (*is_equal)(void *, void *));
 
-t_array			arr_dup(t_array array, void *(*el_dup)(void *), void (*free_el)(void *));
-t_list			*arr_tolstmap(t_array array, void *(*el_dup)(void *), void (*del)(void *));
+t_array			arr_dup(t_array array, void *(*el_dup)(void *),
+					void (*free_el)(void *));
+t_list			*arr_tolstmap(t_array array, void *(*el_dup)(void *),
+					void (*del)(void *));
 
 // *_______________________________ Int Array ________________________________*/
 
 void			arrint_qcksort(int *array, size_t array_len);
-int				*arrint_chr(int *array, size_t array_len, t_bool (*test)(int, void *), void *data);
+int				*arrint_chr(int *array, size_t array_len,
+					t_bool (*test)(int, void *), void *data);
 t_bool			arrint_hasdup(int *array, size_t array_len);
 int				*arrint_dup(int *array, size_t array_len);
 int				arrint_median(int *array, size_t array_len);
@@ -430,28 +435,33 @@ int				arrint_median(int *array, size_t array_len);
 size_t			arrstr_len(char **array);
 t_list			*arrstr_tolstmap(char **array, size_t array_len);
 
-// . ************************************************************************* */
-// .                                  Liste                                    */
-// . ************************************************************************* */
+// . ************************************************************************ */
+// .                                 Liste                                    */
+// . ************************************************************************ */
 
 t_list			*lst_rmvfrst(t_list **head);
 t_list			*lst_rmvlast(t_list **head);
 
 // *______________________________ Void Liste ________________________________*/
 
-void			lst_iterdata(t_list *lst, void (*func)(void *, void *), void *data);
-t_list			*lst_chr(t_list *lst, t_bool (*test)(void *, void *), void *data);
+void			lst_iterdata(t_list *lst, void (*func)(void *, void *),
+					void *data);
+t_list			*lst_chr(t_list *lst, t_bool (*test)(void *, void *),
+					void *data);
 t_bool			lst_hasdup(t_list *lst, t_bool (*is_equal)(void *, void *));
 t_list			*lst_nodedup(t_list *node, void *(*data_dup)(void *));
-t_list			*lst_sublst(t_list *lst, size_t new_len, void *(*data_dup)(void *), void (*del)(void *));
-void			lst_delif(t_list **head, void (*del)(void *), t_bool (*condition)(void *, void *), void *data);
+t_list			*lst_sublst(t_list *lst, size_t new_len,
+					void *(*data_dup)(void *), void (*del)(void *));
+void			lst_delif(t_list **head, void (*del)(void *),
+					t_bool (*condition)(void *, void *), void *data);
 t_bool			lst_issort(t_list *lst, t_bool (*diff)(void *a, void *b));
 
-t_list			*lst_map(t_list *lst, t_list *(*new_node)(void *, void *), void *data, void (*del)(void *));
-t_array			lst_toarrmap(t_list *lst, size_t el_size, void *(*data_dup)(void *), void (*free_el)(void *));
+t_list			*lst_map(t_list *lst, t_list *(*new_node)(void *, void *),
+					void *data, void (*del)(void *));
+t_array			lst_toarrmap(t_list *lst, size_t el_size,
+					void *(*data_dup)(void *), void (*free_el)(void *));
 
 // *_____________________________ String Liste _______________________________*/
-
 
 t_list			*lststr_splitmap(t_list *lst, char c);
 t_list			*lststr_atoimap(t_list *lst);
@@ -467,9 +477,10 @@ t_bool			lstint_isac(t_list *lst);
 t_bool			lstint_isdec(t_list *lst);
 t_list			*lstint_sublst(t_list *lst, size_t new_len);
 void			lstint_print(t_list	*lst, char *separator, t_bool endl);
-t_list			*lstint_chr(t_list *lst, t_bool (*test)(int, void *), void *data);
+t_list			*lstint_chr(t_list *lst, t_bool (*test)(int, void *),
+					void *data);
 
-// *___________________________ Clear Versions ________________________________*/
+// *___________________________ Clear Versions _______________________________*/
 
 t_list			*lststr_splitmapf(t_list *lst, char c);
 t_list			*lststr_atoimapf(t_list *lst);
@@ -560,5 +571,7 @@ t_bool			fsmallest(void *a, void *b);
 int				atoi_base(const char *str, const char *base);
 unsigned int	atoi_hex(const char *str);
 long			atoi_long(const char *str);
+void			*xmalloc(size_t	size, void (*clean_func)(void *), void *data);
+void			xmalloc_init(void (*clean_func)(void *), void *data);
 
 #endif

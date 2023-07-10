@@ -6,14 +6,14 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:50:53 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/09 14:15:24 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:57:23 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
-static void *el_dup(void *el);
-static void del(void *data);
+static void	*el_dup(void *el);
+static void	del(void *data);
 
 t_list	*arrstr_tolstmap(char **array, size_t array_len)
 {
@@ -22,11 +22,11 @@ t_list	*arrstr_tolstmap(char **array, size_t array_len)
 			.buff = array,
 			.len = array_len,
 			.el_size = sizeof(char *)
-		}, &el_dup, &del )
+		}, &el_dup, &del)
 	);
 }
 
-static void *el_dup(void *el)
+static void	*el_dup(void *el)
 {
 	char	*str;
 	char	*duped_str;
@@ -44,7 +44,7 @@ static void *el_dup(void *el)
 	return (duped_str_ptr);
 }
 
-static void del(void *data)
+static void	del(void *data)
 {
 	char	**strptr;
 
