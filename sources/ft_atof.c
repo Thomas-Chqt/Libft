@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 21:04:02 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/25 15:57:49 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/10 19:21:27 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ float	ft_atof(const char *str)
 	float			virgule;
 	unsigned short	v_len;
 
-	entier = (float)atoi(str);
-	virgule = (float)atoi(ft_strchr(str, '.') + 1);
+	entier = (float)ft_atoi(str);
+	virgule = (float)ft_atoi(ft_strchr(str, '.') + 1);
 	v_len = intlen((int)virgule);
 	while (v_len > 0)
 	{

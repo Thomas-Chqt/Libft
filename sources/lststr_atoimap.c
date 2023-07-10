@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 14:12:03 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/09 14:31:15 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/10 19:21:27 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_list	*create_nodes(void *str, void *none)
 	nbr = malloc(sizeof(int));
 	if (nbr == NULL)
 		return (NULL);
-	*nbr = atoi(*((const char **)str));
+	*nbr = ft_atoi(*((const char **)str));
 	new_lst = ft_lstnew((void *)nbr);
 	if (new_lst == NULL)
 		free(nbr);

@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 01:25:57 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/04 17:32:53 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/10 19:21:27 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ double	atodouble(const char *str)
 	double			virgule;
 	unsigned short	v_len;
 
-	entier = (double)atoi(str);
-	virgule = (double)atoi(ft_strchr(str, '.') + 1);
+	entier = (double)ft_atoi(str);
+	virgule = (double)ft_atoi(ft_strchr(str, '.') + 1);
 	v_len = intlen((int)virgule);
 	while (v_len > 0)
 	{
