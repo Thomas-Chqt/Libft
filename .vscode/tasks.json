@@ -8,7 +8,9 @@
 			"type": "shell",
 			"group": "build",
 			"command": "make",
-			"args": ["debug"],
+			"args": [
+				"debug"
+			],
 			"options": {
 				"cwd": "${workspaceFolder}"
 			},
@@ -22,7 +24,9 @@
 			"type": "shell",
 			"group": "build",
 			"command": "make",
-			"args": ["debugexe"],
+			"args": [
+				"debugexe"
+			],
 			"options": {
 				"cwd": "${workspaceFolder}"
 			},
@@ -36,7 +40,9 @@
 			"type": "shell",
 			"group": "build",
 			"command": "make",
-			"args": ["all"],
+			"args": [
+				"all"
+			],
 			"options": {
 				"cwd": "${workspaceFolder}"
 			},
@@ -49,7 +55,12 @@
 			"label": "Clean",
 			"type": "shell",
 			"command": "make",
-			"args": ["clean", "cleandebug", "cleandebugexe", "cleanbuild"],
+			"args": [
+				"clean",
+				"cleandebug",
+				"cleandebugexe",
+				"cleanbuild"
+			],
 			"presentation": {
 				"close": true
 			}
@@ -58,22 +69,32 @@
 			"label": "FClean",
 			"type": "shell",
 			"command": "make",
-			"args": ["fclean", "fcleandebug", "fcleandebugexe", "cleanbuild"],
+			"args": [
+				"fclean",
+				"fcleandebug",
+				"fcleandebugexe",
+				"cleanbuild"
+			],
 			"presentation": {
 				"close": true
-			}
+			},
 		},
 		{
 			"label": "Norminette",
 			"type": "shell",
 			"command": "make",
-			"args": ["norm"],
+			"args": [
+				"norm"
+			],
 			"options": {
 				"cwd": "${workspaceFolder}"
 			},
 			"problemMatcher": {
 				"owner": "Norminette",
-				"fileLocation": ["autoDetect","${workspaceFolder}"],
+				"fileLocation": [
+					"autoDetect",
+					"${workspaceFolder}"
+				],
 				"pattern": [
 					{
 						"regexp": "^(.*):\\s+(.*)$",
