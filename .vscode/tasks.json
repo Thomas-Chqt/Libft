@@ -18,6 +18,20 @@
 			}
 		},
 		{
+			"label": "Build Debug Executable",
+			"type": "shell",
+			"group": "build",
+			"command": "make",
+			"args": ["debugexe"],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": "$gcc",
+			"presentation": {
+				"reveal": "silent"
+			}
+		},
+		{
 			"label": "Build Release",
 			"type": "shell",
 			"group": "build",
@@ -34,7 +48,8 @@
 		{
 			"label": "Clean",
 			"type": "shell",
-			"command": "make clean cleandebug && rm -rf build",
+			"command": "make",
+			"args": ["clean", "cleandebug", "cleandebugexe", "cleanbuild"],
 			"presentation": {
 				"close": true
 			}
@@ -42,7 +57,8 @@
 		{
 			"label": "FClean",
 			"type": "shell",
-			"command": "make fclean fcleandebug && rm -rf build",
+			"command": "make",
+			"args": ["fclean", "fcleandebug", "fcleandebugexe", "cleanbuild"],
 			"presentation": {
 				"close": true
 			}

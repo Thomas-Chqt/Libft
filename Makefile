@@ -6,88 +6,124 @@
 #    By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 16:24:59 by tchoquet          #+#    #+#              #
-#    Updated: 2023/07/09 16:02:22 by tchoquet         ###   ########.fr        #
+#    Updated: 2023/07/10 15:08:30 by tchoquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ROOT			= .
 SRCS_DIR		= ${ROOT}/sources
 INCLUDES_DIR 	= ${ROOT}/includes
-BUILD_DIR		= ${ROOT}/build
+BUILD_DIR		= ${ROOT}/.build
 
 EXPORT_INCLUDE_DIR	= ${MY_C_INCLUDE_PATH}
 EXPORT_LIB_DIR		= ${MY_LIBRARY_PATH}
 
-RELEASE_SRC	= ${wildcard ${SRCS_DIR}/*.c}
-DEBUG_SRC 	= ${ROOT}/main_for_test.c
+SRC		= ${wildcard ${SRCS_DIR}/*.c}
+EXE_SRC	= ${ROOT}/main_for_test.c
 
-RELEASE_OBJ = ${patsubst ${SRCS_DIR}%, ${BUILD_DIR}%, ${RELEASE_SRC:.c=.o}}
-DEBUG_OBJ	= ${RELEASE_OBJ:.o=_debug.o} ${patsubst ${ROOT}%, ${BUILD_DIR}%, ${DEBUG_SRC:.c=.o}}
+RELEASE_OBJ = ${patsubst ${SRCS_DIR}%, ${BUILD_DIR}%, ${SRC:.c=.o}}
+DEBUG_OBJ	= ${RELEASE_OBJ:.o=_debug.o}
+EXE_OBJ		= ${patsubst ${ROOT}%, ${BUILD_DIR}%, ${EXE_SRC:.c=.o}}
 
 CC						= gcc
 CFLAGS					= -Wall -Wextra -Werror
-alldebug: CFLAGS		= -g -D MEMCHECK
-alldebug: EXTERNAL_LIBS	= -l memory_leak_detector
+debug debugexe: CFLAGS	= -g -D MEMCHECK
+EXTERNAL_LIBS			= -l memory_leak_detector
 
 NAME			= ${EXPORT_LIB_DIR}/libft.a
 EXPORT_INCLUDE	= ${EXPORT_INCLUDE_DIR}/libft.h
-
-DEBUG_EXE 		= ${ROOT}/Debug.out
+DEBUG_LIB		= ${EXPORT_LIB_DIR}/libft_debug.a
+DEBUG_EXE		= ${ROOT}/Debug.out
 
 vpath %.c ${ROOT} ${SRCS_DIR}
 
-.PHONY: all clean fclean re debug alldebug cleandebug fcleandebug redebug norm
+.PHONY: all clean fclean re debug cleandebug fcleandebug redebug debugexe fcleandebugexe fcleandebugexe redebugexe norm cleanbuild
 
 
 all: ${NAME} ${EXPORT_INCLUDE}
 
-
-
 ${NAME}: ${RELEASE_OBJ} | ${EXPORT_LIB_DIR}
-	ar rc "$@" $^
-
-${EXPORT_INCLUDE_DIR}/%.h: ${INCLUDES_DIR}/%.h | ${EXPORT_INCLUDE_DIR}
-	cp $< "$@"
+	@ar rc $@ $^
+	@echo "Archive created at $@."
 
 clean:
-	rm -rf ${RELEASE_OBJ}
+	@rm -rf ${RELEASE_OBJ}
+	@echo "Release object files deleted."
 
 fclean: clean
-	rm -rf ${NAME} ${EXPORT_INCLUDE}
+	@rm -rf ${NAME}
+	@echo "${NAME} deleted."
+	@rm -rf ${EXPORT_INCLUDE}
+	@echo "${EXPORT_INCLUDE} deleted."
 
 re: fclean all
 
 
-debug: alldebug
 
-alldebug: ${DEBUG_EXE}
 
-${DEBUG_EXE}: ${DEBUG_OBJ}
-	${CC} -o $@ $^ ${EXTERNAL_LIBS}
+
+debug: ${DEBUG_LIB} ${EXPORT_INCLUDE}
+
+${DEBUG_LIB}: ${DEBUG_OBJ} | ${EXPORT_LIB_DIR}
+	@ar rc $@ $^
+	@echo "Archive created at $@."
 
 cleandebug:
-	rm -rf ${DEBUG_OBJ}
+	@rm -rf ${DEBUG_OBJ}
+	@echo "Debug object files deleted."
 
 fcleandebug: cleandebug
-	rm -rf ${DEBUG_EXE}
+	@rm -rf ${DEBUG_LIB}
+	@echo "${DEBUG_LIB} deleted."
+	
+redebug: fcleandebug debug
 
-redebug: fcleandebug alldebug
+
+
+
+
+debugexe: ${DEBUG_EXE}
+
+${DEBUG_EXE}: ${DEBUG_OBJ} ${EXE_OBJ}
+	@${CC} -o $@ $^ ${EXTERNAL_LIBS}
+	@echo "Executable created at $@."
+
+cleandebugexe: cleandebug
+	@rm -rf ${EXE_OBJ}
+	@echo "Object files for executable deleted."
+
+fcleandebugexe: cleandebugexe
+	@rm -rf ${DEBUG_EXE}
+	@echo "${DEBUG_EXE} deleted."
+
+redebugexe: fcleandebugexe debugexe
+
+
+
+
+
 
 norm:
 	@norminette ${SRCS_DIR} ${INCLUDES_DIR}
 
 
+cleanbuild:
+	@rm -rf ${BUILD_DIR}
+	@echo "Build folder deleted."
+
+
 
 #All targets
-${BUILD_DIR}/%_debug.o: %.c | ${BUILD_DIR}
+${BUILD_DIR}/%_debug.o ${BUILD_DIR}/%.o: %.c | ${BUILD_DIR}
 	${CC} ${CFLAGS} -o $@ -c $< -I${INCLUDES_DIR}
 
-${BUILD_DIR}/%.o: %.c | ${BUILD_DIR}
-	${CC} ${CFLAGS} -o $@ -c $< -I${INCLUDES_DIR}
-
+${EXPORT_INCLUDE_DIR}/%.h: ${INCLUDES_DIR}/%.h | ${EXPORT_INCLUDE_DIR}
+	@cp $< $@
+	@echo "Include file copied at $@."
 
 
 #folders
 ${EXPORT_INCLUDE_DIR} ${EXPORT_LIB_DIR} ${BUILD_DIR}:
-	mkdir -p "$@"
+	@mkdir -p $@
+	@echo "Folder $@ created."
 

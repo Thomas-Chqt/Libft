@@ -13,7 +13,7 @@
 			"cwd": "${workspaceFolder}",
 			"externalConsole": false,
 			"MIMode": "lldb",
-			"preLaunchTask": "Build Debug"
+			"preLaunchTask": "Build Debug Executable"
 		}
 	]
 }
