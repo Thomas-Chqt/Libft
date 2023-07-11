@@ -6,22 +6,23 @@
 #    By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 16:24:59 by tchoquet          #+#    #+#              #
-#    Updated: 2023/07/10 15:08:30 by tchoquet         ###   ########.fr        #
+#    Updated: 2023/07/11 21:02:54 by tchoquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-ROOT			= .
-SRCS_DIR		= ${ROOT}/sources
-INCLUDES_DIR 	= ${ROOT}/includes
-BUILD_DIR		= ${ROOT}/.build
+ROOT				= .
+SRCS_DIR			= ${ROOT}/sources
+FT_PRINTF_SRC_DIR	= ${SRCS_DIR}/ft_printf_utils
+INCLUDES_DIR 		= ${ROOT}/includes
+BUILD_DIR			= ${ROOT}/.build
 
 EXPORT_INCLUDE_DIR	= ${MY_C_INCLUDE_PATH}
 EXPORT_LIB_DIR		= ${MY_LIBRARY_PATH}
 
-SRC		= ${wildcard ${SRCS_DIR}/*.c}
+SRC		= ${wildcard ${SRCS_DIR}/*.c} ${wildcard ${FT_PRINTF_SRC_DIR}/*.c}
 EXE_SRC	= ${ROOT}/main_for_test.c
 
-RELEASE_OBJ = ${patsubst ${SRCS_DIR}%, ${BUILD_DIR}%, ${SRC:.c=.o}}
+RELEASE_OBJ = ${patsubst ${SRCS_DIR}%, ${BUILD_DIR}%, ${patsubst ${FT_PRINTF_SRC_DIR}%, ${BUILD_DIR}%, ${SRC:.c=.o}}}
 DEBUG_OBJ	= ${RELEASE_OBJ:.o=_debug.o}
 EXE_OBJ		= ${patsubst ${ROOT}%, ${BUILD_DIR}%, ${EXE_SRC:.c=.o}}
 
@@ -35,7 +36,7 @@ EXPORT_INCLUDE	= ${EXPORT_INCLUDE_DIR}/libft.h
 DEBUG_LIB		= ${EXPORT_LIB_DIR}/libft_debug.a
 DEBUG_EXE		= ${ROOT}/Debug.out
 
-vpath %.c ${ROOT} ${SRCS_DIR}
+vpath %.c ${ROOT} ${SRCS_DIR} ${FT_PRINTF_SRC_DIR}
 
 .PHONY: all clean fclean re debug cleandebug fcleandebug redebug debugexe fcleandebugexe fcleandebugexe redebugexe norm cleanbuild
 

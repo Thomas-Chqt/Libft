@@ -6,16 +6,15 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 20:08:02 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/11 20:58:59 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include <fcntl.h>
 #include <unistd.h>
-#include <libc.h>
+#include <stdlib.h>
+
+#include "libft.h"
 
 # ifdef MEMCHECK
 
@@ -38,7 +37,7 @@ int main(int argc, char const *argv[])
 	char *line = get_next_line(fd);
 	while (line != NULL)
 	{
-		printf("%s", line);
+		ft_printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
 	}

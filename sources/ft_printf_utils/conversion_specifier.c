@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_internal.h                                   :+:      :+:    :+:   */
+/*   conversion_specifier.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/18 12:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/11 20:52:49 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/05/30 14:50:45 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/11 20:53:32 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_INTERNAL_H
-# define LIBFT_INTERNAL_H
+#include "ft_printf_internal.h"
 
-# ifdef MEMCHECK
-#  include <memory_leak_detector.h>
-# endif // MEMCHECK
+t_conv_specs	empty_conv_specs(void)
+{
+	t_conv_specs	specs;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
-# endif
+	specs.arg_index = 0;
+	specs.flags = 0;
+	specs.width = 0;
+	specs.precision = NULL;
+	specs.length_mod = 0;
+	specs.conversion_type = 0;
+	return (specs);
+}
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
-# include <math.h>
-# include <stdarg.h>
-
-# include "libft.h"
-
-
-#endif // LIBFT_INTERNAL_H
+int	free_conv_specs(t_conv_specs conv_specs)
+{
+	if (conv_specs.precision != NULL)
+		free(conv_specs.precision);
+	return (-1);
+}
