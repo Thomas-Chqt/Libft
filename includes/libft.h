@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/11 20:47:03 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:36:32 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -391,6 +391,7 @@ t_bool			is_number(const char *str);
 void			free_splited_str(char **splited_str);
 void			free_str_ptr(void *str_ptr);
 t_uint64		str_ichr(char *str, char c, size_t len);
+void			putwstr_fd(char *s, int fd);
 
 // . ************************************************************************ */
 // .                                 Array                                    */

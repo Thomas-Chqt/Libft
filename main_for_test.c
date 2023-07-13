@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/11 20:58:59 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:36:17 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,25 @@ static void	destructor(void)
 # endif // MEMCHECK
 
 
-int main(int argc, char const *argv[])
+// int main(int argc, char const *argv[])
+// {
+// 	if (argc < 2)
+// 		return (-1);
+// 	int fd = open(argv[1], O_RDONLY);
+// 	char *line = get_next_line(fd);
+// 	while (line != NULL)
+// 	{
+// 		ft_printf("%s", line);
+// 		free(line);
+// 		line = get_next_line(fd);
+// 	}
+// 	close(fd);
+// 	return 0;
+// }
+
+int main()
 {
-	if (argc < 2)
-		return (-1);
-	int fd = open(argv[1], O_RDONLY);
-	char *line = get_next_line(fd);
-	while (line != NULL)
-	{
-		ft_printf("%s", line);
-		free(line);
-		line = get_next_line(fd);
-	}
-	close(fd);
+	putwstr_fd("🦈🐋qw🐬", 1);
+
 	return 0;
 }
