@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_internal.h                                   :+:      :+:    :+:   */
+/*   new_dic_el.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/18 12:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/24 14:58:32 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/24 17:36:37 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/24 17:39:28 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_INTERNAL_H
-# define LIBFT_INTERNAL_H
+#include "dictionary.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
-# endif
+t_dict_el	*new_dic_el(void *key, void *val)
+{
+	t_dict_el	*new_el;
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
-# include <math.h>
-# include <stdarg.h>
-
-# ifdef MEMCHECK
-#  include <memory_leak_detector.h>
-# endif // MEMCHECK
-
-# include "libft.h"
-
-#endif // LIBFT_INTERNAL_H
+	new_el = malloc(sizeof(t_dict_el));
+	if (new_el == NULL)
+		return (NULL);
+	new_el->key = key;
+	new_el->val = val;
+	return (new_el);
+}

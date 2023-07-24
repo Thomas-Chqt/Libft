@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_internal.h                                   :+:      :+:    :+:   */
+/*   lstdict_clear.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/18 12:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/24 14:58:32 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/24 17:42:24 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/24 17:44:39 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_INTERNAL_H
-# define LIBFT_INTERNAL_H
+#include "dictionary.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
-# endif
+void	lstdict_clear(t_list_dict **lst, void (*free_key)(void *), void (*free_val)(void *))
+{
+	t_list	*watched;
+	t_list	*temp;
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
-# include <math.h>
-# include <stdarg.h>
-
-# ifdef MEMCHECK
-#  include <memory_leak_detector.h>
-# endif // MEMCHECK
-
-# include "libft.h"
-
-#endif // LIBFT_INTERNAL_H
+	watched = *lst;
+	while (watched != NULL)
+	{
+		free_dict_el(watched->data, free_key, free_val);
+		temp = watched->next;
+		free(watched);
+		watched = temp;
+	}
+	(*lst) = NULL;
+}

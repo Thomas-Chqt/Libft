@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/13 16:36:17 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/24 17:51:08 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-#include "libft.h"
+// #include "libft.h"
+#include "dictionary.h"
 
 # ifdef MEMCHECK
 
@@ -28,26 +29,27 @@ static void	destructor(void)
 
 # endif // MEMCHECK
 
-
-// int main(int argc, char const *argv[])
+// void print_dic_el(void *data)
 // {
-// 	if (argc < 2)
-// 		return (-1);
-// 	int fd = open(argv[1], O_RDONLY);
-// 	char *line = get_next_line(fd);
-// 	while (line != NULL)
-// 	{
-// 		ft_printf("%s", line);
-// 		free(line);
-// 		line = get_next_line(fd);
-// 	}
-// 	close(fd);
-// 	return 0;
+// 	t_dict_el	*el = data;
+
+// 	ft_printf("(%s | %s)", el->key, el->val);
 // }
 
-int main()
-{
-	putwstr_fd("🦈🐋qw🐬", 1);
+// void print_dic_debug(t_dictionary dic)
+// {
+// 	t_dictionary_int *dict_int = (t_dictionary_int *)dic;
 
-	return 0;
-}
+// 	for (size_t i = 0; i < dict_int->size; i++)
+// 	{
+		
+// 	}
+	
+// }
+
+// int main()
+// {
+	
+
+// 	return 0;
+// }
