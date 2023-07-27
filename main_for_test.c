@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/27 13:35:44 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/27 15:24:30 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void print_dic_debug(t_dictionary dic)
 
 	for (size_t i = 0; i < dict_int->size; i++)
 	{
-		ft_lstiter(dict_int->vals[i]->data, &print_dic_el);
+		ft_lstiter((t_list *)(dict_int->vals[i]), &print_dic_el);
 		ft_printf("\n");
 	}
 	
@@ -69,6 +69,23 @@ void print_dic_debug(t_dictionary dic)
 int main()
 {
 	t_dictionary dict = dicstrstr_new(10);
-	dicstrstr_set(dict, "thomas", "");
+	dicstrstr_set(dict, "hello", "world");
+	dicstrstr_set(dict, "thomas", "choquet");
+	dicstrstr_set(dict, "test", "test");
+	dicstrstr_set(dict, "a", "b");
+
+	char *str = dicstrstr_get(dict, "thomas");
+	ft_printf("%s\n", str);
+	free(str);
+
+	str = dicstrstr_get(dict, "hello");
+	ft_printf("%s\n", str);
+	free(str);
+
+	str = dicstrstr_get(dict, "abcde");
+	ft_printf("%s\n", str);
+
+	// print_dic_debug(dict);
+	dic_clear(dict);
 	return 0;
 }

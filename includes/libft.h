@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/27 01:57:44 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/27 15:07:30 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -506,11 +506,15 @@ void			dic_setdupfunc(t_dictionary dict,
 t_bool			dic_isvalid(t_dictionary dict);
 int				dic_set(t_dictionary dict, void *key, void *val,
 					t_bool (*is_key_equal)(void *, void *));
+void			*dic_get(t_dictionary dict, void *key,
+					t_bool (*is_key_equal)(void *, void *));
+void			dic_clear(t_dictionary dict);
 
 // *_______________________ String:String Dictionary _________________________*/
 
 t_dictionary	dicstrstr_new(size_t size);
 int				dicstrstr_set(t_dictionary dict, char *key, char *val);
+char			*dicstrstr_get(t_dictionary dict, char *key);
 
 // . ************************************************************************ */
 // .                                Colors                                    */

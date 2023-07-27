@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:57:19 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/25 16:15:20 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/27 14:43:51 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,5 @@ struct s_dict_int
 	void		*(*dup_val)(void *);
 	t_list_dict	**vals;
 };
-
-t_list_dict	*lstdic_new(t_dictionary_int *funcs, void *key, void *val);
 
 #endif // DICTIONARY_H
