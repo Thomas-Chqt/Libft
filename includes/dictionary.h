@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:57:19 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/27 14:43:51 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/27 15:30:43 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define DICTIONARY_H
 
 # include "libft_internal.h"
+
+typedef t_uint64			(*t_hash_func)(void *key, size_t dict_size);
 
 typedef struct s_dict_int	t_dictionary_int;
 typedef struct s_dict_el	t_dict_el;
@@ -34,7 +36,7 @@ struct s_list_dict
 struct s_dict_int
 {
 	size_t		size;
-	t_uint64	(*hash_func)(void *key, size_t dict_size);
+	t_hash_func	hash_func;
 	void		(*free_key)(void *);
 	void		*(*dup_key)(void *);
 	void		(*free_val)(void *);

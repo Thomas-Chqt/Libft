@@ -6,14 +6,14 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 01:40:02 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/27 02:12:38 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/27 15:34:44 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
 
 static t_uint64	hash_func(void *key_ptr, size_t dict_size);
-static void		*dup_func(void *);
+static void		*dup_func(void *ptr);
 
 t_dictionary	dicstrstr_new(size_t size)
 {
@@ -31,7 +31,6 @@ static t_uint64	hash_func(void *key_ptr, size_t dict_size)
 	t_uint64	hash;
 	t_uint64	i;
 	size_t		key_len;
-
 
 	key = *((char **)key_ptr);
 	hash = 7;

@@ -6,13 +6,14 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:40:02 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/27 14:53:51 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/27 15:31:53 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dictionary.h"
 
-void	lstdict_clear(t_list_dict **lst, void (*free_key)(void *), void (*free_val)(void *));
+void	lstdict_clear(t_list_dict **lst, void (*free_key)(void *),
+			void (*free_val)(void *));
 
 void	dic_clear(t_dictionary dict)
 {
@@ -25,14 +26,16 @@ void	dic_clear(t_dictionary dict)
 	i = 0;
 	while (i < dict_int->size)
 	{
-		lstdict_clear(dict_int->vals + i, dict_int->free_key, dict_int->free_val);
+		lstdict_clear(dict_int->vals + i, dict_int->free_key,
+			dict_int->free_val);
 		i++;
 	}
 	free(dict_int->vals);
 	free(dict);
 }
 
-void	lstdict_clear(t_list_dict **lst, void (*free_key)(void *), void (*free_val)(void *))
+void	lstdict_clear(t_list_dict **lst, void (*free_key)(void *),
+			void (*free_val)(void *))
 {
 	t_list_dict	*watched;
 	t_list_dict	*temp;
