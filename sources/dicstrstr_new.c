@@ -5,18 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/24 17:54:03 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/24 18:09:56 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/27 01:40:02 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/27 02:12:38 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dictionary.h"
+#include "libft_internal.h"
 
 static t_uint64	hash_func(void *key_ptr, size_t dict_size);
+static void		*dup_func(void *);
 
 t_dictionary	dicstrstr_new(size_t size)
 {
-	return (dic_new(size, &hash_func, &free_str_ptr, &free_str_ptr));
+	t_dictionary	new_dict;
+
+	new_dict = dic_new(size, &hash_func);
+	dic_setdupfunc(new_dict, &dup_func, &dup_func);
+	dic_setfreefunc(new_dict, &free_str_ptr, &free_str_ptr);
+	return (new_dict);
 }
 
 static t_uint64	hash_func(void *key_ptr, size_t dict_size)
@@ -37,4 +43,22 @@ static t_uint64	hash_func(void *key_ptr, size_t dict_size)
 		i++;
 	}
 	return (hash % dict_size);
+}
+
+static void	*dup_func(void *ptr)
+{
+	char	*str;
+	char	*duped_str;
+	char	**duped_str_ptr;
+
+	str = *((char **)ptr);
+	duped_str = ft_strdup(str);
+	if (duped_str == NULL)
+		return (NULL);
+	duped_str_ptr = malloc(sizeof(char *));
+	if (duped_str_ptr == NULL)
+		free(duped_str);
+	else
+		*duped_str_ptr = duped_str;
+	return (duped_str_ptr);
 }

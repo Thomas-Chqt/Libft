@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_dict_el.c                                     :+:      :+:    :+:   */
+/*   dicstrstr_set.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/24 17:39:49 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/24 17:40:44 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/07/27 01:56:17 by tchoquet          #+#    #+#             */
+/*   Updated: 2023/07/27 12:13:36 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dictionary.h"
+#include "libft_internal.h"
 
-void	free_dict_el(t_dict_el *el, void (*free_key)(void *), void (*free_val)(void *))
+static t_bool	is_equal_func(void *a, void *b);
+
+int	dicstrstr_set(t_dictionary dict, char *key, char *val)
 {
-	free_key(el->key);
-	free_val(el->val);
-	free(el);
+	dic_set(dict, &key, &val, &is_equal_func);
+}
+
+static t_bool	is_equal_func(void *a, void *b)
+{
+	if (ft_strncmp(*((const char **)a), *((const char **)b), ft_strlen(a)) == 0)
+		return (true);
+	else
+		return (false);
 }

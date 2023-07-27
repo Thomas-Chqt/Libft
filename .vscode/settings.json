@@ -10,6 +10,7 @@
 		"product/": true
 	},
 	"files.associations": {
+		"*.h": "c",
 		"libft.h": "c",
 		"stdio.h": "c",
 		"__tuple": "c",
@@ -19,7 +20,8 @@
 		"string": "c",
 		"string_view": "c",
 		"vector": "c",
-		"ft_printf_internal.h": "c"
+		"ft_printf_internal.h": "c",
+		"__node_handle": "c"
 	},
 	"autoSnippet.snippets": [
 		{

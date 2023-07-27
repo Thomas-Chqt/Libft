@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/24 17:57:02 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/27 01:57:44 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -498,12 +498,16 @@ t_bool			lstint_isdecf(t_list *lst);
 // *____________________________ Int Dictionary ______________________________*/
 
 t_dictionary	dic_new(size_t size,
-					t_uint64 (*hash_func)(void *key, size_t dict_size),
+					t_uint64 (*hash_func)(void *key, size_t dict_size));
+void			dic_setfreefunc(t_dictionary dict,
 					void (*free_key)(void *), void (*free_val)(void *));
+void			dic_setdupfunc(t_dictionary dict,
+					void *(*dup_key)(void *), void *(*dup_val)(void *));
+t_bool			dic_isvalid(t_dictionary dict);
 int				dic_set(t_dictionary dict, void *key, void *val,
-					t_bool (*is_equal)(void *, void *));
+					t_bool (*is_key_equal)(void *, void *));
 
-// *___________________________ String Dictionary ____________________________*/
+// *_______________________ String:String Dictionary _________________________*/
 
 t_dictionary	dicstrstr_new(size_t size);
 int				dicstrstr_set(t_dictionary dict, char *key, char *val);
