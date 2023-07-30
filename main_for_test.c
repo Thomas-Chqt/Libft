@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/30 12:24:02 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/30 12:37:10 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,10 @@ int main()
 }
 */
 
+void print_node(void *data)
+{
+	ft_printf("%s\n", (char *)data);
+}
 
 int main(int argc, char const *argv[])
 {
@@ -105,7 +109,18 @@ int main(int argc, char const *argv[])
 	for (size_t i = 1; i < argc; i++)
 		ft_lstadd_back(&list, ft_lstnew((void *)(argv[i])));
 	last_ptr = lst_lastnext(&list);
-	ft_printf("%s\n", (*last_ptr)->data);
-	return 0;
+
+	ft_printf("%s\n\n", (*last_ptr)->data);
+
+	ft_lstiter(list, &print_node);
+
+	ft_lstadd_back(last_ptr, ft_lstnew((void *)"abcdef"));
+
+	ft_printf("\n");
+
+	ft_lstiter(list, &print_node);
+
+	ft_lstclear(&list, NULL);
+	return (0);
 }
 
