@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/27 15:24:30 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/30 12:18:50 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-// #include "libft.h"
-#include "dictionary.h"
+#include "libft.h"
+// #include "dictionary.h"
 
 # ifdef MEMCHECK
 
@@ -38,15 +38,18 @@ static void	destructor(void)
 
 # endif // MEMCHECK
 
-// int main()
-// {
-// 	char	*str = "abcdef";
-// 	char	**str_ptr = mem_dup(&str, sizeof(&str));
-// 	ft_printf("%s\n", *str_ptr);
-// 	free(str_ptr);
-// 	return 0;
-// }
+/*
+int main()
+{
+	char	*str = "abcdef";
+	char	**str_ptr = mem_dup(&str, sizeof(&str));
+	ft_printf("%s\n", *str_ptr);
+	free(str_ptr);
+	return 0;
+}
+*/
 
+/*
 void print_dic_el(void *data)
 {
 	t_dict_el	*el = data;
@@ -88,4 +91,23 @@ int main()
 	// print_dic_debug(dict);
 	dic_clear(dict);
 	return 0;
+}
+*/
+
+void print_node(void *data)
+{
+	ft_printf("%s\n", (char *)data);
+}
+
+int main(int argc, char const *argv[])
+{
+	t_list	*list;
+
+	if (argc < 2)
+		return (ft_printf("Error : no args"));
+	for (size_t i = 1; i < argc; i++)
+		ft_lstadd_back(&list, ft_lstnew((void *)(argv[i])));
+	ft_lstiter(list, &print_node);
+	ft_lstclear(&list, NULL);
+	return (0);
 }
