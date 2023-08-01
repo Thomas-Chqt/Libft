@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/29 15:34:35 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/07/30 11:58:27 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -444,6 +444,7 @@ t_list			*arrstr_tolstmap(char **array, size_t array_len);
 
 t_list			*lst_rmvfrst(t_list **head);
 t_list			*lst_rmvlast(t_list **head);
+t_list			**lst_lastnext(t_list **head);
 
 // *______________________________ Void Liste ________________________________*/
 
@@ -458,7 +459,6 @@ t_list			*lst_sublst(t_list *lst, size_t new_len,
 void			lst_delif(t_list **head, void (*del)(void *),
 					t_bool (*condition)(void *, void *), void *data);
 t_bool			lst_issort(t_list *lst, t_bool (*diff)(void *a, void *b));
-
 t_list			*lst_map(t_list *lst, t_list *(*new_node)(void *, void *),
 					void *data, void (*del)(void *));
 t_array			lst_toarrmap(t_list *lst, size_t el_size,
