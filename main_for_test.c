@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/30 12:37:10 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/02 11:55:13 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int main()
 }
 */
 
+/*
 void print_node(void *data)
 {
 	ft_printf("%s\n", (char *)data);
@@ -122,5 +123,12 @@ int main(int argc, char const *argv[])
 
 	ft_lstclear(&list, NULL);
 	return (0);
+}
+*/
+
+int main(int argc, char const *argv[])
+{
+	/* code */
+	return 0;
 }
 

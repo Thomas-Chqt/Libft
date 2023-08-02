@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/30 11:58:27 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/02 12:02:08 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -351,6 +351,7 @@ typedef unsigned long		t_uint64;
 typedef enum e_bool			t_bool;
 typedef struct s_array		t_array;
 typedef struct s_dictionary	*t_dictionary;
+typedef struct s_tree		t_tree;
 
 // . ************************************************************************ */
 // .                                  42                                      */
@@ -515,6 +516,19 @@ void			dic_clear(t_dictionary dict);
 t_dictionary	dicstrstr_new(size_t size);
 int				dicstrstr_set(t_dictionary dict, char *key, char *val);
 char			*dicstrstr_get(t_dictionary dict, char *key);
+
+// . ************************************************************************ */
+// .                                 Tree                                     */
+// . ************************************************************************ */
+
+struct s_tree
+{
+	void	*data;
+	t_tree	*parent;
+	t_tree	**children;
+	
+};
+
 
 // . ************************************************************************ */
 // .                                Colors                                    */
