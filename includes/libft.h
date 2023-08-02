@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/08/02 12:41:06 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/02 19:58:06 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -351,7 +351,8 @@ typedef unsigned long		t_uint64;
 typedef enum e_bool			t_bool;
 typedef struct s_array		t_array;
 typedef struct s_dictionary	*t_dictionary;
-typedef struct s_tree		t_tree;
+typedef struct s_btree		t_btree;
+typedef enum e_btr_trvsl	t_btr_trvsl;
 
 // . ************************************************************************ */
 // .                                  42                                      */
@@ -518,16 +519,31 @@ int				dicstrstr_set(t_dictionary dict, char *key, char *val);
 char			*dicstrstr_get(t_dictionary dict, char *key);
 
 // . ************************************************************************ */
-// .                                 Tree                                     */
+// .                             Binary tree                                  */
 // . ************************************************************************ */
 
-struct s_tree
+struct s_btree
 {
 	void	*data;
-	t_tree	*parent;
-	t_tree	**children;
+	t_btree	*parent;
+	t_btree	*left;
+	t_btree	*right;
 };
 
+enum e_btr_trvsl
+{
+	inorder,
+	preorder,
+	postorder
+};
+
+t_btree			*btr_new(void *data);
+void			btr_clear(t_btree *tree, void (*del)(void *));
+int				btr_set_l_child(t_btree *node, t_btree *left);
+int				btr_set_r_child(t_btree *node, t_btree *right);
+t_btree			*btr_get_root(t_btree *node);
+void			btr_iter(t_btree *tree, t_btr_trvsl traversal, void (*func)(void *));
+t_btree			*btr_get_last(t_btree *tree, t_btr_trvsl traversal);
 
 // . ************************************************************************ */
 // .                                Colors                                    */

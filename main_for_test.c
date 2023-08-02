@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/08/02 11:55:13 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/02 20:04:21 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static void	destructor(void)
 	free(pid);
 	free(cmd);
 }
-
 
 # endif // MEMCHECK
 
@@ -126,9 +125,40 @@ int main(int argc, char const *argv[])
 }
 */
 
-int main(int argc, char const *argv[])
+void print_node(void *data)
 {
-	/* code */
-	return 0;
+	ft_printf("%s\n", data);
 }
 
+int main(int argc, char const *argv[])
+{
+	t_btree	*tree;
+
+	if (argc < 2)
+		return (ft_printf("Arg error\n"));
+
+	tree = btr_new((void *)ft_strdup(argv[1]));
+
+	btr_set_l_child(tree, btr_new((void *)ft_strdup(argv[2])));
+
+	btr_set_r_child(tree,btr_new((void *)ft_strdup(argv[3])));
+
+	btr_set_l_child(tree->left, btr_new((void *)ft_strdup(argv[4])));
+	btr_set_r_child(tree->left, btr_new((void *)ft_strdup(argv[5])));
+
+	btr_set_l_child(tree->right, btr_new((void *)ft_strdup(argv[6])));
+	btr_set_r_child(tree->right, btr_new((void *)ft_strdup(argv[7])));
+
+	tree = btr_get_last(tree, postorder);
+
+	btr_iter(tree, postorder, &print_node);
+
+	ft_printf("\n");
+
+	tree = btr_get_root(tree);
+
+	btr_iter(tree, postorder, &print_node);
+
+
+	btr_clear(tree, &free_wrap);
+}
