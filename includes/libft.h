@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/08/02 12:02:08 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/02 12:41:06 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -526,7 +526,6 @@ struct s_tree
 	void	*data;
 	t_tree	*parent;
 	t_tree	**children;
-	
 };
 
 
