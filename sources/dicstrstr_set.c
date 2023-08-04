@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 01:56:17 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/27 14:23:25 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/04 12:02:16 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	dicstrstr_set(t_dictionary dict, char *key, char *val)
 
 static t_bool	is_equal_func(void *a, void *b)
 {
-	if (ft_strncmp(*((const char **)a), *((const char **)b), ft_strlen(a)) == 0)
+	if (ft_strncmp(*((const char **)a), *((const char **)b),
+			ft_strlen(*((const char **)a))) == 0)
 		return (true);
 	else
 		return (false);
