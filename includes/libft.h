@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/08/02 19:58:06 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/04 13:05:52 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -395,6 +395,7 @@ void			free_splited_str(char **splited_str);
 void			free_str_ptr(void *str_ptr);
 t_uint64		str_ichr(char *str, char c, size_t len);
 void			putwstr_fd(char *s, int fd);
+char			**str_split_on_first(const char *str, char c);
 
 // . ************************************************************************ */
 // .                                 Array                                    */
