@@ -6,13 +6,13 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 19:48:37 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/08/04 20:47:08 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/05 16:17:03 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dictionary.h"
 
-static t_list	*create_nodes(void *str, void *c);
+static t_list	*create_nodes(void *v_data, void *v_funcs);
 
 t_list	*lstdic_tokeymap(t_list_dict *lst, t_dictionary_int *funcs)
 {
@@ -28,7 +28,7 @@ static t_list	*create_nodes(void *v_data, void *v_funcs)
 	data = (t_dict_el *)v_data;
 	funcs = (t_dictionary_int *)v_funcs;
 	new_node = ft_lstnew(NULL);
-	if (new_node == NULL)
+	if (new_node != NULL)
 	{
 		if (data->key == NULL)
 			return (new_node);
