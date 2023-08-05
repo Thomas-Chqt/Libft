@@ -6,13 +6,14 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 15:22:15 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/08/04 15:28:04 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/05 14:26:50 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dictionary.h"
 
-static t_list_dict	*ft_lstclear_wrap(t_list_dict **lst, t_dictionary_int *funcs);
+static t_list_dict	*ft_lstclear_wrap(t_list_dict **lst,
+						t_dictionary_int *funcs);
 
 t_list_dict	*lstdict_dup(t_list_dict *lst, t_dictionary_int *funcs)
 {
@@ -38,7 +39,8 @@ t_list_dict	*lstdict_dup(t_list_dict *lst, t_dictionary_int *funcs)
 	return (new_lst);
 }
 
-static t_list_dict	*ft_lstclear_wrap(t_list_dict **lst, t_dictionary_int *funcs)
+static t_list_dict	*ft_lstclear_wrap(t_list_dict **lst,
+						t_dictionary_int *funcs)
 {
 	lstdic_clear(lst, funcs);
 	return (NULL);

@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 19:36:26 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/08/04 20:44:35 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/05 14:39:03 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ t_list	*dic_to_val_lstmap(t_dictionary dict)
 	temp_lst = NULL;
 	if (!dic_isvalid(dict))
 		return (NULL);
-	i = 0;
-	while (i < dict_int->size)
+	i = -1;
+	while (++i < dict_int->size)
 	{
 		if (dict_int->vals[i] != NULL)
 		{
@@ -37,7 +37,6 @@ t_list	*dic_to_val_lstmap(t_dictionary dict)
 			ft_lstadd_back(&val_lst, temp_lst);
 			ft_lstclear(&temp_lst, dict_int->free_val);
 		}
-		i++;
 	}
 	return (val_lst);
 }

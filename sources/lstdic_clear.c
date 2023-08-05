@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 15:24:19 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/08/04 15:27:36 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/05 14:26:28 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,3 @@ void	lstdic_clear(t_list_dict **lst, t_dictionary_int *funcs)
 	}
 	(*lst) = NULL;
 }
-

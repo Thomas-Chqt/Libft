@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 19:58:14 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/08/02 20:03:31 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/05 14:25:51 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ t_btree	*btr_get_last(t_btree *tree, t_btr_trvsl traversal)
 	current = tree;
 	while (current->right != NULL)
 		current = current->right;
-	return (current);	
+	return (current);
 }
