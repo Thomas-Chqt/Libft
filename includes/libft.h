@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/08/05 17:30:33 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/06 15:37:30 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -468,7 +468,6 @@ t_array			lst_toarrmap(t_list *lst, size_t el_size,
 					void *(*data_dup)(void *), void (*free_el)(void *));
 t_list			*lst_dup(t_list *lst, void *(*data_dup)(void *),
 					void (*del)(void *));
-
 
 // *_____________________________ String Liste _______________________________*/
 
