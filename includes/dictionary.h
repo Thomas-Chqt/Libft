@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:57:19 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/27 15:30:43 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/04 20:01:49 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,11 @@ struct s_dict_int
 	void		*(*dup_val)(void *);
 	t_list_dict	**vals;
 };
+
+t_list_dict	*lstdict_nodedup(t_list_dict *node, t_dictionary_int *funcs);
+t_list_dict	*lstdict_dup(t_list_dict *lst, t_dictionary_int *funcs);
+void		lstdic_clear(t_list_dict **lst, t_dictionary_int *funcs);
+t_list		*lstdic_tokeymap(t_list_dict *lst, t_dictionary_int *funcs);
+t_list		*lstdic_tovalmap(t_list_dict *lst, t_dictionary_int *funcs);
 
 #endif // DICTIONARY_H

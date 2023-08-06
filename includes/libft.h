@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/08/02 19:58:06 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/06 15:37:30 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -395,6 +395,7 @@ void			free_splited_str(char **splited_str);
 void			free_str_ptr(void *str_ptr);
 t_uint64		str_ichr(char *str, char c, size_t len);
 void			putwstr_fd(char *s, int fd);
+char			**str_split_on_first(const char *str, char c);
 
 // . ************************************************************************ */
 // .                                 Array                                    */
@@ -465,6 +466,8 @@ t_list			*lst_map(t_list *lst, t_list *(*new_node)(void *, void *),
 					void *data, void (*del)(void *));
 t_array			lst_toarrmap(t_list *lst, size_t el_size,
 					void *(*data_dup)(void *), void (*free_el)(void *));
+t_list			*lst_dup(t_list *lst, void *(*data_dup)(void *),
+					void (*del)(void *));
 
 // *_____________________________ String Liste _______________________________*/
 
@@ -511,6 +514,8 @@ int				dic_set(t_dictionary dict, void *key, void *val,
 void			*dic_get(t_dictionary dict, void *key,
 					t_bool (*is_key_equal)(void *, void *));
 void			dic_clear(t_dictionary dict);
+t_list			*dic_to_val_lstmap(t_dictionary dict);
+t_list			*dic_to_key_lstmap(t_dictionary dict);
 
 // *_______________________ String:String Dictionary _________________________*/
 
@@ -542,7 +547,8 @@ void			btr_clear(t_btree *tree, void (*del)(void *));
 int				btr_set_l_child(t_btree *node, t_btree *left);
 int				btr_set_r_child(t_btree *node, t_btree *right);
 t_btree			*btr_get_root(t_btree *node);
-void			btr_iter(t_btree *tree, t_btr_trvsl traversal, void (*func)(void *));
+void			btr_iter(t_btree *tree, t_btr_trvsl traversal,
+					void (*func)(void *));
 t_btree			*btr_get_last(t_btree *tree, t_btr_trvsl traversal);
 
 // . ************************************************************************ */

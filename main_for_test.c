@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/08/02 20:04:21 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/06 11:58:59 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ int main(int argc, char const *argv[])
 }
 */
 
+/*
 void print_node(void *data)
 {
 	ft_printf("%s\n", data);
@@ -161,4 +162,35 @@ int main(int argc, char const *argv[])
 
 
 	btr_clear(tree, &free_wrap);
+}
+*/
+
+int	main()
+{
+	char	**splited_str;
+
+	splited_str = str_split_on_first("abc=def", '=');
+	ft_printf("\"%s\"\n", splited_str[0]);
+	ft_printf("\"%s\"\n", splited_str[1]);
+	ft_printf("\"%s\"\n\n", splited_str[2]);
+	free_splited_str(splited_str);
+	
+	splited_str = str_split_on_first("abcdef", '=');
+	ft_printf("\"%s\"\n", splited_str[0]);
+	ft_printf("\"%s\"\n", splited_str[1]);
+	ft_printf("\"%s\"\n\n", splited_str[2]);
+	free_splited_str(splited_str);
+
+	splited_str = str_split_on_first("=abcdef", '=');
+	ft_printf("\"%s\"\n", splited_str[0]);
+	ft_printf("\"%s\"\n", splited_str[1]);
+	ft_printf("\"%s\"\n\n", splited_str[2]);
+	free_splited_str(splited_str);
+
+	splited_str = str_split_on_first("abcdef=", '=');
+	ft_printf("\"%s\"\n", splited_str[0]);
+	ft_printf("\"%s\"\n", splited_str[1]);
+	ft_printf("\"%s\"\n\n", splited_str[2]);
+	free_splited_str(splited_str);
+	return (0);
 }
