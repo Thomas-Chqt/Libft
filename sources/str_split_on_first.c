@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 12:43:53 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/08/04 13:50:59 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/06 11:55:48 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,10 @@ char	**str_split_on_first(const char *str, char c)
 	splited_str[0] = ft_substr(str, 0, i);
 	if (splited_str[0] != NULL)
 	{
-		if (str[i] != '\0')
-		{
-			splited_str[1] = ft_strdup(str + (i + 1));
-			if (splited_str[1] != NULL)
-				return (splited_str);
-		}
-		else
+		if (str[i] == '\0')
+			return (splited_str);
+		splited_str[1] = ft_strdup(str + (i + 1));
+		if (splited_str[1] != NULL)
 			return (splited_str);
 	}
 	free_splited_str(splited_str);
