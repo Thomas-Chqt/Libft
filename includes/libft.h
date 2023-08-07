@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/08/06 15:37:30 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/07 18:28:37 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -550,6 +550,7 @@ t_btree			*btr_get_root(t_btree *node);
 void			btr_iter(t_btree *tree, t_btr_trvsl traversal,
 					void (*func)(void *));
 t_btree			*btr_get_last(t_btree *tree, t_btr_trvsl traversal);
+size_t			btr_size(t_btree *tree);
 
 // . ************************************************************************ */
 // .                                Colors                                    */
