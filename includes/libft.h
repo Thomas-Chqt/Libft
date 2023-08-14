@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/08/07 18:28:37 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/14 18:11:49 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -551,6 +551,19 @@ void			btr_iter(t_btree *tree, t_btr_trvsl traversal,
 					void (*func)(void *));
 t_btree			*btr_get_last(t_btree *tree, t_btr_trvsl traversal);
 size_t			btr_size(t_btree *tree);
+
+// . ************************************************************************ */
+// .                                Stack                                     */
+// . ************************************************************************ */
+
+typedef struct s_stack	*t_stack;
+
+t_stack			stk_init(void *(*data_dup)(void *), void (*free_data)(void *));
+int				stk_add(t_stack stack, void *data);
+void			*stk_remove(t_stack stack);
+void			stk_delete(t_stack stack);
+void			*stk_get(t_stack stack);
+void			stk_clear(t_stack stack);
 
 // . ************************************************************************ */
 // .                                Colors                                    */
