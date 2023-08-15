@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/08/07 18:28:37 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/15 14:57:31 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -487,6 +487,7 @@ t_list			*lstint_sublst(t_list *lst, size_t new_len);
 void			lstint_print(t_list	*lst, char *separator, t_bool endl);
 t_list			*lstint_chr(t_list *lst, t_bool (*test)(int, void *),
 					void *data);
+int				lstint_addfront(t_list **lst, int val);
 
 // *___________________________ Clear Versions _______________________________*/
 

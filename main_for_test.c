@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:25:16 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/08/06 11:58:59 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/15 17:03:22 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ int main(int argc, char const *argv[])
 	btr_clear(tree, &free_wrap);
 }
 */
-
+/*
 int	main()
 {
 	char	**splited_str;
@@ -194,3 +194,32 @@ int	main()
 	free_splited_str(splited_str);
 	return (0);
 }
+*/
+
+
+static t_bool	pid_is_equal(void *a, void *b)
+{
+	return (
+		*((pid_t *)a) == *((pid_t *)b)
+	);
+}
+
+int main()
+{
+	t_list	*list;
+
+	int	a = 2;
+	int	b = 1;
+
+	list = NULL;
+	lstint_addfront(&list, 3);
+	lstint_addfront(&list, 2);
+	lstint_addfront(&list, 1);
+
+
+	lst_delif(&list, &free_wrap, &pid_is_equal, &a);	
+	lst_delif(&list, &free_wrap, &pid_is_equal, &b);
+	
+	return 0;
+}
+
