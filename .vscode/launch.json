@@ -6,15 +6,11 @@
 	"configurations": [
 		{
 			"name": "Debug",
-			"type": "cppdbg",
+			"type": "lldb",
 			"request": "launch",
 			"program": "${workspaceFolder}/Debug.out",
-			"args": ["abcd"],
-			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
-			"externalConsole": false,
-			"MIMode": "lldb",
 			"preLaunchTask": "Build Debug Executable"
-		}
+		}				
 	]
 }
