@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 12:51:50 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/06/18 12:52:00 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/27 23:44:00 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ t_mat4x4	mat_x_mat(t_mat4x4 m1, t_mat4x4 m2)
 			r++;
 		}
 		c++;
-	}			
+	}
 	return (matrix);
 }

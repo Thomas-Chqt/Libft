@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:52:13 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/08/15 17:01:39 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/27 23:43:56 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int	lstint_addfront(t_list **lst, int val)
 			return (0);
 		}
 		free(new_node);
-	}	
+	}
 	return (1);
 }

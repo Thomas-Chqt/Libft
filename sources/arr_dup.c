@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:33:48 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/08 17:30:18 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/27 23:43:53 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static t_array	ret_error(t_array array, t_uint64 len, void (*free_el)(void *));
 
 t_array	arr_dup(t_array array, void *(*el_dup)(void *), void (*free_el)(void *))
-{	
+{
 	t_array		new_array;
 	void		*duped_el;
 	t_uint64	i;
