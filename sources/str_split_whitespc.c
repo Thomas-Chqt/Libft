@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 00:07:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/08/26 00:58:42 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/08/27 10:23:52 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,19 @@ char	**str_split_whitespc(char const *s)
 	size_t	split_count;
 	char	**split_array;
 
+	if (s[0] == '\0')
+	{
+		split_array = ft_calloc(2, sizeof(char *));
+		if (split_array == NULL)
+			return (NULL);
+		split_array[0] = ft_strdup("");
+		if (split_array[0] == NULL)
+		{
+			free(split_array);
+			return (NULL);
+		}
+		return (split_array);
+	}
 	split_count = count_split(s);
 	split_array = ft_calloc(split_count + 1, sizeof(char *));
 	if (split_array == NULL)
