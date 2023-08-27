@@ -15,7 +15,7 @@
 static unsigned short	intlen(int n);
 
 char	*ft_itoa(int n)
-{	
+{
 	unsigned int	nbr;
 	unsigned short	n_len;
 	char			*str;
