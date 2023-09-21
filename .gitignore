@@ -1,10 +1,4 @@
 .DS_Store
-*.out
-build/*
-product/*
-.libft-tester-tokyo
-.libftTester
-.libft-unit-test
 *.o
 *.a
-*.icloud
+.build/
