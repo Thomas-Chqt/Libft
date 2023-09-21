@@ -6,11 +6,11 @@
 #    By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 16:24:59 by tchoquet          #+#    #+#              #
-#    Updated: 2023/09/21 13:37:45 by tchoquet         ###   ########.fr        #
+#    Updated: 2023/09/21 14:10:19 by tchoquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIB_TYPE	= dynamic# static | dynamic
+LIB_TYPE	= static# static | dynamic
 TARGET_TYPE	= release# release | debug
 
 EXPORT_INCLUDE_DIR	= ${MY_C_INCLUDE_PATH}
@@ -43,15 +43,8 @@ else
     $(error Bad TARGET_TYPE)
 endif
     CPPFLAGS	= -I${INCLUDES_DIR} -I${MY_C_INCLUDE_PATH}
-ifeq (${TARGET_TYPE}, release)
     LDFLAGS		=
     LDLIBS		=
-else ifeq (${TARGET_TYPE}, debug) 
-    LDFLAGS		= -L${MY_LIBRARY_PATH}
-    LDLIBS		= -l memory_leak_detector
-else
-    $(error Bad LIB_TYPE)
-endif
 
 
 ifeq (${TARGET_TYPE}, release)
