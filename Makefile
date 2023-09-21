@@ -6,7 +6,7 @@
 #    By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 16:24:59 by tchoquet          #+#    #+#              #
-#    Updated: 2023/09/20 23:43:00 by tchoquet         ###   ########.fr        #
+#    Updated: 2023/09/21 13:37:45 by tchoquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,15 +17,15 @@ EXPORT_INCLUDE_DIR	= ${MY_C_INCLUDE_PATH}
 EXPORT_LIB_DIR		= ${MY_LIBRARY_PATH}
 
 ROOT				= .
-SRCS_DIR			= ${ROOT}/sources
-INCLUDES_DIR 		= ${ROOT}/includes
+SRCS_DIR			= $(shell find ${ROOT}/sources -type d)
+INCLUDES_DIR 		= $(shell find ${ROOT}/includes -type d)
 BUILD_DIR			= ${ROOT}/.build
 
 EXPORT_INCLUDE	= ${EXPORT_INCLUDE_DIR}/libft.h
 NAME_BASE 		= ${EXPORT_LIB_DIR}/libft
 
 
-    SRC	= $(shell find ${SRCS_DIR} -type f -name '*.c')
+    SRC = $(foreach dir, ${SRCS_DIR}, $(wildcard ${dir}/*.c))
     OBJ = $(foreach file, ${SRC:.c=.o}, ${BUILD_DIR}/$(notdir ${file}))
 ifeq (${TARGET_TYPE}, debug)
     OBJ := ${OBJ:.o=_debug.o}
@@ -43,8 +43,15 @@ else
     $(error Bad TARGET_TYPE)
 endif
     CPPFLAGS	= -I${INCLUDES_DIR} -I${MY_C_INCLUDE_PATH}
+ifeq (${TARGET_TYPE}, release)
+    LDFLAGS		=
+    LDLIBS		=
+else ifeq (${TARGET_TYPE}, debug) 
     LDFLAGS		= -L${MY_LIBRARY_PATH}
     LDLIBS		= -l memory_leak_detector
+else
+    $(error Bad LIB_TYPE)
+endif
 
 
 ifeq (${TARGET_TYPE}, release)
@@ -68,7 +75,8 @@ else
 endif
 
 
-vpath %.c ${SRCS_DIR} ${SRCS_DIR}/ft_printf_utils
+vpath %.c ${SRCS_DIR}
+vpath %.h ${INCLUDES_DIR}
 
 .PHONY: all clean fclean re
 
@@ -86,7 +94,7 @@ endif
 ${BUILD_DIR}/%_debug.o ${BUILD_DIR}/%.o: %.c | ${BUILD_DIR}
 	${CC} ${CFLAGS} ${CPPFLAGS} -o $@ -c $<
 
-${EXPORT_INCLUDE_DIR}/%.h: ${INCLUDES_DIR}/%.h | ${EXPORT_INCLUDE_DIR}
+${EXPORT_INCLUDE_DIR}/%.h: %.h | ${EXPORT_INCLUDE_DIR}
 	@cp $< $@
 	@echo "Include file copied at $@"
 
@@ -107,4 +115,3 @@ re: fclean all
 ${EXPORT_INCLUDE_DIR} ${EXPORT_LIB_DIR} ${BUILD_DIR}:
 	@mkdir -p $@
 	@echo "Folder $@ created"
-

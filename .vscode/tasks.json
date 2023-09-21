@@ -10,6 +10,7 @@
 			"command": "make",
 			"args": [
 				"TARGET_TYPE=release",
+				"all"
 			],
 			"options": {
 				"cwd": "${workspaceFolder}"
@@ -28,6 +29,7 @@
 			"command": "make",
 			"args": [
 				"TARGET_TYPE=debug",
+				"all"
 			],
 			"options": {
 				"cwd": "${workspaceFolder}"
