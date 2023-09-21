@@ -6,11 +6,11 @@
 #    By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 16:24:59 by tchoquet          #+#    #+#              #
-#    Updated: 2023/09/21 14:10:19 by tchoquet         ###   ########.fr        #
+#    Updated: 2023/09/21 23:30:09 by tchoquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIB_TYPE	= static# static | dynamic
+LIB_TYPE	= dynamic# static | dynamic
 TARGET_TYPE	= release# release | debug
 
 EXPORT_INCLUDE_DIR	= ${MY_C_INCLUDE_PATH}
@@ -37,14 +37,15 @@ endif
     CC			= cc
 ifeq (${TARGET_TYPE}, release)
     CFLAGS		= -Wall -Wextra -Werror
+    LDLIBS		=
 else ifeq (${TARGET_TYPE}, debug)
-    CFLAGS		= -g -D MEMCHECK -D DEBUG
+    CFLAGS		= -g -D DEBUG
+    LDLIBS		= -l memory_leak_detector
 else
     $(error Bad TARGET_TYPE)
 endif
-    CPPFLAGS	= -I${INCLUDES_DIR} -I${MY_C_INCLUDE_PATH}
+    CPPFLAGS	= $(foreach dir, ${INCLUDES_DIR}, -I${dir})
     LDFLAGS		=
-    LDLIBS		=
 
 
 ifeq (${TARGET_TYPE}, release)
@@ -71,7 +72,7 @@ endif
 vpath %.c ${SRCS_DIR}
 vpath %.h ${INCLUDES_DIR}
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re debug redebug
 
 
 all: ${NAME} ${EXPORT_INCLUDE}
@@ -92,16 +93,31 @@ ${EXPORT_INCLUDE_DIR}/%.h: %.h | ${EXPORT_INCLUDE_DIR}
 	@echo "Include file copied at $@"
 
 clean:
-	@rm -rf ${OBJ}
-	@echo "Object files deleted"
+ifeq (${TARGET_TYPE}, release)
+	@rm -rf ${BUILD_DIR}
+	@echo "Build folder deleted"
+endif
 
 fclean: clean
+ifeq (${TARGET_TYPE}, debug)
 	@rm -rf ${NAME}
 	@echo "${NAME} deleted."
+else ifeq (${TARGET_TYPE}, release)
+	@rm -rf ${NAME}
+	@echo "${NAME} deleted"
+	@make TARGET_TYPE=debug fclean
 	@rm -rf ${EXPORT_INCLUDE}
 	@echo "${EXPORT_INCLUDE} deleted"
+else
+    $(error Bad TARGET_TYPE)
+endif
 
 re: fclean all
+
+debug:
+	@make TARGET_TYPE=debug all
+
+redebug: fclean debug
 
 
 #folders

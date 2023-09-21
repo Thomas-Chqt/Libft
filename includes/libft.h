@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/08/26 10:45:26 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/09/21 21:53:49 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -639,5 +639,6 @@ unsigned int	atoi_hex(const char *str);
 long			atoi_long(const char *str);
 void			*xmalloc(size_t	size, void (*clean_func)(void *), void *data);
 void			xmalloc_init(void (*clean_func)(void *), void *data);
+t_bool			is_same(void *a, void *b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 12:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/24 14:58:32 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/09/21 22:00:08 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 # include <math.h>
 # include <stdarg.h>
 
-# ifdef MEMCHECK
+# ifdef DEBUG
 #  include <memory_leak_detector.h>
-# endif // MEMCHECK
+# endif // DEBUG
 
 # include "libft.h"
 
