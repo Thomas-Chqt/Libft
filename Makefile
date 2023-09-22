@@ -6,7 +6,7 @@
 #    By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 16:24:59 by tchoquet          #+#    #+#              #
-#    Updated: 2023/09/21 23:30:09 by tchoquet         ###   ########.fr        #
+#    Updated: 2023/09/22 12:23:52 by tchoquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,8 +44,8 @@ else ifeq (${TARGET_TYPE}, debug)
 else
     $(error Bad TARGET_TYPE)
 endif
-    CPPFLAGS	= $(foreach dir, ${INCLUDES_DIR}, -I${dir})
-    LDFLAGS		=
+    CPPFLAGS	= $(foreach dir, ${INCLUDES_DIR}, -I${dir}) -I${MY_C_INCLUDE_PATH}
+    LDFLAGS		= -L${MY_LIBRARY_PATH}
 
 
 ifeq (${TARGET_TYPE}, release)
