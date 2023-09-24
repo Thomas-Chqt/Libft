@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/09/21 21:53:49 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/09/23 00:42:21 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -554,30 +554,6 @@ void			btr_iter(t_btree *tree, t_btr_trvsl traversal,
 t_btree			*btr_get_last(t_btree *tree, t_btr_trvsl traversal);
 size_t			btr_size(t_btree *tree);
 
-// . ************************************************************************ */
-// .                                Colors                                    */
-// . ************************************************************************ */
-
-# define RED	0x00FF0000
-# define GREEN	0x0000FF00
-# define BLUE	0x000000FF
-# define BLACK	0x00000000
-# define WHITE	0x00FFFFFF
-
-typedef t_uint32			t_color;
-typedef t_uint8				t_color_comp;
-
-t_color			color_rgb(t_color_comp r, t_color_comp g, t_color_comp b);
-t_color			color_raw_rgb(unsigned int hex);
-t_color			color_rgba(t_color_comp r, t_color_comp g, t_color_comp b,
-					t_color_comp a);
-t_color			change_opacity(t_color color, t_color_comp opacity);
-t_color_comp	get_red_comp(t_color color);
-t_color_comp	get_green_comp(t_color color);
-t_color_comp	get_blue_comp(t_color color);
-t_color_comp	get_opacity_comp(t_color color);
-t_color			get_gradian(t_color src, t_color dst,
-					t_uint32 max, t_uint32 step);
 
 // . ************************************************************************ */
 // .                                Maths                                     */
