@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/09/23 00:42:21 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/09/24 12:18:18 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -343,10 +343,33 @@ void			ft_lstiter(t_list *lst, void (*f)(void *));
 // .                                                                          */
 // . ************************************************************************ */
 
+# ifndef UINT8_TYPE
+#  define UINT8_TYPE
+
 typedef unsigned char		t_uint8;
+
+# endif // UINT8_TYPE
+
+# ifndef UINT16_TYPE
+#  define UINT16_TYPE
+
 typedef unsigned short		t_uint16;
+
+# endif // UINT16_TYPE
+
+# ifndef UINT32_TYPE
+#  define UINT32_TYPE
+
 typedef unsigned int		t_uint32;
+
+# endif // UINT32_TYPE
+
+# ifndef UINT64_TYPE
+#  define UINT64_TYPE
+
 typedef unsigned long		t_uint64;
+
+# endif // UINT64_TYPE
 
 typedef enum e_bool			t_bool;
 typedef struct s_array		t_array;
@@ -553,7 +576,6 @@ void			btr_iter(t_btree *tree, t_btr_trvsl traversal,
 					void (*func)(void *));
 t_btree			*btr_get_last(t_btree *tree, t_btr_trvsl traversal);
 size_t			btr_size(t_btree *tree);
-
 
 // . ************************************************************************ */
 // .                                Maths                                     */
