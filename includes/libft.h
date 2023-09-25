@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/09/24 12:18:18 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/09/24 19:24:22 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -371,7 +371,13 @@ typedef unsigned long		t_uint64;
 
 # endif // UINT64_TYPE
 
-typedef enum e_bool			t_bool;
+# ifndef BOOL_TYPE
+#  define BOOL_TYPE
+
+typedef enum e_bool { false = 0, true = 1 }	t_bool;
+
+# endif // BOOL_TYPE
+
 typedef struct s_array		t_array;
 typedef struct s_dictionary	*t_dictionary;
 typedef struct s_btree		t_btree;
@@ -395,10 +401,6 @@ void			swap(void *a, void *b, size_t el_size);
 // . ************************************************************************ */
 // .                            Regular Types                                 */
 // . ************************************************************************ */
-
-// *_________________________________ Bool ___________________________________*/
-
-enum e_bool { false = 0, true = 1 };
 
 // *_________________________________ Char ___________________________________*/
 
