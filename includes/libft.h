@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/09/24 19:24:22 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:12:35 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -505,6 +505,7 @@ void			lststr_delifempty(t_list **head);
 
 // *______________________________ Int Liste _________________________________*/
 
+t_list			*lstint_new(int val);
 int				*lstint_toarrmap(t_list *lst);
 int				lstint_median(t_list *lst);
 t_bool			lstint_isac(t_list *lst);
@@ -513,7 +514,9 @@ t_list			*lstint_sublst(t_list *lst, size_t new_len);
 void			lstint_print(t_list	*lst, char *separator, t_bool endl);
 t_list			*lstint_chr(t_list *lst, t_bool (*test)(int, void *),
 					void *data);
+t_list			*lstint_chreq(t_list *lst, int n);
 int				lstint_addfront(t_list **lst, int val);
+void			lstint_delifeq(t_list **head, int n);
 
 // *___________________________ Clear Versions _______________________________*/
 
@@ -640,5 +643,6 @@ long			atoi_long(const char *str);
 void			*xmalloc(size_t	size, void (*clean_func)(void *), void *data);
 void			xmalloc_init(void (*clean_func)(void *), void *data);
 t_bool			is_same(void *a, void *b);
+t_bool			is_equal(int *a, int *b);
 
 #endif
