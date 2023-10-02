@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/09/29 15:12:35 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/10/02 20:23:59 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -422,6 +422,8 @@ t_uint64		str_ichr(char *str, char c, size_t len);
 void			putwstr_fd(char *s, int fd);
 char			**str_split_on_first(const char *str, char c);
 char			**str_split_whitespc(const char *str);
+t_bool			is_empty_str(char *str);
+char			**str_split_func(const char *str, t_bool (*is_sep)(char));
 
 // . ************************************************************************ */
 // .                                 Array                                    */
