@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 12:28:01 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/10/02 19:44:18 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:55:01 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_bool	is_empty_str(char *str)
 	{
 		if (is_whitespace(str[i]) == false)
 			return (false);
+		i++;
 	}
 	return (true);
 }
