@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/10/09 00:13:31 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:22:26 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -612,5 +612,6 @@ void			*xmalloc(size_t	size, void (*clean_func)(void *), void *data);
 void			xmalloc_init(void (*clean_func)(void *), void *data);
 t_bool			is_same(void *a, void *b);
 t_bool			is_equal(int *a, int *b);
+t_bool			is_uint8(char *str);
 
 #endif
