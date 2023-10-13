@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/10/12 17:22:26 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/10/13 11:48:00 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -424,6 +424,8 @@ char			**str_split_on_first(const char *str, char c);
 char			**str_split_whitespc(const char *str);
 t_bool			is_empty_str(char *str);
 char			**str_split_func(const char *str, t_bool (*is_sep)(char));
+t_bool			is_uint8(char *str);
+size_t			str_charcount(char *str, char c);
 
 // . ************************************************************************ */
 // .                                 Array                                    */
@@ -612,6 +614,5 @@ void			*xmalloc(size_t	size, void (*clean_func)(void *), void *data);
 void			xmalloc_init(void (*clean_func)(void *), void *data);
 t_bool			is_same(void *a, void *b);
 t_bool			is_equal(int *a, int *b);
-t_bool			is_uint8(char *str);
 
 #endif
