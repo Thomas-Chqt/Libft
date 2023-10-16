@@ -6,7 +6,7 @@
 #    By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 16:24:59 by tchoquet          #+#    #+#              #
-#    Updated: 2023/10/15 16:54:59 by tchoquet         ###   ########.fr        #
+#    Updated: 2023/10/16 15:04:13 by tchoquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,17 +35,18 @@ endif
 
 
     CC			= cc
-ifeq (${TARGET_TYPE}, release)
-    CFLAGS		= -Wall -Wextra -Werror
+    CPPFLAGS	= $(foreach dir, ${INCLUDES_DIR}, -I${dir})
+    CFLAGS		=
+    LDFLAGS		=
     LDLIBS		=
+ifeq (${TARGET_TYPE}, release)
+    CFLAGS		+= -O3 -Wall -Wextra -Werror
 else ifeq (${TARGET_TYPE}, debug)
-    CFLAGS		= -g -D DEBUG
-    LDLIBS		= -l memory_leak_detector
+    CFLAGS		+= -O0 -g -D DEBUG
+    LDLIBS		+= -l memory_leak_detector
 else
     $(error Bad TARGET_TYPE)
 endif
-    CPPFLAGS	= $(foreach dir, ${INCLUDES_DIR}, -I${dir})
-    LDFLAGS		=
 
 
 ifeq (${TARGET_TYPE}, release)
