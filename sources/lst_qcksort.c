@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 11:12:18 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/10/15 16:41:17 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/10/17 19:09:54 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static size_t	lst_len_until(t_list *head, t_list *elem);
 
 void	lst_qcksort(t_list *lst, t_bool (*is_sort)(void *a, void *b))
 {
+	if (lst == NULL)
+		return ;
 	lst_qcksort_recuse(lst, NULL, is_sort);
 }
 
