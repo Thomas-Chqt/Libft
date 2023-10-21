@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/10/18 17:26:02 by tchoquet         ###   ########.fr       */
+/*   Updated: 2023/10/21 14:53:04 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -596,6 +596,7 @@ size_t			btr_size(t_btree *tree);
 
 float			torad(float angle);
 int				ft_abs(int n);
+int				imax(int a, int b);
 
 // . ************************************************************************ */
 // .                                Wrappers                                  */
