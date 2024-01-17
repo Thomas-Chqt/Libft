@@ -6,12 +6,17 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/10/21 14:53:04 by tchoquet         ###   ########.fr       */
+/*   Updated: 2024/01/17 14:19:46 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+#ifdef __cplusplus
+namespace ft {
+extern "C" {
+#endif
 
 # include <stddef.h>
 
@@ -295,7 +300,7 @@ t_list			*ft_lstnew(void *content);
 // @brief Adds the node ’new’ at the beginning of the list.
 // @param lst The address of a pointer to the first link of a list.
 // @param new The address of a pointer to the node to be added to the list.
-void			ft_lstadd_front(t_list **lst, t_list *new);
+void			ft_lstadd_front(t_list **lst, t_list *_new);
 
 // @brief Counts the number of nodes in a list.
 // @param lst The beginning of the list.
@@ -305,7 +310,7 @@ int				ft_lstsize(t_list *lst);
 // @brief Adds the node ’new’ at the end of the list.
 // @param lst The address of a pointer to the first link of a list.
 // @param new The address of a pointer to the node to be added to the list.
-void			ft_lstadd_back(t_list **lst, t_list *new);
+void			ft_lstadd_back(t_list **lst, t_list *_new);
 
 // @brief Deletes and frees the given node and every
 // @brief successor of that node, using the function ’del’
@@ -374,14 +379,20 @@ typedef unsigned long		t_uint64;
 # ifndef BOOL_TYPE
 #  define BOOL_TYPE
 
+#ifdef __cplusplus
+typedef bool	            t_bool;
+#else
 typedef enum e_bool { false = 0, true = 1 }	t_bool;
+#endif
 
 # endif // BOOL_TYPE
 
 typedef struct s_array		t_array;
 typedef struct s_dictionary	*t_dictionary;
 typedef struct s_btree		t_btree;
+#ifndef __cplusplus
 typedef enum e_btr_trvsl	t_btr_trvsl;
+#endif
 
 // . ************************************************************************ */
 // .                                  42                                      */
@@ -580,6 +591,10 @@ enum e_btr_trvsl
 	postorder
 };
 
+#ifdef __cplusplus
+typedef enum e_btr_trvsl	t_btr_trvsl;
+#endif
+
 t_btree			*btr_new(void *data);
 void			btr_clear(t_btree *tree, void (*del)(void *));
 int				btr_set_l_child(t_btree *node, t_btree *left);
@@ -620,5 +635,10 @@ void			*xmalloc(size_t	size, void (*clean_func)(void *), void *data);
 void			xmalloc_init(void (*clean_func)(void *), void *data);
 t_bool			is_same(void *a, void *b);
 t_bool			is_equal(int *a, int *b);
+
+#ifdef __cplusplus
+}
+}
+#endif
 
 #endif
