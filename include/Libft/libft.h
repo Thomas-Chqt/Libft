@@ -6,7 +6,7 @@
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:20:36 by tchoquet          #+#    #+#             */
-/*   Updated: 2024/01/17 14:19:46 by tchoquet         ###   ########.fr       */
+/*   Updated: 2024/05/13 23:39:58 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LIBFT_H
 
 #ifdef __cplusplus
-namespace ft {
 extern "C" {
 #endif
 
@@ -637,7 +636,6 @@ t_bool			is_same(void *a, void *b);
 t_bool			is_equal(int *a, int *b);
 
 #ifdef __cplusplus
-}
 }
 #endif
 

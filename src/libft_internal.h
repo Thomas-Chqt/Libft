@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_whitespace.c                                    :+:      :+:    :+:   */
+/*   libft_internal.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchoquet <tchoquet@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/29 15:34:38 by tchoquet          #+#    #+#             */
-/*   Updated: 2023/07/29 15:40:14 by tchoquet         ###   ########.fr       */
+/*   Created: 2023/06/18 12:20:36 by tchoquet          #+#    #+#             */
+/*   Updated: 2024/05/14 00:01:10 by tchoquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef LIBFT_INTERNAL_H
+# define LIBFT_INTERNAL_H
 
-t_bool	is_whitespace(char c)
-{
-	return (c == '\t'
-		|| c == '\n'
-		|| c == '\v'
-		|| c == '\f'
-		|| c == '\r'
-		|| c == ' ');
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
+# endif
+
+# include <stdlib.h>
+# include <unistd.h>
+# include <limits.h>
+# include <math.h>
+# include <stdarg.h>
+
+# include "Libft/libft.h"
+
+#endif // LIBFT_INTERNAL_H
